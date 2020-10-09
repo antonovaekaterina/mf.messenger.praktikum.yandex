@@ -1,0 +1,12 @@
+extends layout/layout
+
+block variables
+    - var title = '404'
+    - var stylePath = './css/error.css'
+block content
+    section.ErrorPage
+        .container-fluid
+            .ErrorPage__wrap
+                include mixins/index
+                +errorMessage('not-found', '404', 'Кажется, вы не туда попали', 'Попробуйте начать сначала')
+

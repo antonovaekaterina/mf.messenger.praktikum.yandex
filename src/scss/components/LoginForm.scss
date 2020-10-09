@@ -1,0 +1,54 @@
+@import '../includes/variables';
+
+.LoginForm {
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 1px 10px 5px rgba(231, 228, 231, 0.4);
+  background: $white;
+  padding: 100px 40px 60px;
+  border-radius: 15px;
+  margin: 20px 0;
+
+  &__title {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  h1 {
+    color: $lavender;
+  }
+
+  .Icon {
+    background-image: url('../../images/enter.svg');
+    margin-left: 10px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    &:first-child {
+      margin-top: 20px;
+    }
+
+    a {
+      align-self: flex-end;
+      margin-top: 20px;
+    }
+  }
+
+  button {
+    margin-top: 20px;
+  }
+
+  &__sigh-in {
+    display: block !important;
+    margin-top: 30px;
+    color: $purple !important;
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration</title>
+    <meta charset="UTF-8"><meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+    <link href="./css/registration.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="RegistrationPage">
+      <div class="container-fluid">
+        <div class="RegistrationPage__wrap">
+          <div class="RegistrationForm">
+            <div class="RegistrationForm__title">
+              <h1>Регистрация</h1>
+              <div class="Icon"></div>
+            </div>
+            <form name="RegistrationForm">
+                            <div class="InputGroup">
+                              <label for="first_name">Имя</label>
+                              <input type="text" id="first_name" name="first_name">
+                            </div>
+                            <div class="InputGroup">
+                              <label for="second_name">Фамилия</label>
+                              <input type="text" id="second_name" name="second_name">
+                            </div>
+                            <div class="InputGroup">
+                              <label for="email">Email</label>
+                              <input type="email" id="email" name="email">
+                            </div>
+                            <div class="InputGroup">
+                              <label for="phone">Номер телефона</label>
+                              <input type="text" id="phone" name="phone">
+                            </div>
+                            <div class="InputGroup">
+                              <label for="login">Логин</label>
+                              <input type="text" id="login" name="login">
+                            </div>
+                            <div class="InputGroup">
+                              <label for="password">Пароль</label>
+                              <input type="password" id="password" name="password">
+                            </div>
+              <input type="submit" value="Зарегистрироваться"><a class="RegistrationForm__login" href="./login.html">Вход</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./scripts/index.js" type="text/javascript"></script>
+  </body>
+</html>

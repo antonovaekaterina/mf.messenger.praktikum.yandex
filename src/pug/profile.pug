@@ -1,0 +1,40 @@
+extends layout/layout
+
+block variables
+    - var title = 'Profile'
+    - var stylePath = './css/profile.css'
+    - var scriptPath = './scripts/index.js'
+    - var isProfilePage = true
+block content
+    form.ProfilePage(name='ProfileForm')
+        .container-fluid
+            .ProfilePage__user
+                .ProfilePage__photo
+                .ProfilePage__user-info
+                    .ProfilePage__user-fullname Прасковья Добролюбова
+                    .ProfilePage__user-display-name Прасковья Иосифовна
+                    label(for='avatar' class=['ProfilePage__user-change-photo-label', 'btn']) Изменить аватар
+                    input.ProfilePage__user-change-photo-btn(type='file' id='avatar' name='avatar' accept='.jpg, .jpeg, .png')
+            div(class=['ProfilePage__settings', 'ProfilePage__settings--common'])
+                div(class=['ProfilePage__title', 'ProfilePage__title--common'])
+                    .Icon
+                    h3 Редактировать профиль
+                .ProfilePage__input-group
+                    include mixins/index
+                    +inputGroup('first_name', 'text', 'Имя')
+                    +inputGroup('second_name', 'text', 'Фамилия')
+                    +inputGroup('display_name', 'text', 'Никнейм')
+                    +inputGroup('email', 'email', 'Email')
+                    +inputGroup('phone', 'text', 'Номер телефона')
+                    +inputGroup('login', 'text', 'Логин')
+                    +inputGroup('password', 'password', 'Пароль')
+                    input(type='submit' value='Сохранить')
+            div(class=['ProfilePage__settings', 'ProfilePage__settings--password'])
+                div(class=['ProfilePage__title', 'ProfilePage__title--password'])
+                    .Icon
+                    h3 Изменить пароль
+                .ProfilePage__input-group
+                    include mixins/index
+                    +inputGroup('oldPassword', 'password', 'Старый пароль')
+                    +inputGroup('newPassword', 'password', 'Новый пароль')
+                    input(type='submit' value='Сохранить')

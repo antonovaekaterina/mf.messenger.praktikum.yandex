@@ -1,0 +1,11 @@
+extends layout/bareLayout.pug
+
+block variables
+    - var title = 'Registration'
+    - var stylePath = './css/registration.css'
+    - var scriptPath = './scripts/index.js'
+block content
+    section.RegistrationPage
+        .container-fluid
+            .RegistrationPage__wrap
+                include components/RegistrationForm

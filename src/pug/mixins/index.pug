@@ -1,0 +1,24 @@
+mixin user(name, status, lastMessage)
+    .User
+        .User__img-wrap
+            .User__img
+            div(class=['User__status', status])
+        .User__info
+            .User__name=name
+            if lastMessage
+                .User__message=lastMessage
+
+mixin inputGroup(id, type, label)
+    .InputGroup
+        label(for=id)=label
+        input(type=type id=id name=id)
+
+mixin errorMessage(errorType, imgText, title, subtitle)
+    div(class=['ErrorMessage', errorType])
+        .ErrorMessage__img
+            .ErrorMessage__img-code=imgText
+            .ErrorMessage__img-icon
+        .ErrorMessage__info
+            h3=title
+            p=subtitle
+            a.btn(href='./chat.html') Вернуться к чатам

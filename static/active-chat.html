@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+    <meta charset="UTF-8"><meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+    <link href="./css/chat.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="Header">
+      <div class="container-fluid">
+        <nav>
+                    <div class="User">
+                      <div class="User__img-wrap">
+                        <div class="User__img"></div>
+                        <div class="User__status online"></div>
+                      </div>
+                      <div class="User__info">
+                        <div class="User__name">Прасковья Иосифовна</div>
+                      </div>
+                    </div><a class="Header__settings Header__link" href="./profile.html">
+            <div class="Icon"></div><span class="Header__settings-label">Профиль</span></a>
+        </nav>
+      </div>
+    </header>
+    <div class="Chat">
+      <div class="container-fluid">
+        <div class="Chat__grid">
+          <aside class="Chat__navigation">
+            <div class="Chat__search-dialogs">
+              <form class="Chat__search-dialogs-form" name="SearchForm">
+                <input type="text" placeholder="Поиск диалога" name="search">
+                <div class="Icon"></div>
+              </form>
+            </div>
+            <div class="Chat__list">
+              <div class="Chat__user">
+                                <div class="User">
+                                  <div class="User__img-wrap">
+                                    <div class="User__img"></div>
+                                    <div class="User__status online"></div>
+                                  </div>
+                                  <div class="User__info">
+                                    <div class="User__name">Василий Панкратович</div>
+                                    <div class="User__message">Привет! Как твое ничего?</div>
+                                  </div>
+                                </div>
+                <div class="Chat__new-message-counter">1</div>
+              </div>
+              <div class="Chat__user">
+                                <div class="User">
+                                  <div class="User__img-wrap">
+                                    <div class="User__img"></div>
+                                    <div class="User__status online"></div>
+                                  </div>
+                                  <div class="User__info">
+                                    <div class="User__name">Евгения Виссарионовна</div>
+                                    <div class="User__message">Не поверишь, что я только что узнала!</div>
+                                  </div>
+                                </div>
+                <div class="Chat__new-message-counter">2</div>
+              </div>
+              <div class="Chat__user Chat__user--active">
+                                <div class="User">
+                                  <div class="User__img-wrap">
+                                    <div class="User__img"></div>
+                                    <div class="User__status online"></div>
+                                  </div>
+                                  <div class="User__info">
+                                    <div class="User__name">Лариса Павловна</div>
+                                    <div class="User__message">Приглашаю тебя на юбилей!</div>
+                                  </div>
+                                </div>
+              </div>
+            </div>
+            <button class="Chat__add-dialog-btn Icon" title="Добавить контакт"></button>
+          </aside>
+          <main class="Chat__main">
+            <div class="Chat__personal-info">
+                            <div class="User">
+                              <div class="User__img-wrap">
+                                <div class="User__img"></div>
+                                <div class="User__status online"></div>
+                              </div>
+                              <div class="User__info">
+                                <div class="User__name">Прасковья Иосифовна</div>
+                              </div>
+                            </div>
+              <button class="Icon" title="Настройки чата"></button>
+            </div>
+            <div class="Chat__messenger">
+              <div class="Chat__messenger-window">
+                    <div class="Chat__message incoming">Входящее сообщение</div>
+                    <div class="Chat__message outgoing">Исходящее сообщение</div>
+                    <div class="Chat__message outgoing">Еще одно исходящее сообщение</div>
+              </div>
+              <form class="Chat__messenger-form" name="ChatForm">
+                <textarea placeholder="Начните вводить сообщение..." name="message"></textarea>
+                <button class="Icon Chat__messenger-attachment"></button>
+                <input class="Chat__messenger-send-btn" type="submit" value="">
+              </form>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/index.js" type="text/javascript"></script>
+  </body>
+</html>

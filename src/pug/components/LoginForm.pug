@@ -1,0 +1,13 @@
+.LoginForm
+    .LoginForm__title
+        h1 Вход
+        .Icon
+    form(name='LoginForm')
+        include ../mixins/index
+        +inputGroup('login', 'text', 'Логин')
+        .LoginForm__group
+            label(for='password') Пароль
+            input#password(type='password' name='password')
+            a(href='#') Забыли пароль?
+        input(type='submit' value='Войти')
+        a.LoginForm__sigh-in(href='./registration.html') Зарегистрироваться

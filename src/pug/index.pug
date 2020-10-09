@@ -1,0 +1,28 @@
+extends layout/bareLayout
+
+block variables
+    - var title = 'index'
+    - var stylePath = './css/index.css'
+block content
+    section.IndexPage
+        .container-fluid
+            nav
+                h1 Навигация по сайту
+                ul
+                    li
+                        a(href='./login.html') Страница авторизации
+                    li
+                        a(href='./registration.html') Страница регистрации
+                    li
+                        a(href='./chat.html') Страница чата
+                    li
+                        a(href='./active-chat.html') Страница чата с активным пользователем
+                    li
+                        a(href='./profile.html') Страница с настройками профиля
+                    li
+                        a(href='./404.html') Страница 404
+                    li
+                        a(href='./500.html') Страница 5**
+
+
+

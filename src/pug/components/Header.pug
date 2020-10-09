@@ -1,0 +1,13 @@
+header.Header
+    .container-fluid
+        nav
+            if isProfilePage
+                a(class=['Header__back-btn', 'Header__link'] href='./chat.html')
+                    .Icon
+                    span.Header__settings-label Вернуться к чатам
+            else
+                include ../mixins/index
+                +user('Прасковья Иосифовна', 'online')
+                a(class=['Header__settings', 'Header__link'] href='./profile.html')
+                    .Icon
+                    span.Header__settings-label Профиль

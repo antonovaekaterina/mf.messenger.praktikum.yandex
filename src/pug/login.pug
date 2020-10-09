@@ -1,0 +1,11 @@
+extends layout/bareLayout.pug
+
+block variables
+    - var title = 'Login'
+    - var stylePath = './css/login.css'
+    - var scriptPath = './scripts/index.js'
+block content
+    section.LoginPage
+        .container-fluid
+            .LoginPage__wrap
+                include components/LoginForm

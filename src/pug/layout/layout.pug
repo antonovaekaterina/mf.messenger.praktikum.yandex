@@ -1,0 +1,14 @@
+block variables
+
+doctype html
+html
+    head
+        title=title
+        meta(charset='UTF-8')
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+        link(href=stylePath rel='stylesheet')
+    body
+        include ../components/Header
+        block content
+        if scriptPath
+            script(src=scriptPath type='text/javascript')

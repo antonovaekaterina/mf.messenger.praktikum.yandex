@@ -1,0 +1,12 @@
+extends layout/layout
+
+block variables
+    - var title = '500'
+    - var stylePath = './css/error.css'
+block content
+    section.ErrorPage
+        .container-fluid
+            .ErrorPage__wrap
+                include mixins/index
+                +errorMessage('server-error', 'Ошибка', 'Кажется, что-то пошло не так', 'Мы уже работаем над этим')
+

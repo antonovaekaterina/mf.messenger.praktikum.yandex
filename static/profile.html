@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+    <meta charset="UTF-8"><meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+    <link href="./css/profile.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="Header">
+      <div class="container-fluid">
+        <nav><a class="Header__back-btn Header__link" href="./chat.html">
+            <div class="Icon"></div><span class="Header__settings-label">Вернуться к чатам</span></a>
+        </nav>
+      </div>
+    </header>
+    <form class="ProfilePage" name="ProfileForm">
+      <div class="container-fluid">
+        <div class="ProfilePage__user">
+          <div class="ProfilePage__photo"></div>
+          <div class="ProfilePage__user-info">
+            <div class="ProfilePage__user-fullname">Прасковья Добролюбова</div>
+            <div class="ProfilePage__user-display-name">Прасковья Иосифовна</div>
+            <label class="ProfilePage__user-change-photo-label btn" for="avatar">Изменить аватар</label>
+            <input class="ProfilePage__user-change-photo-btn" type="file" id="avatar" name="avatar" accept=".jpg, .jpeg, .png">
+          </div>
+        </div>
+        <div class="ProfilePage__settings ProfilePage__settings--common">
+          <div class="ProfilePage__title ProfilePage__title--common">
+            <div class="Icon"></div>
+            <h3>Редактировать профиль</h3>
+          </div>
+          <div class="ProfilePage__input-group">
+                        <div class="InputGroup">
+                          <label for="first_name">Имя</label>
+                          <input type="text" id="first_name" name="first_name">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="second_name">Фамилия</label>
+                          <input type="text" id="second_name" name="second_name">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="display_name">Никнейм</label>
+                          <input type="text" id="display_name" name="display_name">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="email">Email</label>
+                          <input type="email" id="email" name="email">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="phone">Номер телефона</label>
+                          <input type="text" id="phone" name="phone">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="login">Логин</label>
+                          <input type="text" id="login" name="login">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="password">Пароль</label>
+                          <input type="password" id="password" name="password">
+                        </div>
+            <input type="submit" value="Сохранить">
+          </div>
+        </div>
+        <div class="ProfilePage__settings ProfilePage__settings--password">
+          <div class="ProfilePage__title ProfilePage__title--password">
+            <div class="Icon"></div>
+            <h3>Изменить пароль</h3>
+          </div>
+          <div class="ProfilePage__input-group">
+                        <div class="InputGroup">
+                          <label for="oldPassword">Старый пароль</label>
+                          <input type="password" id="oldPassword" name="oldPassword">
+                        </div>
+                        <div class="InputGroup">
+                          <label for="newPassword">Новый пароль</label>
+                          <input type="password" id="newPassword" name="newPassword">
+                        </div>
+            <input type="submit" value="Сохранить">
+          </div>
+        </div>
+      </div>
+    </form>
+    <script src="./scripts/index.js" type="text/javascript"></script>
+  </body>
+</html>
