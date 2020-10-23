@@ -1,0 +1,60 @@
+.MessengerInnerForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  border-top: 1px solid #e7e4e7; }
+  .MessengerInnerForm textarea {
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 7px 108px 7px 20px;
+    width: 100%;
+    flex: 0 1 auto;
+    resize: none;
+    color: #474049;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: inherit !important; }
+    .MessengerInnerForm textarea::-webkit-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .MessengerInnerForm textarea:-ms-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .MessengerInnerForm textarea::placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+  .MessengerInnerForm__messenger-attachment {
+    flex: 0 0 auto;
+    margin-right: 20px; }
+    .MessengerInnerForm__messenger-attachment.Icon {
+      background-image: url("/images/attachment.svg"); }
+  .MessengerInnerForm__messenger-send-btn {
+    flex: 0 0 auto;
+    background: #7c45d6 url("/images/arrow-send.svg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: 0 5px 10px rgba(148, 107, 214, 0.5);
+    transition: box-shadow ease 0.15s !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin-right: 20px; }
+    .MessengerInnerForm__messenger-send-btn:hover {
+      box-shadow: none;
+      background: #7c45d6 url("/images/arrow-send.svg") !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important; }
+    .MessengerInnerForm__messenger-send-btn:active {
+      background: #7c45d6 url("/images/arrow-send.svg") !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important; }

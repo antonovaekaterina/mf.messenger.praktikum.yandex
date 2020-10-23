@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "target": "es2016",
+    "module": "ES6"
+  },
+  "include": [
+    "static/components/**/*",
+    "static/pages/**/*",
+    "static/scripts/*"
+  ],
+  "files": [
+    "global.d.ts"
+  ]
+}

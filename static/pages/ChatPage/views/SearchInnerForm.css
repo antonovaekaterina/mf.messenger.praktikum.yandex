@@ -1,0 +1,24 @@
+.SearchInnerForm {
+  position: relative;
+  width: 100%; }
+  .SearchInnerForm input {
+    border: none !important;
+    background: #fef6f9 !important;
+    border-radius: 7px !important;
+    height: 50px !important;
+    padding: 0 50px 0 17px !important;
+    transition: background ease 0.15s !important;
+    cursor: pointer !important;
+    display: block;
+    width: 100%;
+    outline: none; }
+    .SearchInnerForm input:hover {
+      background: #e7e4e7 !important; }
+    .SearchInnerForm input:focus {
+      background: #fef6f9 !important; }
+  .SearchInnerForm .Icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    background-image: url("/images/search.svg"); }

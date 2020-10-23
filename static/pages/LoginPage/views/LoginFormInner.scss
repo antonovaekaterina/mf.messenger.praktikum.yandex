@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+@import '../../../components/InputField/InputFieldView.scss';
+
+.LoginFormInner {
+  &__forgot-password {
+    display: block;
+    text-align: right;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+
+  &__sigh-in {
+    display: block !important;
+    margin-top: 30px;
+    color: $purple !important;
+  }
+
+  .InputFieldView {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      flex: 0 0 auto;
+    }
+
+    &:first-child {
+      margin-top: 20px;
+    }
+  }
+}

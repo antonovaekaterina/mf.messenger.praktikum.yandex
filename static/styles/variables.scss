@@ -1,0 +1,25 @@
+//variables
+$white: #ffffff;
+$lavender: #946bd6;
+$purple: #7c45d6;
+$fuchsia: #c561d3;
+$light-text: #e7e4e7;
+$secondary-text: #99889b;
+$dark-text: #474049;
+$crimson: #ee6b9c;
+$pink-layout: #fef6f9;
+$light-grey: #f8f7f8;
+$light-blue: #eaebfb;
+$grey: #c4c4c4;
+$chat-layout: #fafafa;
+
+//transition
+$short-effect: ease 0.15s;
+$opacity: 0.8;
+
+//mixins
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-ms-input-placeholder {@content}
+  &::placeholder {@content}
+}

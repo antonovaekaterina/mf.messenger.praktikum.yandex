@@ -1,0 +1,35 @@
+@import '../../../styles/variables';
+
+.SearchInnerForm {
+  position: relative;
+  width: 100%;
+
+  input {
+    border: none !important;
+    background: $pink-layout !important;
+    border-radius: 7px !important;
+    height: 50px !important;
+    padding: 0 50px 0 17px !important;
+    transition: background $short-effect !important;
+    cursor: pointer !important;
+    display: block;
+    width: 100%;
+    outline: none;
+
+    &:hover {
+      background: $light-text !important;
+    }
+
+    &:focus {
+      background: $pink-layout !important;
+    }
+  }
+
+  .Icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    background-image: url('/images/search.svg');
+  }
+}

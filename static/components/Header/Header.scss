@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+@import '../User/User.scss';
+
+.Header {
+  background: $lavender;
+  border-bottom: 1px solid $purple;
+  height: 90px;
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    transition: opacity $short-effect;
+
+    &, &:hover {
+      text-decoration: none;
+    }
+
+    &:hover {
+      opacity: $opacity;
+    }
+  }
+
+  &__settings .Icon {
+    background-image: url('/images/settings.svg');
+  }
+
+  &__back-btn .Icon {
+    background-image: url('/images/arrow.svg');
+  }
+
+  &__settings-label {
+    font-size: 18px !important;
+    color: $white !important;
+    font-weight: 400 !important;
+    margin-left: 7px;
+  }
+
+}

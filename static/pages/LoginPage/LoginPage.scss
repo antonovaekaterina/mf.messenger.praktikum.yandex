@@ -1,0 +1,12 @@
+@import '../../styles/common';
+@import './views/LoginForm.scss';
+
+.LoginPage {
+  &__wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+

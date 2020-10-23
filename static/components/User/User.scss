@@ -1,0 +1,55 @@
+@import '../../styles/variables';
+
+.User {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__img-wrap {
+    position: relative;
+    margin-right: 10px;
+  }
+
+  &__img {
+    background: $grey;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+
+  &__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background-size: auto;
+    background-position: center;
+
+    &.online {
+      background-image: url('/images/status-online.svg');
+    }
+  }
+
+  &__info {
+    width: 100%;
+    flex: 0 1 auto;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    color: $white;
+  }
+
+  &__message {
+    font-size: 14px;
+    color: $dark-text;
+    margin-top: 7px;
+    white-space: nowrap;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

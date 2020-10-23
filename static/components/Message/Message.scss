@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+.Message {
+  flex: 0 0 auto;
+  padding: 13px;
+  border-radius: 15px;
+  max-width: 350px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: $dark-text;
+  margin-top: 10px;
+
+  &.incoming {
+    background: $light-grey;
+  }
+
+  &.outgoing {
+    background: $light-blue;
+    align-self: flex-end;
+  }
+}

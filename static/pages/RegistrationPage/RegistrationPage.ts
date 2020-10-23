@@ -1,0 +1,26 @@
+import Block from "../../components/Block/Block.js";
+import RegistrationForm from "./views/RegistrationForm.js";
+import renderDOM, {createRenderContent} from "../../scripts/utils.js";
+
+export default class RegistrationPage extends Block {
+    render() {
+        const source:string = (
+            `<section class="RegistrationPage">
+                <div class="container-fluid">
+                    <div class="RegistrationPage__wrap">
+                        <span class="component" id="registrationForm"></span>
+                    </div>
+                </div>
+            </section>`
+        );
+
+        const nestedComponents = {
+            registrationForm: new RegistrationForm().getFragment()
+        };
+        return createRenderContent(source, this.props, nestedComponents)
+    }
+}
+
+const registrationPage = new RegistrationPage();
+
+renderDOM('.root', registrationPage.getFragment());

@@ -3,40 +3,11 @@
   <head>
     <title>404</title>
     <meta charset="UTF-8"><meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
-    <link href="./css/error.css" rel="stylesheet">
+    <link href="./pages/NotFoundPage/NotFoundPage.css" rel="stylesheet">
   </head>
   <body>
-    <header class="Header">
-      <div class="container-fluid">
-        <nav>
-                    <div class="User">
-                      <div class="User__img-wrap">
-                        <div class="User__img"></div>
-                        <div class="User__status online"></div>
-                      </div>
-                      <div class="User__info">
-                        <div class="User__name">Прасковья Иосифовна</div>
-                      </div>
-                    </div><a class="Header__settings Header__link" href="./profile.html">
-            <div class="Icon"></div><span class="Header__settings-label">Профиль</span></a>
-        </nav>
-      </div>
-    </header>
-    <section class="ErrorPage">
-      <div class="container-fluid">
-        <div class="ErrorPage__wrap">
-                    <div class="ErrorMessage not-found">
-                      <div class="ErrorMessage__img">
-                        <div class="ErrorMessage__img-code">404</div>
-                        <div class="ErrorMessage__img-icon"></div>
-                      </div>
-                      <div class="ErrorMessage__info">
-                        <h3>Кажется, вы не туда попали</h3>
-                        <p>Попробуйте начать сначала</p><a class="btn" href="./chat.html">Вернуться к чатам</a>
-                      </div>
-                    </div>
-        </div>
-      </div>
-    </section>
+    <div class="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type="module" src="./pages/NotFoundPage/index.js"></script>
   </body>
 </html>

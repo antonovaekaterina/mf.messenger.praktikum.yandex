@@ -1,0 +1,51 @@
+@import '../../styles/variables';
+
+
+.InputFieldView {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex: 0 0 auto;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: $dark-text;
+    margin-bottom: 10px;
+  }
+
+  input:not([type='file']) {
+    width: 100%;
+    outline: none;
+    display: block;
+    height: 42px;
+    border-radius: 7px;
+    background: $white;
+    border: 1px solid $light-text;
+    padding: 0 7px;
+    font-size: 14px;
+    color: $dark-text;
+    transition: border-color $short-effect;
+
+    &:hover {
+      border-color: $lavender;
+    }
+
+    &:focus {
+      border-color: $secondary-text;
+    }
+
+    @include placeholder {
+      color: $dark-text;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import '../../../styles/variables';
+
+.ContactBlock {
+  position: relative;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  transition: background $short-effect;
+  border-bottom: 1px solid $light-text;
+  cursor: pointer;
+
+  &:hover {
+    background: $pink-layout;
+  }
+
+  .User__name {
+    color: $dark-text;
+  }
+
+  &--active {
+    background: $crimson;
+
+    &:hover {
+      background: $crimson;
+    }
+
+    .User__name {
+      color: $white;
+    }
+
+    .User__message {
+      color: $light-text;
+    }
+  }
+
+  &__new-message-counter {
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $fuchsia;
+    border: 1px solid $purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: $white;
+  }
+}

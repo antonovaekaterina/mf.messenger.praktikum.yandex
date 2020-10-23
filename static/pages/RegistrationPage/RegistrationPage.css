@@ -1,0 +1,250 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-SemiBold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Medium.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Light.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: 'Raleway', sans-serif; }
+  body * {
+    box-sizing: border-box; }
+
+.container-fluid {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto; }
+
+a {
+  display: inline-block;
+  color: #99889b;
+  font-size: 14px; }
+  a:hover {
+    text-decoration: none; }
+
+button, input[type='submit'], .btn {
+  background: #946bd6;
+  border: 1px solid #7c45d6;
+  padding: 10px 25px;
+  color: #e7e4e7;
+  font-size: 16px;
+  transition: background-color ease 0.15s;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer; }
+  button:hover, input[type='submit']:hover, .btn:hover {
+    background: #7c45d6; }
+  button:active, input[type='submit']:active, .btn:active {
+    background: #c561d3; }
+  button.Icon, input[type='submit'].Icon, .btn.Icon {
+    padding: 0;
+    border: none;
+    transition: opacity ease 0.15s; }
+    button.Icon:hover, input[type='submit'].Icon:hover, .btn.Icon:hover {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.8; }
+    button.Icon:active, input[type='submit'].Icon:active, .btn.Icon:active {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center; }
+
+.Icon {
+  background-color: #fef6f9;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px; }
+
+h1 {
+  font-weight: 700;
+  font-size: 36px; }
+
+.InputFieldView {
+  display: flex;
+  flex-direction: column; }
+  .InputFieldView > * {
+    flex: 0 0 auto; }
+  .InputFieldView:not(:last-child) {
+    margin-bottom: 20px; }
+  .InputFieldView label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #474049;
+    margin-bottom: 10px; }
+  .InputFieldView input:not([type='file']) {
+    width: 100%;
+    outline: none;
+    display: block;
+    height: 42px;
+    border-radius: 7px;
+    background: #ffffff;
+    border: 1px solid #e7e4e7;
+    padding: 0 7px;
+    font-size: 14px;
+    color: #474049;
+    transition: border-color ease 0.15s; }
+    .InputFieldView input:not([type='file']):hover {
+      border-color: #946bd6; }
+    .InputFieldView input:not([type='file']):focus {
+      border-color: #99889b; }
+    .InputFieldView input:not([type='file'])::-webkit-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .InputFieldView input:not([type='file']):-ms-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .InputFieldView input:not([type='file'])::placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+
+.InputFieldView {
+  display: flex;
+  flex-direction: column; }
+  .InputFieldView > * {
+    flex: 0 0 auto; }
+  .InputFieldView:not(:last-child) {
+    margin-bottom: 20px; }
+  .InputFieldView label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #474049;
+    margin-bottom: 10px; }
+  .InputFieldView input:not([type='file']) {
+    width: 100%;
+    outline: none;
+    display: block;
+    height: 42px;
+    border-radius: 7px;
+    background: #ffffff;
+    border: 1px solid #e7e4e7;
+    padding: 0 7px;
+    font-size: 14px;
+    color: #474049;
+    transition: border-color ease 0.15s; }
+    .InputFieldView input:not([type='file']):hover {
+      border-color: #946bd6; }
+    .InputFieldView input:not([type='file']):focus {
+      border-color: #99889b; }
+    .InputFieldView input:not([type='file'])::-webkit-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .InputFieldView input:not([type='file']):-ms-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .InputFieldView input:not([type='file'])::placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+
+.RegistrationFormInner button {
+  margin-top: 40px; }
+
+.RegistrationFormInner__login {
+  display: block !important;
+  margin-top: 30px; }
+
+.RegistrationForm {
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 1px 10px 5px rgba(231, 228, 231, 0.4);
+  background: #ffffff;
+  padding: 70px 40px 50px;
+  border-radius: 15px;
+  margin: 20px 0; }
+  .RegistrationForm__title {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center; }
+  .RegistrationForm h1 {
+    color: #946bd6; }
+  .RegistrationForm .Icon {
+    background-image: url("/images/user.svg");
+    margin-left: 10px; }
+
+.RegistrationPage__wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }

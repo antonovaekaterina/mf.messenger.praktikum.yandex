@@ -1,0 +1,601 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-SemiBold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Medium.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Light.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: 'Raleway', sans-serif; }
+  body * {
+    box-sizing: border-box; }
+
+.container-fluid {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto; }
+
+a {
+  display: inline-block;
+  color: #99889b;
+  font-size: 14px; }
+  a:hover {
+    text-decoration: none; }
+
+button, input[type='submit'], .btn {
+  background: #946bd6;
+  border: 1px solid #7c45d6;
+  padding: 10px 25px;
+  color: #e7e4e7;
+  font-size: 16px;
+  transition: background-color ease 0.15s;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer; }
+  button:hover, input[type='submit']:hover, .btn:hover {
+    background: #7c45d6; }
+  button:active, input[type='submit']:active, .btn:active {
+    background: #c561d3; }
+  button.Icon, input[type='submit'].Icon, .btn.Icon {
+    padding: 0;
+    border: none;
+    transition: opacity ease 0.15s; }
+    button.Icon:hover, input[type='submit'].Icon:hover, .btn.Icon:hover {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.8; }
+    button.Icon:active, input[type='submit'].Icon:active, .btn.Icon:active {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center; }
+
+.Icon {
+  background-color: #fef6f9;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px; }
+
+h1 {
+  font-weight: 700;
+  font-size: 36px; }
+
+.User {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+  .User__img-wrap {
+    position: relative;
+    margin-right: 10px; }
+  .User__img {
+    background: #c4c4c4;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; }
+  .User__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background-size: auto;
+    background-position: center; }
+    .User__status.online {
+      background-image: url("/images/status-online.svg"); }
+  .User__info {
+    width: 100%;
+    flex: 0 1 auto; }
+  .User__name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff; }
+  .User__message {
+    font-size: 14px;
+    color: #474049;
+    margin-top: 7px;
+    white-space: nowrap;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+
+.Header {
+  background: #946bd6;
+  border-bottom: 1px solid #7c45d6;
+  height: 90px; }
+  .Header .container-fluid {
+    height: 100%; }
+  .Header nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .Header__link {
+    display: flex;
+    align-items: center;
+    transition: opacity ease 0.15s; }
+    .Header__link, .Header__link:hover {
+      text-decoration: none; }
+    .Header__link:hover {
+      opacity: 0.8; }
+  .Header__settings .Icon {
+    background-image: url("/images/settings.svg"); }
+  .Header__back-btn .Icon {
+    background-image: url("/images/arrow.svg"); }
+  .Header__settings-label {
+    font-size: 18px !important;
+    color: #ffffff !important;
+    font-weight: 400 !important;
+    margin-left: 7px; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-SemiBold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Medium.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/fonts/Raleway-Light.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: 'Raleway', sans-serif; }
+  body * {
+    box-sizing: border-box; }
+
+.container-fluid {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto; }
+
+a {
+  display: inline-block;
+  color: #99889b;
+  font-size: 14px; }
+  a:hover {
+    text-decoration: none; }
+
+button, input[type='submit'], .btn {
+  background: #946bd6;
+  border: 1px solid #7c45d6;
+  padding: 10px 25px;
+  color: #e7e4e7;
+  font-size: 16px;
+  transition: background-color ease 0.15s;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer; }
+  button:hover, input[type='submit']:hover, .btn:hover {
+    background: #7c45d6; }
+  button:active, input[type='submit']:active, .btn:active {
+    background: #c561d3; }
+  button.Icon, input[type='submit'].Icon, .btn.Icon {
+    padding: 0;
+    border: none;
+    transition: opacity ease 0.15s; }
+    button.Icon:hover, input[type='submit'].Icon:hover, .btn.Icon:hover {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.8; }
+    button.Icon:active, input[type='submit'].Icon:active, .btn.Icon:active {
+      background-color: #fef6f9;
+      background-repeat: no-repeat;
+      background-position: center; }
+
+.Icon {
+  background-color: #fef6f9;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px; }
+
+h1 {
+  font-weight: 700;
+  font-size: 36px; }
+
+.User {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+  .User__img-wrap {
+    position: relative;
+    margin-right: 10px; }
+  .User__img {
+    background: #c4c4c4;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; }
+  .User__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    background-size: auto;
+    background-position: center; }
+    .User__status.online {
+      background-image: url("/images/status-online.svg"); }
+  .User__info {
+    width: 100%;
+    flex: 0 1 auto; }
+  .User__name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff; }
+  .User__message {
+    font-size: 14px;
+    color: #474049;
+    margin-top: 7px;
+    white-space: nowrap;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+
+.ContactBlock {
+  position: relative;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  transition: background ease 0.15s;
+  border-bottom: 1px solid #e7e4e7;
+  cursor: pointer; }
+  .ContactBlock:hover {
+    background: #fef6f9; }
+  .ContactBlock .User__name {
+    color: #474049; }
+  .ContactBlock--active {
+    background: #ee6b9c; }
+    .ContactBlock--active:hover {
+      background: #ee6b9c; }
+    .ContactBlock--active .User__name {
+      color: #ffffff; }
+    .ContactBlock--active .User__message {
+      color: #e7e4e7; }
+  .ContactBlock__new-message-counter {
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #c561d3;
+    border: 1px solid #7c45d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff; }
+
+.Message {
+  flex: 0 0 auto;
+  padding: 13px;
+  border-radius: 15px;
+  max-width: 350px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #474049;
+  margin-top: 10px; }
+  .Message.incoming {
+    background: #f8f7f8; }
+  .Message.outgoing {
+    background: #eaebfb;
+    align-self: flex-end; }
+
+.MessengerInnerForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  border-top: 1px solid #e7e4e7; }
+  .MessengerInnerForm textarea {
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 7px 108px 7px 20px;
+    width: 100%;
+    flex: 0 1 auto;
+    resize: none;
+    color: #474049;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: inherit !important; }
+    .MessengerInnerForm textarea::-webkit-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .MessengerInnerForm textarea:-ms-input-placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+    .MessengerInnerForm textarea::placeholder {
+      color: #474049;
+      font-weight: 500;
+      font-size: 14px; }
+  .MessengerInnerForm__messenger-attachment {
+    flex: 0 0 auto;
+    margin-right: 20px; }
+    .MessengerInnerForm__messenger-attachment.Icon {
+      background-image: url("/images/attachment.svg"); }
+  .MessengerInnerForm__messenger-send-btn {
+    flex: 0 0 auto;
+    background: #7c45d6 url("/images/arrow-send.svg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: 0 5px 10px rgba(148, 107, 214, 0.5);
+    transition: box-shadow ease 0.15s !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin-right: 20px; }
+    .MessengerInnerForm__messenger-send-btn:hover {
+      box-shadow: none;
+      background: #7c45d6 url("/images/arrow-send.svg") !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important; }
+    .MessengerInnerForm__messenger-send-btn:active {
+      background: #7c45d6 url("/images/arrow-send.svg") !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important; }
+
+.SearchInnerForm {
+  position: relative;
+  width: 100%; }
+  .SearchInnerForm input {
+    border: none !important;
+    background: #fef6f9 !important;
+    border-radius: 7px !important;
+    height: 50px !important;
+    padding: 0 50px 0 17px !important;
+    transition: background ease 0.15s !important;
+    cursor: pointer !important;
+    display: block;
+    width: 100%;
+    outline: none; }
+    .SearchInnerForm input:hover {
+      background: #e7e4e7 !important; }
+    .SearchInnerForm input:focus {
+      background: #fef6f9 !important; }
+  .SearchInnerForm .Icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    background-image: url("/images/search.svg"); }
+
+.Chat {
+  display: flex; }
+  .Chat form[name='SearchForm'] {
+    width: 100%; }
+  .Chat__grid {
+    height: 690px;
+    margin: 40px 0 30px;
+    display: flex; }
+  .Chat__navigation {
+    position: relative;
+    width: 400px;
+    border: 1px solid #e7e4e7;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px; }
+  .Chat__search-dialogs {
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid #e7e4e7;
+    display: flex;
+    align-items: center;
+    padding: 0 10px; }
+  .Chat__main {
+    border: 1px solid #e7e4e7;
+    border-left: none;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    width: calc(100% - 400px);
+    display: flex;
+    flex-direction: column; }
+  .Chat__add-dialog-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    background-color: #946bd6;
+    box-shadow: 0 5px 10px rgba(148, 107, 214, 0.5);
+    transition: opacity ease 0.15s;
+    cursor: pointer; }
+    .Chat__add-dialog-btn.Icon {
+      background-image: url("/images/add.svg"); }
+      .Chat__add-dialog-btn.Icon:hover {
+        background-color: #946bd6; }
+      .Chat__add-dialog-btn.Icon:active {
+        background-color: #946bd6; }
+  .Chat__personal-info {
+    flex: 0 0 auto;
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid #e7e4e7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; }
+    .Chat__personal-info .User__name {
+      color: #474049; }
+    .Chat__personal-info button.Icon {
+      background-image: url("/images/menu.svg"); }
+  .Chat__messenger {
+    height: 100%;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column; }
+    .Chat__messenger--empty {
+      background: #fafafa;
+      justify-content: center;
+      align-items: center; }
+      .Chat__messenger--empty p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 16px;
+        color: #474049; }
+  .Chat__messenger-window {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start; }

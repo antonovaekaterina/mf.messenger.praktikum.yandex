@@ -3,40 +3,11 @@
   <head>
     <title>500</title>
     <meta charset="UTF-8"><meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
-    <link href="./css/error.css" rel="stylesheet">
+    <link href="./pages/ErrorPage/ErrorPage.css" rel="stylesheet">
   </head>
   <body>
-    <header class="Header">
-      <div class="container-fluid">
-        <nav>
-                    <div class="User">
-                      <div class="User__img-wrap">
-                        <div class="User__img"></div>
-                        <div class="User__status online"></div>
-                      </div>
-                      <div class="User__info">
-                        <div class="User__name">Прасковья Иосифовна</div>
-                      </div>
-                    </div><a class="Header__settings Header__link" href="./profile.html">
-            <div class="Icon"></div><span class="Header__settings-label">Профиль</span></a>
-        </nav>
-      </div>
-    </header>
-    <section class="ErrorPage">
-      <div class="container-fluid">
-        <div class="ErrorPage__wrap">
-                    <div class="ErrorMessage server-error">
-                      <div class="ErrorMessage__img">
-                        <div class="ErrorMessage__img-code">Ошибка</div>
-                        <div class="ErrorMessage__img-icon"></div>
-                      </div>
-                      <div class="ErrorMessage__info">
-                        <h3>Кажется, что-то пошло не так</h3>
-                        <p>Мы уже работаем над этим</p><a class="btn" href="./chat.html">Вернуться к чатам</a>
-                      </div>
-                    </div>
-        </div>
-      </div>
-    </section>
+    <div class="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type="module" src="./pages/ErrorPage/index.js"></script>
   </body>
 </html>

@@ -1,0 +1,12 @@
+@import '../../styles/common';
+@import '../../components/Header/Header.scss';
+@import '../../components/ErrorMessage/ErrorMessage.scss';
+
+.ErrorPage {
+  &__wrap {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

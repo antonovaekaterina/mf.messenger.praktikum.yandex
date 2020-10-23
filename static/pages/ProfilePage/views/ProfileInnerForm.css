@@ -1,0 +1,63 @@
+.ProfileInnerForm {
+  margin: 62px 0 200px; }
+  .ProfileInnerForm__user {
+    margin-bottom: 62px;
+    display: flex; }
+  .ProfileInnerForm__photo {
+    background: #c4c4c4;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    padding: 0;
+    border: 1px solid #c4c4c4;
+    color: #474049;
+    font-size: 14px; }
+  .ProfileInnerForm__user-info {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    align-items: flex-start; }
+  .ProfileInnerForm__user-change-photo-label {
+    width: auto;
+    flex: 0 0 auto;
+    margin-top: auto;
+    font-weight: 400; }
+  .ProfileInnerForm__user-change-photo-btn {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+  .ProfileInnerForm__user-fullname {
+    font-weight: 700;
+    font-size: 18px;
+    color: #474049; }
+  .ProfileInnerForm__user-display-name {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #474049; }
+  .ProfileInnerForm__settings--password {
+    margin-top: 64px; }
+  .ProfileInnerForm__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e7e4e7;
+    padding: 14px 0; }
+    .ProfileInnerForm__title h3 {
+      color: #99889b;
+      font-size: 18px;
+      font-weight: 400;
+      margin-left: 10px; }
+    .ProfileInnerForm__title--common .Icon {
+      background-image: url("/images/user.svg"); }
+    .ProfileInnerForm__title--password .Icon {
+      background-image: url("/images/lock.svg"); }
+  .ProfileInnerForm__input-group {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 300px; }
+    .ProfileInnerForm__input-group input[type='submit'] {
+      margin-top: 20px; }
