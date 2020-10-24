@@ -1,11 +1,13 @@
 import EventBus from '../EventBus/index.js';
 import {IEventBusOutput} from '../EventBus/types.js';
+import {IRenderContent} from '../../scripts/utils.js'
 
 export default class Block {
-    private fragment: DocumentFragment;
+    private fragment: HTMLElement;
     readonly props: any;
     private eventBus: IEventBusOutput;
-    private content: any;
+    private content: IRenderContent;
+    readonly className: string;
 
     static EVENTS = {
         INIT: 'init',
@@ -14,10 +16,11 @@ export default class Block {
         FLOW_CDU: 'flow:component-did-update',
     };
 
-    constructor(props: any = {}) {
+    constructor(props: any = {}, className?: any) {
         this.props = this.makePropsProxy(props);
         this.eventBus = new EventBus();
-        
+        this.className = className;
+
         this.registerEvents();
         this.eventBus.emit(Block.EVENTS.INIT);
     }
@@ -50,7 +53,11 @@ export default class Block {
     }
 
     private createResources(): void {
-        this.fragment = new DocumentFragment();
+        this.fragment = document.createElement('div');
+        this.fragment.classList.add('Block');
+        if (this.className) {
+            this.fragment.classList.add(this.className);
+        }
     }
 
     private _componentDidMount(): void {
@@ -80,26 +87,20 @@ export default class Block {
 
     private _render(): void {
         this.content = this.render();
+        this.fragment.innerHTML = this.content.html;
 
-        const divHelper: HTMLElement = document.createElement('div');
-        divHelper.innerHTML = this.content.html;
-        this.fragment.append(...Array.from(divHelper.children));
-
-        const nestedComponentElements: any = Array.from(this.fragment.querySelectorAll('.component'));
-        nestedComponentElements.forEach((el: any) => {
+        const nestedComponentElements: HTMLElement[] = Array.from(this.fragment.querySelectorAll('.component'));
+        nestedComponentElements.forEach((el: HTMLElement) => {
             const component = this.content.nestedComponents[el.id];
             el.replaceWith(...(Array.isArray(component) ? component : [component]))
-        })
+        });
     }
 
-    render() {}
+    // @ts-ignore
+    render():IRenderContent {}
 
-    getFragment(): DocumentFragment {
+    getFragment(): HTMLElement {
         return this.fragment;
-    }
-
-    getContent():string {
-        return this.content;
     }
 
     setProps(nextProps: any): void {

@@ -7,11 +7,21 @@ export default class InputFieldView extends Block {
         super(props);
     }
 
+    componentDidMount(): void {
+        const input:HTMLInputElement | null = this.getFragment().querySelector('input');
+        input?.addEventListener('blur', () => {
+            this.props.onBlur(input)
+        })
+    }
+
     render() {
         const source:string = (
             `<div class="InputFieldView">
                 <label for="{{attribute}}">{{label}}</label>
                 <input type="{{type}}" id="{{attribute}}" name="{{attribute}}">
+                {{#each errors}}
+                    <div class="InputFieldView__error">{{this}}</div>
+                {{/each}}
             </div>`
         );
 

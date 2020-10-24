@@ -4,50 +4,6 @@ import Button from "../../../components/Button/Button.js";
 import InputField from "../../../components/InputField/InputField.js";
 export default class ProfileInnerForm extends Block {
     render() {
-        const commonFields = [
-            {
-                attribute: 'first_name',
-                type: 'text',
-                label: 'Имя'
-            },
-            {
-                attribute: 'second_name',
-                type: 'text',
-                label: 'Фамилия'
-            },
-            {
-                attribute: 'display_name',
-                type: 'text',
-                label: 'Никнейм'
-            },
-            {
-                attribute: 'email',
-                type: 'email',
-                label: 'Email'
-            },
-            {
-                attribute: 'phone',
-                type: 'text',
-                label: 'Номер телефона'
-            },
-            {
-                attribute: 'login',
-                type: 'text',
-                label: 'Логин'
-            },
-        ];
-        const passwordFields = [
-            {
-                attribute: 'oldPassword',
-                type: 'password',
-                label: 'Старый пароль'
-            },
-            {
-                attribute: 'newPassword',
-                type: 'password',
-                label: 'Новый пароль'
-            },
-        ];
         const source = (`<div class="ProfileInnerForm">
                <div class="container-fluid">
                     <div class="ProfileInnerForm__user">
@@ -84,8 +40,8 @@ export default class ProfileInnerForm extends Block {
         const nestedComponents = {
             commonButton: new Button({ label: 'Сохранить' }).getFragment(),
             passwordButton: new Button({ label: 'Сохранить' }).getFragment(),
-            commonInputFieldList: commonFields.map(field => new InputField(field).getFragment()),
-            passwordInputFieldList: passwordFields.map(field => new InputField(field).getFragment())
+            commonInputFieldList: this.props.commonFields.map((field) => new InputField(Object.assign({ errors: this.props.formErrors && this.props.formErrors[field.attribute] }, field)).getFragment()),
+            passwordInputFieldList: this.props.passwordFields.map((field) => new InputField(Object.assign({ errors: this.props.formErrors && this.props.formErrors[field.attribute] }, field)).getFragment())
         };
         return createRenderContent(source, this.props, nestedComponents);
     }

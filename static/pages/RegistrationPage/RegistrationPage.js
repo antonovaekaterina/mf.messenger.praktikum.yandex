@@ -5,13 +5,11 @@ export default class RegistrationPage extends Block {
     render() {
         const source = (`<section class="RegistrationPage">
                 <div class="container-fluid">
-                    <div class="RegistrationPage__wrap">
-                        <span class="component" id="registrationForm"></span>
-                    </div>
+                    <span class="component" id="registrationForm"></span>
                 </div>
             </section>`);
         const nestedComponents = {
-            registrationForm: new RegistrationForm().getFragment()
+            registrationForm: new RegistrationForm({}, 'RegistrationPage__wrap').getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);
     }

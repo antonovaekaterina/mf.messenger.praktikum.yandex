@@ -136,11 +136,10 @@ h1 {
 
 .InputFieldView {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-bottom: 20px; }
   .InputFieldView > * {
     flex: 0 0 auto; }
-  .InputFieldView:not(:last-child) {
-    margin-bottom: 20px; }
   .InputFieldView label {
     display: block;
     font-weight: 600;
@@ -175,6 +174,10 @@ h1 {
       color: #474049;
       font-weight: 500;
       font-size: 14px; }
+  .InputFieldView__error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px; }
 
 .LoginFormInner__forgot-password {
   display: block;

@@ -1,8 +1,9 @@
 import EventBus from '../EventBus/index.js';
 export default class Block {
-    constructor(props = {}) {
+    constructor(props = {}, className) {
         this.props = this.makePropsProxy(props);
         this.eventBus = new EventBus();
+        this.className = className;
         this.registerEvents();
         this.eventBus.emit(Block.EVENTS.INIT);
     }
@@ -31,7 +32,11 @@ export default class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_CDM, this.props);
     }
     createResources() {
-        this.fragment = new DocumentFragment();
+        this.fragment = document.createElement('div');
+        this.fragment.classList.add('Block');
+        if (this.className) {
+            this.fragment.classList.add(this.className);
+        }
     }
     _componentDidMount() {
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
@@ -54,21 +59,17 @@ export default class Block {
     }
     _render() {
         this.content = this.render();
-        const divHelper = document.createElement('div');
-        divHelper.innerHTML = this.content.html;
-        this.fragment.append(...Array.from(divHelper.children));
+        this.fragment.innerHTML = this.content.html;
         const nestedComponentElements = Array.from(this.fragment.querySelectorAll('.component'));
         nestedComponentElements.forEach((el) => {
             const component = this.content.nestedComponents[el.id];
             el.replaceWith(...(Array.isArray(component) ? component : [component]));
         });
     }
+    // @ts-ignore
     render() { }
     getFragment() {
         return this.fragment;
-    }
-    getContent() {
-        return this.content;
     }
     setProps(nextProps) {
         if (!nextProps) {

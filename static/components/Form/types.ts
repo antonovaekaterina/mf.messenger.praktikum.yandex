@@ -1,7 +1,11 @@
 
 export interface IForm {
-    formInner: any;
+    FormInner: any;
     name: string;
-    onSubmit?: (...args: any[]) => any
+    onSubmit?: (...args: any[]) => any,
+    formErrors?: any,
+    fields?: any[],
+    commonFields?: any[]
+    passwordFields?: any[]
 }
 

@@ -5,19 +5,6 @@ import {createRenderContent} from "../../../scripts/utils.js";
 
 export default class LoginFormInner extends Block {
     render() {
-        const fields = [
-            {
-                attribute: 'login',
-                type: 'text',
-                label: 'Логин'
-            },
-            {
-                attribute: 'password',
-                type: 'password',
-                label: 'Пароль'
-            },
-        ];
-
         const source = (
             `<div class="LoginFormInner">
                 <span class="component" id="inputList"></span>
@@ -28,7 +15,10 @@ export default class LoginFormInner extends Block {
         );
 
         const nestedComponents = {
-            inputList: fields.map(field => new InputField(field).getFragment()),
+            inputList: this.props.fields.map((field:any) => new InputField({
+                errors: this.props.formErrors && this.props.formErrors[field.attribute],
+                ...field
+            }).getFragment()),
             button: new Button({label: 'Войти'}).getFragment()
         };
 

@@ -15,10 +15,26 @@ export default class LoginForm extends Block {
           </div>`
         );
 
+        const fields = [
+            {
+                attribute: 'login',
+                type: 'text',
+                label: 'Логин',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'password',
+                type: 'password',
+                label: 'Пароль',
+                validationParams: ['required']
+            },
+        ];
+
         const nestedComponents = {
             form: new Form({
                 name: 'LoginForm',
-                formInner: new LoginFormInner().getFragment()
+                FormInner: LoginFormInner,
+                fields
             }).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents)

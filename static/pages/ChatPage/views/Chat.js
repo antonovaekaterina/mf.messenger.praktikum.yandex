@@ -48,11 +48,11 @@ export default class Chat extends Block {
             contactList: this.props.contacts.map((contact) => new ContactBlock(contact).getFragment()),
             chatForm: new Form({
                 name: 'ChatForm',
-                formInner: new MessengerInnerForm().getFragment()
+                FormInner: MessengerInnerForm
             }).getFragment(),
             searchForm: new Form({
                 name: 'SearchForm',
-                formInner: new SearchInnerForm().getFragment()
+                FormInner: SearchInnerForm
             }).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);

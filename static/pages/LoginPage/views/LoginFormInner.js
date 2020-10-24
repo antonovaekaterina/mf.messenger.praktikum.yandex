@@ -4,18 +4,6 @@ import Button from "../../../components/Button/Button.js";
 import { createRenderContent } from "../../../scripts/utils.js";
 export default class LoginFormInner extends Block {
     render() {
-        const fields = [
-            {
-                attribute: 'login',
-                type: 'text',
-                label: 'Логин'
-            },
-            {
-                attribute: 'password',
-                type: 'password',
-                label: 'Пароль'
-            },
-        ];
         const source = (`<div class="LoginFormInner">
                 <span class="component" id="inputList"></span>
                 <a href="#" class="LoginFormInner__forgot-password">Забыли пароль?</a>
@@ -23,7 +11,7 @@ export default class LoginFormInner extends Block {
                 <a class="LoginFormInner__sigh-in" href="./registration.html">Зарегистрироваться</a>
             </div>`);
         const nestedComponents = {
-            inputList: fields.map(field => new InputField(field).getFragment()),
+            inputList: this.props.fields.map((field) => new InputField(Object.assign({ errors: this.props.formErrors && this.props.formErrors[field.attribute] }, field)).getFragment()),
             button: new Button({ label: 'Войти' }).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);

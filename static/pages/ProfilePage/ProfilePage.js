@@ -7,11 +7,63 @@ export default class ProfilePage extends Block {
     render() {
         const source = (`<span class="component" id="header"></span>\`
             <span class="component" id="profileForm"></span>`);
+        const commonFields = [
+            {
+                attribute: 'first_name',
+                type: 'text',
+                label: 'Имя',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'second_name',
+                type: 'text',
+                label: 'Фамилия',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'display_name',
+                type: 'text',
+                label: 'Никнейм',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'email',
+                type: 'email',
+                label: 'Email',
+                validationParams: ['required', 'email']
+            },
+            {
+                attribute: 'phone',
+                type: 'text',
+                label: 'Номер телефона',
+                validationParams: ['required', 'phoneNumber']
+            },
+            {
+                attribute: 'login',
+                type: 'text',
+                label: 'Логин',
+                validationParams: ['required']
+            },
+        ];
+        const passwordFields = [
+            {
+                attribute: 'oldPassword',
+                type: 'password',
+                label: 'Старый пароль'
+            },
+            {
+                attribute: 'newPassword',
+                type: 'password',
+                label: 'Новый пароль'
+            },
+        ];
         const nestedComponents = {
             header: new Header({ isProfilePage: true }).getFragment(),
             profileForm: new Form({
                 name: 'ProfileForm',
-                formInner: new ProfileInnerForm(this.props).getFragment()
+                FormInner: ProfileInnerForm,
+                commonFields,
+                passwordFields
             }).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);

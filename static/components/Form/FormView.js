@@ -16,7 +16,7 @@ export default class FormView extends Block {
                 <span class="component" id="formInner"></span>
             </form>`);
         const nestedComponents = {
-            formInner: this.props.formInner
+            formInner: new this.props.FormInner(this.props).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);
     }

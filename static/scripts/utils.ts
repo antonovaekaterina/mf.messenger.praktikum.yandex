@@ -1,4 +1,4 @@
-export default (rootSelector: string = 'root', node: DocumentFragment): void => {
+export default (rootSelector: string = 'root', node: HTMLElement): void => {
     const root: HTMLElement | null = document.querySelector(rootSelector);
     if (!root) return;
     root.append(node);
@@ -16,3 +16,7 @@ export const createRenderContent = (source: string, props: any, nestedComponents
         nestedComponents
     }
 };
+
+
+
+

@@ -22,7 +22,7 @@ export default class FormView extends Block {
         );
 
         const nestedComponents = {
-            formInner: this.props.formInner
+            formInner: new this.props.FormInner(this.props).getFragment()
         };
 
         return createRenderContent(source, this.props, nestedComponents);

@@ -11,10 +11,49 @@ export default class RegistrationForm extends Block {
                 </div>
                 <span class="component" id="form"></span>
             </div>`);
+        const fields = [
+            {
+                attribute: 'first_name',
+                type: 'text',
+                label: 'Имя',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'second_name',
+                type: 'text',
+                label: 'Фамилия',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'email',
+                type: 'email',
+                label: 'Email',
+                validationParams: ['required', 'email']
+            },
+            {
+                attribute: 'phone',
+                type: 'text',
+                label: 'Номер телефона',
+                validationParams: ['required', 'phoneNumber']
+            },
+            {
+                attribute: 'login',
+                type: 'text',
+                label: 'Логин',
+                validationParams: ['required']
+            },
+            {
+                attribute: 'password',
+                type: 'password',
+                label: 'Пароль',
+                validationParams: ['required']
+            },
+        ];
         const nestedComponents = {
             form: new Form({
                 name: 'RegistrationForm',
-                formInner: new RegistrationFormInner().getFragment()
+                FormInner: RegistrationFormInner,
+                fields
             }).getFragment()
         };
         return createRenderContent(source, this.props, nestedComponents);

@@ -315,8 +315,6 @@ h1 {
 
 .Chat {
   display: flex; }
-  .Chat form[name='SearchForm'] {
-    width: 100%; }
   .Chat__grid {
     height: 690px;
     margin: 40px 0 30px;
@@ -334,6 +332,8 @@ h1 {
     display: flex;
     align-items: center;
     padding: 0 10px; }
+    .Chat__search-dialogs .Block, .Chat__search-dialogs form {
+      width: 100%; }
   .Chat__main {
     border: 1px solid #e7e4e7;
     border-left: none;
@@ -395,3 +395,9 @@ h1 {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start; }
+    .Chat__messenger-window .Block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start; }
