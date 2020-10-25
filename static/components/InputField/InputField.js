@@ -1,10 +1,15 @@
 import Block from "../../components/Block/Block.js";
 import InputFieldView from "./InputFieldView.js";
-import { createRenderContent } from "../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../scripts/utils.js";
 import validate from "../../scripts/validate.js";
 export default class InputField extends Block {
     constructor(props) {
         super(props);
+    }
+    createNestedComponents() {
+        this.nestedComponents = {
+            inputFieldView: createNestedComponent(InputFieldView, () => (Object.assign(Object.assign({}, this.props), { onBlur: (input) => this.onBlur(input) })), 'LoginPage__wrap')
+        };
     }
     onBlur(input) {
         if (this.props.onBlur) {
@@ -15,10 +20,7 @@ export default class InputField extends Block {
     }
     render() {
         const source = '<span class="component" id="inputFieldView"></span>';
-        const nestedComponents = {
-            inputFieldView: new InputFieldView(Object.assign(Object.assign({}, this.props), { onBlur: (input) => this.onBlur(input) })).getFragment()
-        };
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 //# sourceMappingURL=InputField.js.map

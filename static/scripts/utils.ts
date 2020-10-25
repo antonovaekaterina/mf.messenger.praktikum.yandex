@@ -6,17 +6,25 @@ export default (rootSelector: string = 'root', node: HTMLElement): void => {
 
 export interface IRenderContent {
     html: string,
-    nestedComponents: any
 }
-export const createRenderContent = (source: string, props: any, nestedComponents: any = {}):IRenderContent => {
+export const createRenderContent = (source: string, props: any):IRenderContent => {
     const template = window.Handlebars.compile(source);
 
     return {
         html: template(props),
-        nestedComponents
     }
 };
 
+export interface ICreateNestedComponent {
+    component: any,
+    getProps: () => any
+}
+export const createNestedComponent = (Constructor: any, getProps: (key?:string) => any, className?: string):ICreateNestedComponent => {
+    return {
+        component: new Constructor(getProps(), className),
+        getProps,
+    }
+};
 
 
 

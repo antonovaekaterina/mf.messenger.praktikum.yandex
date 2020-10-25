@@ -1,11 +1,48 @@
 import Block from "../../../components/Block/Block.js";
-import {createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
 import Button from "../../../components/Button/Button.js";
 import InputField from "../../../components/InputField/InputField.js";
 
 export default class ProfileInnerForm extends Block {
-    render() {
+    constructor(props?: any) {
+        super(props);
 
+    }
+
+    createNestedComponents() {
+        this.nestedComponents = {
+            commonButton: createNestedComponent(Button, () =>({label: 'Сохранить'})),
+            passwordButton: createNestedComponent(Button, () =>({label: 'Сохранить'})),
+            commonInputFieldList: this.props.commonFields.map((field:any) => createNestedComponent(InputField, () => ({
+                ...field,
+                errors: this.props.formErrors && this.props.formErrors[field.attribute],
+            }))),
+            passwordInputFieldList: this.props.passwordFields.map((field:any) => createNestedComponent(InputField, () => ({
+                ...field,
+                errors: this.props.formErrors && this.props.formErrors[field.attribute],
+            }))),
+        }
+    }
+
+    componentDidUpdate(oldProps: any, newProps: any): boolean {
+        const result = super.componentDidUpdate(oldProps, newProps);
+        if (result) {
+            //@ts-ignore
+            this.props.commonFields.forEach((field: any, index: number) => {
+                const nestedItem = this.nestedComponents.commonInputFieldList[index];
+                nestedItem.component.setProps(nestedItem.getProps())
+            });
+
+            //@ts-ignore
+            this.props.passwordFields.forEach((field: any, index: number) => {
+                const nestedItem = this.nestedComponents.passwordInputFieldList[index];
+                nestedItem.component.setProps(nestedItem.getProps())
+            })
+        }
+        return result;
+    }
+
+    render() {
         const source = (
             `<div class="ProfileInnerForm">
                <div class="container-fluid">
@@ -24,7 +61,9 @@ export default class ProfileInnerForm extends Block {
                             <h3>Редактировать профиль</h3>
                         </div>
                         <div class="ProfileInnerForm__input-group">
-                            <span class="component" id="commonInputFieldList"></span>
+                            {{#each commonFields}}
+                                <span class="component" id="commonInputFieldList" data-index="{{@index}}"></span>
+                            {{/each}}
                             <span class="component" id="commonButton"></span>
                         </div>
                     </div>
@@ -34,7 +73,9 @@ export default class ProfileInnerForm extends Block {
                             <h3>Изменить пароль</h3>
                         </div>
                         <div class="ProfileInnerForm__input-group">
-                            <span class="component" id="passwordInputFieldList"></span>
+                            {{#each passwordFields}}
+                                <span class="component" id="passwordInputFieldList" data-index="{{@index}}"></span>
+                            {{/each}}
                             <span class="component" id="passwordButton"></span>
                         </div>
                     </div>
@@ -42,20 +83,7 @@ export default class ProfileInnerForm extends Block {
             </div>`
         );
 
-        const nestedComponents = {
-            commonButton: new Button({label: 'Сохранить'}).getFragment(),
-            passwordButton: new Button({label: 'Сохранить'}).getFragment(),
-            commonInputFieldList: this.props.commonFields.map((field:any) => new InputField({
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-                ...field
-            }).getFragment()),
-            passwordInputFieldList: this.props.passwordFields.map((field:any) => new InputField({
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-                ...field
-            }).getFragment())
-        };
-
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 

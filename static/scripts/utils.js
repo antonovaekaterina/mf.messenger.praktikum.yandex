@@ -4,11 +4,16 @@ export default (rootSelector = 'root', node) => {
         return;
     root.append(node);
 };
-export const createRenderContent = (source, props, nestedComponents = {}) => {
+export const createRenderContent = (source, props) => {
     const template = window.Handlebars.compile(source);
     return {
         html: template(props),
-        nestedComponents
+    };
+};
+export const createNestedComponent = (Constructor, getProps, className) => {
+    return {
+        component: new Constructor(getProps(), className),
+        getProps,
     };
 };
 //# sourceMappingURL=utils.js.map

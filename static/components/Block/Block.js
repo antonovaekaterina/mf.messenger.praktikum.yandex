@@ -29,6 +29,7 @@ export default class Block {
     }
     init() {
         this.createResources();
+        this.createNestedComponents();
         this.eventBus.emit(Block.EVENTS.FLOW_CDM, this.props);
     }
     createResources() {
@@ -38,6 +39,9 @@ export default class Block {
             this.fragment.classList.add(this.className);
         }
     }
+    createNestedComponents() {
+        this.nestedComponents = {};
+    }
     _componentDidMount() {
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
         this.componentDidMount();
@@ -46,6 +50,16 @@ export default class Block {
     _componentDidUpdate(oldProps, newProps) {
         const componentShouldUpdate = this.componentDidUpdate(oldProps, newProps);
         if (componentShouldUpdate) {
+            //перерендеринг вложенных компонентов
+            Object.keys(this.nestedComponents).forEach((id) => {
+                const nestedComponentConfig = this.getNestedComponent(id);
+                const nestedComponent = nestedComponentConfig.component;
+                const newNestedComponentProps = nestedComponentConfig.getProps();
+                console.log('setprops', nestedComponent, newNestedComponentProps);
+                if (!Array.isArray(nestedComponent)) {
+                    nestedComponent.setProps(newNestedComponentProps);
+                }
+            });
             this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
         }
     }
@@ -60,11 +74,23 @@ export default class Block {
     _render() {
         this.content = this.render();
         this.fragment.innerHTML = this.content.html;
-        const nestedComponentElements = Array.from(this.fragment.querySelectorAll('.component'));
-        nestedComponentElements.forEach((el) => {
-            const component = this.content.nestedComponents[el.id];
-            el.replaceWith(...(Array.isArray(component) ? component : [component]));
+        //замена вложенных компонентов
+        const nestedComponentsElements = Array.from(this.fragment.querySelectorAll('.component'));
+        nestedComponentsElements.forEach((nestedElement) => {
+            let nestedComponent;
+            const dataIndex = nestedElement.dataset.index;
+            if (dataIndex !== undefined) {
+                nestedComponent = this.getNestedComponent(nestedElement.id)[dataIndex].component;
+            }
+            else {
+                nestedComponent = this.getNestedComponent(nestedElement.id).component;
+            }
+            let componentNodes = nestedComponent.getFragment();
+            nestedElement.replaceWith(componentNodes);
         });
+    }
+    getNestedComponent(id) {
+        return this.nestedComponents[id];
     }
     // @ts-ignore
     render() { }

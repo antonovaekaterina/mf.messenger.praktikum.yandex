@@ -1,8 +1,13 @@
 import Block from "../Block/Block.js";
-import { createRenderContent } from "../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../scripts/utils.js";
 export default class FormView extends Block {
     constructor(props) {
         super(props);
+    }
+    createNestedComponents() {
+        this.nestedComponents = {
+            formInner: createNestedComponent(this.props.FormInner, () => (Object.assign({}, this.props)))
+        };
     }
     componentDidMount() {
         super.componentDidMount();
@@ -15,10 +20,7 @@ export default class FormView extends Block {
         const source = (`<form name="{{name}}">
                 <span class="component" id="formInner"></span>
             </form>`);
-        const nestedComponents = {
-            formInner: new this.props.FormInner(this.props).getFragment()
-        };
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 //# sourceMappingURL=FormView.js.map

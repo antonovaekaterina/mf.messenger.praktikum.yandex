@@ -1,8 +1,18 @@
 import Block from "../../components/Block/Block.js";
 import LoginForm from "./views/LoginForm.js";
-import renderDOM, {createRenderContent} from "../../scripts/utils.js";
+import renderDOM, {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
 
 export default class LoginPage extends Block {
+    constructor(props?: any, className?: string) {
+        super(props, className);
+    }
+
+    createNestedComponents() {
+        this.nestedComponents = {
+            loginForm: createNestedComponent(LoginForm, () => ({}), 'LoginPage__wrap')
+        }
+    }
+
     render() {
         const source:string = (
             `<section class="LoginPage">
@@ -12,10 +22,7 @@ export default class LoginPage extends Block {
             </section>`
         );
 
-        const nestedComponents = {
-            loginForm: new LoginForm({},'LoginPage__wrap').getFragment()
-        };
-        return createRenderContent(source, this.props, nestedComponents)
+        return createRenderContent(source, this.props)
     }
 }
 

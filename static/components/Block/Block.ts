@@ -8,6 +8,7 @@ export default class Block {
     private eventBus: IEventBusOutput;
     private content: IRenderContent;
     readonly className: string;
+    nestedComponents: any;
 
     static EVENTS = {
         INIT: 'init',
@@ -49,6 +50,7 @@ export default class Block {
 
     init(): void {
         this.createResources();
+        this.createNestedComponents();
         this.eventBus.emit(Block.EVENTS.FLOW_CDM, this.props);
     }
 
@@ -58,6 +60,10 @@ export default class Block {
         if (this.className) {
             this.fragment.classList.add(this.className);
         }
+    }
+
+    createNestedComponents() {
+        this.nestedComponents = {}
     }
 
     private _componentDidMount(): void {
@@ -70,6 +76,19 @@ export default class Block {
     private _componentDidUpdate(oldProps: any, newProps: any): void {
         const componentShouldUpdate:boolean = this.componentDidUpdate(oldProps, newProps);
         if (componentShouldUpdate) {
+            //перерендеринг вложенных компонентов
+            Object.keys(this.nestedComponents).forEach((id:string) => {
+                const nestedComponentConfig = this.getNestedComponent(id);
+
+                const nestedComponent = nestedComponentConfig.component;
+                const newNestedComponentProps = nestedComponentConfig.getProps();
+                console.log('setprops', nestedComponent, newNestedComponentProps)
+
+                if (!Array.isArray(nestedComponent)) {
+                    nestedComponent.setProps(newNestedComponentProps);
+                }
+            });
+
             this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
         }
     }
@@ -89,11 +108,26 @@ export default class Block {
         this.content = this.render();
         this.fragment.innerHTML = this.content.html;
 
-        const nestedComponentElements: HTMLElement[] = Array.from(this.fragment.querySelectorAll('.component'));
-        nestedComponentElements.forEach((el: HTMLElement) => {
-            const component = this.content.nestedComponents[el.id];
-            el.replaceWith(...(Array.isArray(component) ? component : [component]))
+        //замена вложенных компонентов
+        const nestedComponentsElements: HTMLElement[] = Array.from(this.fragment.querySelectorAll('.component'));
+
+        nestedComponentsElements.forEach((nestedElement: HTMLElement) => {
+            let nestedComponent;
+            const dataIndex = nestedElement.dataset.index;
+            if (dataIndex !== undefined) {
+                nestedComponent = this.getNestedComponent(nestedElement.id)[dataIndex].component;
+            } else {
+                nestedComponent = this.getNestedComponent(nestedElement.id).component
+            }
+
+            let componentNodes = nestedComponent.getFragment();
+
+            nestedElement.replaceWith(componentNodes)
         });
+    }
+
+    getNestedComponent(id: string) {
+        return this.nestedComponents[id];
     }
 
     // @ts-ignore

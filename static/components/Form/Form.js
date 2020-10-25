@@ -1,10 +1,15 @@
 import Block from "../Block/Block.js";
 import FormView from "./FormView.js";
-import { createRenderContent } from "../../scripts/utils.js";
+import { createRenderContent, createNestedComponent } from "../../scripts/utils.js";
 import validate from "../../scripts/validate.js";
 export default class Form extends Block {
     constructor(props) {
         super(props);
+    }
+    createNestedComponents() {
+        this.nestedComponents = {
+            formView: createNestedComponent(FormView, () => (Object.assign(Object.assign({}, this.props), { onSubmit: (e) => this.onSubmit(e) })))
+        };
     }
     onSubmit(e) {
         e.preventDefault();
@@ -16,12 +21,12 @@ export default class Form extends Block {
         this.validate(form);
     }
     validate(form) {
-        const formErrors = this.props.fields.reduce((errorObj, field) => {
+        const fields = [...(this.props.fields || []), ...(this.props.commonFields || []), ...(this.props.passwordFields || [])];
+        const formErrors = fields.reduce((errorObj, field) => {
             const formElement = form.querySelector(`[name=${field.attribute}]`);
             errorObj[field.attribute] = validate(field.validationParams, field.attribute, formElement.value);
             return errorObj;
         }, {});
-        console.log(formErrors);
         this.setProps({ formErrors });
     }
     logFormValues(formElements) {
@@ -35,10 +40,7 @@ export default class Form extends Block {
     }
     render() {
         const source = '<span class="component" id="formView"></span>';
-        const nestedComponents = {
-            formView: new FormView(Object.assign(Object.assign({}, this.props), { onSubmit: (e) => this.onSubmit(e) })).getFragment()
-        };
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 //# sourceMappingURL=Form.js.map

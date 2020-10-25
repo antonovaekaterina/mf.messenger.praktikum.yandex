@@ -1,9 +1,16 @@
 import Block from "../../components/Block/Block.js";
 import User from "../User/User.js";
-import { createRenderContent } from "../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../scripts/utils.js";
 export default class Header extends Block {
     constructor(props) {
         super(props);
+    }
+    createNestedComponents() {
+        this.nestedComponents = {
+            user: createNestedComponent(User, () => ({
+                name: 'Праскофья Иосифовна', status: 'online'
+            }))
+        };
     }
     render() {
         const source = (`<header class="Header">
@@ -22,10 +29,7 @@ export default class Header extends Block {
                     </nav>
                 </div>
             </header>`);
-        const nestedComponents = {
-            user: new User({ name: 'Праскофья Иосифовна', status: 'online' }).getFragment()
-        };
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 //# sourceMappingURL=Header.js.map

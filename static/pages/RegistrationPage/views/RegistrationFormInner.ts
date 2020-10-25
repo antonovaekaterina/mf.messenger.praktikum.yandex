@@ -1,27 +1,51 @@
 import Block from "../../../components/Block/Block.js";
 import InputField from "../../../components/InputField/InputField.js";
 import Button from "../../../components/Button/Button.js";
-import {createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
 
 export default class RegistrationFormInner extends Block {
+    constructor(props?: any) {
+        super(props);
+
+    }
+
+    createNestedComponents() {
+        this.nestedComponents = {
+            button: createNestedComponent(Button, () => ({
+                label: 'Зарегистрироваться'
+            })),
+            inputList: this.props.fields.map((field:any) => createNestedComponent(InputField, () => ({
+                ...field,
+                errors: this.props.formErrors && this.props.formErrors[field.attribute],
+            }))),
+        }
+    }
+
+
+    componentDidUpdate(oldProps: any, newProps: any): boolean {
+        const result = super.componentDidUpdate(oldProps, newProps);
+        if (result) {
+            //@ts-ignore
+            this.props.fields.forEach((field: any, index: number) => {
+                const nestedItem = this.nestedComponents.inputList[index];
+                nestedItem.component.setProps(nestedItem.getProps())
+            })
+        }
+        return result;
+    }
+
     render() {
         const source:string = (
-            `<div name="RegistrationFormInner">
-                <span class="component" id="inputList"></span>
+            `<div class="RegistrationFormInner">
+                {{#each fields}}
+                    <span class="component" id="inputList" data-index="{{@index}}"></span>
+                {{/each}}
                 <span class="component" id="button"></span>
                 <a class="RegistrationFormInner__login" href="./login.html">Вход</a>
             </div>`
         );
 
-        const nestedComponents = {
-            inputList: this.props.fields.map((field:any) => new InputField({
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-                ...field
-            }).getFragment()),
-            button: new Button({label: 'Зарегистрироваться'}).getFragment()
-        };
-
-        return createRenderContent(source, this.props, nestedComponents);
+        return createRenderContent(source, this.props);
     }
 }
 

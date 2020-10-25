@@ -2,6 +2,7 @@ import {IUser} from "../../components/User/type.js";
 import {IMessage} from "../../components/Message/type.js";
 
 export interface IContactBlock {
+    id: number,
     name: string;
     status: 'online' | 'offline' | 'idle',
     thumbnailURL?: string,
