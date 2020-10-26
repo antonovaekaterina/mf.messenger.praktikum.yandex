@@ -2,16 +2,19 @@ import Block from "../../components/Block/Block.js";
 import {IInputField} from './type.js';
 import {createRenderContent} from "../../scripts/utils.js";
 
-export default class InputFieldView extends Block {
+export default class InputFieldView extends Block<IInputField> {
     constructor(props: IInputField) {
         super(props);
     }
 
     componentDidMount(): void {
-        const input:HTMLInputElement | null = this.getFragment().querySelector('input');
-        input?.addEventListener('blur', () => {
-            this.props.onBlur(input)
-        })
+        if (this.props.onBlur) {
+            const input:HTMLInputElement | null = this.getFragment().querySelector('input');
+            input && input.addEventListener('blur', () => {
+                //@ts-ignore
+                this.props.onBlur(input)
+            })
+        }
     }
 
     render() {

@@ -1,12 +1,11 @@
 import EventBus from '../EventBus/index.js';
-import {IEventBusOutput} from '../EventBus/types.js';
 import {IRenderContent} from '../../scripts/utils.js'
 import {IAttribute, IVirtualNode} from './types.js';
 
-export default class Block {
+export default class Block<T extends Record<string, any>> {
     private fragment: HTMLElement;
-    readonly props: any;
-    private eventBus: IEventBusOutput;
+    readonly props: T;
+    private eventBus: EventBus;
     private content: IRenderContent;
     readonly className: string;
     nestedComponents: any;
@@ -19,7 +18,7 @@ export default class Block {
         FLOW_CDU: 'flow:component-did-update',
     };
 
-    constructor(props: any = {}, className?: any) {
+    constructor(props: T, className?: any) {
         this.currentDomTree = [];
         this.props = this.makePropsProxy(props);
         this.eventBus = new EventBus();
@@ -29,7 +28,7 @@ export default class Block {
         this.eventBus.emit(Block.EVENTS.INIT);
     }
 
-    private makePropsProxy(props: any) {
+    private makePropsProxy(props: T): T {
         const self = this;
         return new Proxy(props, {
             set(target: any, name: string, value: any) {
@@ -77,7 +76,7 @@ export default class Block {
     componentDidMount(): void {
     }
 
-    private _componentDidUpdate(oldProps: any, newProps: any): void {
+    private _componentDidUpdate(oldProps: T, newProps: T): void {
         const componentShouldUpdate: boolean = this.componentDidUpdate(oldProps, newProps);
         if (componentShouldUpdate) {
             //перерендеринг вложенных компонентов
@@ -96,7 +95,7 @@ export default class Block {
         }
     }
 
-    componentDidUpdate(oldProps: any, newProps: any): boolean {
+    componentDidUpdate(oldProps: T, newProps: T): boolean {
         const keysOldProps: string[] = Object.keys(oldProps);
         const keysNewProps: string[] = Object.keys(newProps);
 
@@ -143,60 +142,21 @@ export default class Block {
             const curEl = oldDomTree[k];
             const newEl = newDomTree[k];
             if (curEl) {
-                if (curEl.nodeTypeCode == newEl.nodeTypeCode) {
-                    if (curEl.nodeTypeCode == 'text') {
-                        if (curEl.textContent !== newEl.textContent) {
-                            documentFragmentNode.childNodes[k].textContent = newEl.textContent;
-                        }
-                    } else if (curEl.nodeTypeCode == 'node') {
-                        if (curEl.tagName == newEl.tagName) {
-                            for (let attrKey in newEl.attributes) {
-                                if (curEl.attributes && curEl.attributes[attrKey] !== newEl.attributes[attrKey]) {
-                                    documentFragmentNode.childNodes[k].setAttribute(attrKey, newEl.attributes[attrKey]);
-                                }
-                                if (curEl.attributes && attrKey in curEl.attributes) {
-                                    delete curEl.attributes[attrKey];
-                                }
-                            }
-
-                            for (let attrKey in curEl.attributes) {
-                                documentFragmentNode.childNodes[k].removeAttribute(attrKey);
-                            }
-                        } else {
-                            const newNode = document.createElement(newEl.tagName);
-                            for (let attrKey in newEl.attributes) {
-                                newNode.setAttribute(attrKey, newEl.attributes[attrKey]);
-                            }
-                            documentFragmentNode.childNodes[k].replaceWith(newNode);
-                            if (curEl.childNodes) {
-                                curEl.childNodes = [];
-                            }
-                        }
-                    }
-                } else {
-                    const newNode = document.createElement(newEl.tagName);
-                    for (let attrKey in newEl.attributes) {
-                        newNode.setAttribute(attrKey, newEl.attributes[attrKey]);
-                    }
-                    documentFragmentNode.childNodes[k].replaceWith(newNode);
-                    if (curEl.childNodes) {
-                        curEl.childNodes = [];
-                    }
+                switch (curEl.nodeTypeCode) {
+                    case "node":
+                        this.applyChangesForElement(curEl,newEl,documentFragmentNode.childNodes[k]);
+                        break;
+                    case "text":
+                        this.applyChangesForTextNode(curEl,newEl,documentFragmentNode.childNodes[k]);
+                        break;
+                    default:
+                        throw new Error('Нет обработчика для данного типа узла');
                 }
             } else {
-                let newNode;
-                if (newEl.nodeTypeCode == 'text') {
-                    newNode = document.createTextNode(newEl.textContent ? newEl.textContent : '');
-                } else {
-                    newNode = document.createElement(newEl.tagName);
-                    for (let attrKey in newEl.attributes) {
-                        newNode.setAttribute(attrKey, newEl.attributes[attrKey]);
-                    }
-                }
-                documentFragmentNode.appendChild(newNode);
+                this.appendNode(newEl,documentFragmentNode);
             }
 
-            if (newEl.nodeTypeCode == 'node' && newEl.childNodes) {
+            if (newEl.nodeTypeCode === 'node' && newEl.childNodes) {
                 const curDocumentFragmentNode = documentFragmentNode.childNodes[k];
                 let oldChildNodes:IVirtualNode[] = [];
                 if (curEl && 'childNodes' in curEl) {
@@ -206,26 +166,71 @@ export default class Block {
             }
         }
 
+        this.removeOldNodes(oldDomTree, newDomTree, documentFragmentNode);
+    }
+
+    private removeOldNodes(oldDomTree: IVirtualNode[], newDomTree: IVirtualNode[], documentFragmentNode: any){
         for (let k = oldDomTree.length - 1; k >= newDomTree.length; k--) {
             documentFragmentNode.childNodes[k].remove();
         }
     }
 
-    getNestedComponent(id: string) {
-        return this.nestedComponents[id];
+    private appendNode(newNode: IVirtualNode,  documentFragmentNodeChildren: any, needReplace: boolean = false){
+        let newDocumentNode;
+        if (newNode.nodeTypeCode === 'text') {
+            newDocumentNode = document.createTextNode(newNode.textContent ? newNode.textContent : '');
+        } else {
+            newDocumentNode = document.createElement(newNode.tagName);
+            for (const attrKey in newNode.attributes) {
+                newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
+            }
+        }
+        if (needReplace) {
+            documentFragmentNodeChildren.replaceWith(newDocumentNode);
+        } else {
+            documentFragmentNodeChildren.appendChild(newDocumentNode);
+        }
     }
 
-    // @ts-ignore
-    render(): IRenderContent {
+    private applyChangesForTextNode(oldNode: IVirtualNode, newTextNode: IVirtualNode, documentFragmentNodeChildren: any): void {
+        if (oldNode.nodeTypeCode === 'text' && newTextNode.nodeTypeCode === 'text' && oldNode.textContent !== newTextNode.textContent) {
+            documentFragmentNodeChildren.textContent = newTextNode.textContent;
+        } else {
+            this.appendNode(newTextNode,documentFragmentNodeChildren,true);
+        }
     }
 
-    createDOMTreeFromDOM(domElement: any): IVirtualNode {
-        const attributes: IAttribute = {};
+    private applyChangesForElement(oldNode: IVirtualNode, newNode: IVirtualNode, documentFragmentNodeChildren: any): void {
+        if (oldNode.nodeTypeCode === 'node' && newNode.nodeTypeCode === 'node' && oldNode.tagName === newNode.tagName) {
+            this.applyChangesForElementAttributes(oldNode,newNode,documentFragmentNodeChildren);
+        } else {
+            this.appendNode(newNode,documentFragmentNodeChildren,true);
+        }
+    }
 
+    private applyChangesForElementAttributes(oldNode: IVirtualNode, newNode: IVirtualNode, documentFragmentNodeChildren: any){
+        for (const attrKey in newNode.attributes) {
+            if (oldNode.attributes && oldNode.attributes[attrKey] !== newNode.attributes[attrKey]) {
+                documentFragmentNodeChildren.setAttribute(attrKey, newNode.attributes[attrKey]);
+            }
+            if (oldNode.attributes && attrKey in oldNode.attributes) {
+                delete oldNode.attributes[attrKey];
+            }
+        }
+
+        for (const attrKey in oldNode.attributes) {
+            documentFragmentNodeChildren.removeAttribute(attrKey);
+        }
+    }
+
+    private createDOMTreeFromDOM(domElement: any): IVirtualNode {
         const elementAttributes = Array.from(domElement.attributes);
-        elementAttributes.forEach((el: any) => {
-            attributes[el.name] = el.value
-        });
+
+        //@ts-ignore
+        const attributes: IAttribute = elementAttributes.reduce((acc: IAttribute, attribute: Attr):IAttribute => {
+            acc[attribute.name] = attribute.value;
+            return acc;
+        }, {} as IAttribute);
 
         const DOMTree: IVirtualNode = {
             nodeTypeCode: 'node',
@@ -235,8 +240,9 @@ export default class Block {
         };
 
         const elementNodes = Array.from(domElement.childNodes);
-        elementNodes.forEach((el: any) => {
-            let newElemInfo: any = {}
+        for (let k = 0; k < elementNodes.length; k++) {
+            let newElemInfo: any = {};
+            const el:any = elementNodes[k];
 
             if (el.nodeType == 3) {
                 newElemInfo.nodeTypeCode = 'text';
@@ -246,9 +252,17 @@ export default class Block {
                 newElemInfo = this.createDOMTreeFromDOM(el);
             }
             DOMTree.childNodes.push(newElemInfo)
-        });
+        }
 
         return DOMTree;
+    }
+
+    getNestedComponent(id: string) {
+        return this.nestedComponents[id];
+    }
+
+    // @ts-ignore
+    render(): IRenderContent {
     }
 
     getFragment(): HTMLElement {

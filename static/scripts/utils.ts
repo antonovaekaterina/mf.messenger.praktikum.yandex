@@ -7,7 +7,7 @@ export default (rootSelector: string = 'root', node: HTMLElement): void => {
 export interface IRenderContent {
     html: string,
 }
-export const createRenderContent = (source: string, props: any):IRenderContent => {
+export const createRenderContent = (source: string, props: Record<string, any>):IRenderContent => {
     const template = window.Handlebars.compile(source);
 
     return {

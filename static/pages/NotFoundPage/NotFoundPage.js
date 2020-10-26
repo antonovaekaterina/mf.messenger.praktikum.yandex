@@ -31,6 +31,6 @@ export default class NotFoundPage extends Block {
         return createRenderContent(source, this.props);
     }
 }
-const notFoundPage = new NotFoundPage();
+const notFoundPage = new NotFoundPage({});
 renderDOM('.root', notFoundPage.getFragment());
 //# sourceMappingURL=NotFoundPage.js.map

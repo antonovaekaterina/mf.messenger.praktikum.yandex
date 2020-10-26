@@ -3,9 +3,10 @@ import renderDOM, {createNestedComponent, createRenderContent} from "../../scrip
 import Header from "../../components/Header/Header.js";
 import Form from "../../components/Form/Form.js";
 import ProfileInnerForm from "./views/ProfileInnerForm.js";
+import {IProfilePageProps} from './type.js';
 
-export default class ProfilePage extends Block {
-    constructor(props?: any) {
+export default class ProfilePage extends Block<IProfilePageProps> {
+    constructor(props: IProfilePageProps) {
         super(props);
     }
 

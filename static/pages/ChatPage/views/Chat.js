@@ -12,7 +12,7 @@ export default class Chat extends Block {
     }
     createNestedComponents() {
         this.nestedComponents = {
-            messageList: this.props.messages.map((message) => createNestedComponent(Message, () => message)),
+            messageList: (this.props.messages || []).map((message) => createNestedComponent(Message, () => message)),
             user: createNestedComponent(User, () => (Object.assign({}, this.props.user))),
             contactList: this.props.contacts.map((contact) => createNestedComponent(ContactBlock, () => contact)),
             chatForm: createNestedComponent(Form, () => ({

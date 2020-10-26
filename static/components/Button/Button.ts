@@ -3,7 +3,7 @@ import ButtonView from "./ButtonView.js";
 import {IButtonProps} from "./type.js";
 import {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
 
-export default class Button extends Block {
+export default class Button extends Block<IButtonProps> {
     constructor(props: IButtonProps) {
         super(props);
     }

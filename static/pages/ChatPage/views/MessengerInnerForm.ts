@@ -1,7 +1,8 @@
 import Block from "../../../components/Block/Block.js";
 import {createRenderContent} from "../../../scripts/utils.js";
+import {IMessengerInnerForm} from '../type.js';
 
-export default class MessengerInnerForm extends Block {
+export default class MessengerInnerForm extends Block<IMessengerInnerForm> {
     render() {
         const source = (
             `<div class="MessengerInnerForm">

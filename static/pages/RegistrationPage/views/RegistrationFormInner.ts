@@ -2,8 +2,9 @@ import Block from "../../../components/Block/Block.js";
 import InputField from "../../../components/InputField/InputField.js";
 import Button from "../../../components/Button/Button.js";
 import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {IForm} from '../../../components/Form/types.js';
 
-export default class RegistrationFormInner extends Block {
+export default class RegistrationFormInner extends Block<IForm> {
     constructor(props?: any) {
         super(props);
 
@@ -14,7 +15,7 @@ export default class RegistrationFormInner extends Block {
             button: createNestedComponent(Button, () => ({
                 label: 'Зарегистрироваться'
             })),
-            inputList: this.props.fields.map((field:any) => createNestedComponent(InputField, () => ({
+            inputList: (this.props.fields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
                 errors: this.props.formErrors && this.props.formErrors[field.attribute],
             }))),
@@ -26,7 +27,7 @@ export default class RegistrationFormInner extends Block {
         const result = super.componentDidUpdate(oldProps, newProps);
         if (result) {
             //@ts-ignore
-            this.props.fields.forEach((field: any, index: number) => {
+            (this.props.fields || []).forEach((field: any, index: number) => {
                 const nestedItem = this.nestedComponents.inputList[index];
                 nestedItem.component.setProps(nestedItem.getProps())
             })

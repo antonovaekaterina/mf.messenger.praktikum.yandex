@@ -19,6 +19,6 @@ export default class RegistrationPage extends Block {
         return createRenderContent(source, this.props);
     }
 }
-const registrationPage = new RegistrationPage();
+const registrationPage = new RegistrationPage({});
 renderDOM('.root', registrationPage.getFragment());
 //# sourceMappingURL=RegistrationPage.js.map

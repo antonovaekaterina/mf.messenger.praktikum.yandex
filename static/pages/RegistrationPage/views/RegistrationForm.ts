@@ -2,9 +2,10 @@ import Block from "../../../components/Block/Block.js";
 import Form from "../../../components/Form/Form.js";
 import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
 import RegistrationFormInner from './RegistrationFormInner.js';
+import {IRegistrationForm} from '../type.js';
 
-export default class RegistrationForm extends Block {
-    constructor(props?: any, className?: string) {
+export default class RegistrationForm extends Block<IRegistrationForm> {
+    constructor(props: IRegistrationForm, className: string) {
         super(props, className);
     }
 

@@ -6,3 +6,4 @@ export interface IProfilePageProps {
         displayName: string
     }
 }
+

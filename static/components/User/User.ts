@@ -2,7 +2,7 @@ import Block from "../../components/Block/Block.js";
 import {IUser} from './type.js'
 import {createRenderContent} from "../../scripts/utils.js";
 
-export default class User extends Block {
+export default class User extends Block<IUser> {
     constructor(props: IUser) {
         super(props);
     }

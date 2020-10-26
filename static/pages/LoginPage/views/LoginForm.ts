@@ -2,12 +2,12 @@ import Block from "../../../components/Block/Block.js";
 import Form from "../../../components/Form/Form.js";
 import LoginFormInner from "./LoginFormInner.js";
 import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {ILoginForm} from '../type.js';
 
-export default class LoginForm extends Block {
-    constructor(props?: any, className?: string) {
+export default class LoginForm extends Block<ILoginForm> {
+    constructor(props: ILoginForm, className: string) {
         super(props, className);
     }
-
 
     createNestedComponents() {
         this.nestedComponents = {

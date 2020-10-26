@@ -2,9 +2,9 @@ import {IForm} from './types.js';
 import Block from "../Block/Block.js";
 import FormView from "./FormView.js";
 import {createRenderContent, createNestedComponent} from "../../scripts/utils.js";
-import validate from "../../scripts/validate.js";
+import {validate} from "../../scripts/validate.js";
 
-export default class Form extends Block {
+export default class Form extends Block<IForm> {
     constructor(props: IForm) {
         super(props);
     }

@@ -1,29 +1,30 @@
-export default (validationParams = [], attribute, value) => {
-    return validationParams.map((param) => {
-        let errorText = '';
+const correctEmailReg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+export const validate = (validationParams, attribute, value) => {
+    return (validationParams || []).map((param) => {
         switch (param) {
             case 'required':
                 if (!value.length) {
-                    errorText = `Нужно заполнить ${attribute}`;
+                    return `Нужно заполнить ${attribute}`;
                 }
                 break;
             case 'number':
                 if (value && isNaN(Number(value))) {
-                    errorText = 'Поле должно содержать только числа';
+                    return 'Поле должно содержать только числа';
                 }
                 break;
             case 'email':
-                if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-                    errorText = 'Не корректный email';
+                if (value && !correctEmailReg.test(value)) {
+                    return 'Не корректный email';
                 }
                 break;
             case 'phoneNumber':
                 if (value && (isNaN(Number(value)) || value.length !== 11)) {
-                    errorText = 'Не корректный номер телефона';
+                    return 'Не корректный номер телефона';
                 }
                 break;
+            default:
+                return false;
         }
-        return errorText;
     }).filter(Boolean);
 };
 //# sourceMappingURL=validate.js.map

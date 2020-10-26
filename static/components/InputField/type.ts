@@ -4,7 +4,7 @@ export interface IInputField {
     attribute: string,
     type: 'text' | 'password' | 'email' | string,
     label: string,
-    validationParams?: validationParam[],
+    validationParams: validationParam[],
     errors?: string[],
     onBlur?: (...args: any[]) => any
 }

@@ -1,8 +1,9 @@
 import Block from "../../components/Block/Block.js";
 import RegistrationForm from "./views/RegistrationForm.js";
 import renderDOM, {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
+import {IRegistrationPage} from './type.js';
 
-export default class RegistrationPage extends Block {
+export default class RegistrationPage extends Block<IRegistrationPage> {
     constructor(props?: any) {
         super(props);
     }
@@ -26,6 +27,6 @@ export default class RegistrationPage extends Block {
     }
 }
 
-const registrationPage = new RegistrationPage();
+const registrationPage = new RegistrationPage({});
 
 renderDOM('.root', registrationPage.getFragment());

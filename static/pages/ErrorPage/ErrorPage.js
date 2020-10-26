@@ -31,6 +31,6 @@ export default class ErrorPage extends Block {
         return createRenderContent(source, this.props);
     }
 }
-const errorPage = new ErrorPage();
+const errorPage = new ErrorPage({});
 renderDOM('.root', errorPage.getFragment());
 //# sourceMappingURL=ErrorPage.js.map

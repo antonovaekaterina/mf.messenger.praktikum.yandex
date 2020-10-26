@@ -1,7 +1,8 @@
 import Block from "../../components/Block/Block.js";
 import renderDOM, {createRenderContent} from '../../scripts/utils.js';
+import {IIndexPage} from './type.js'
 
-export default class IndexPage extends Block {
+export default class IndexPage extends Block<IIndexPage> {
     render() {
         const source:string = (
             `<section class="IndexPage">

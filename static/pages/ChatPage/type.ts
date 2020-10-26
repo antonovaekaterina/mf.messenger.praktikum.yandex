@@ -17,3 +17,12 @@ export interface IChat {
     messages?: IMessage[]
 }
 
+export interface IMessengerInnerForm {
+
+}
+
+export interface SearchInnerForm {
+
+}
+
+

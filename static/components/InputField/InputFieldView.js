@@ -5,10 +5,13 @@ export default class InputFieldView extends Block {
         super(props);
     }
     componentDidMount() {
-        const input = this.getFragment().querySelector('input');
-        input === null || input === void 0 ? void 0 : input.addEventListener('blur', () => {
-            this.props.onBlur(input);
-        });
+        if (this.props.onBlur) {
+            const input = this.getFragment().querySelector('input');
+            input && input.addEventListener('blur', () => {
+                //@ts-ignore
+                this.props.onBlur(input);
+            });
+        }
     }
     render() {
         const source = (`<div class="InputFieldView">

@@ -11,15 +11,14 @@ export default class LoginFormInner extends Block {
             button: createNestedComponent(Button, () => ({
                 label: 'Войти'
             })),
-            inputList: this.props.fields.map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
+            inputList: (this.props.fields || []).map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
         };
     }
     componentDidUpdate(oldProps, newProps) {
         const result = super.componentDidUpdate(oldProps, newProps);
-        console.log('cdu LoginFormInner', oldProps.formErrors);
         if (result) {
             //@ts-ignore
-            this.props.fields.forEach((field, index) => {
+            (this.props.fields || []).forEach((field, index) => {
                 const nestedItem = this.nestedComponents.inputList[index];
                 nestedItem.component.setProps(nestedItem.getProps());
             });

@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header.js";
 import Chat from "./views/Chat.js";
 import {IChat} from './type.js';
 
-export default class ChatPage extends Block {
+export default class ChatPage extends Block<IChat> {
     constructor(props: IChat) {
         super(props);
     }

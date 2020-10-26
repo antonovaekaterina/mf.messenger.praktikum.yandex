@@ -3,7 +3,7 @@ import User from "../../../components/User/User.js";
 import {IContactBlock} from "../type.js";
 import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
 
-export default class ContactBlock extends Block {
+export default class ContactBlock extends Block<IContactBlock> {
     constructor(props: IContactBlock) {
         super(props);
 

@@ -2,7 +2,7 @@ import Block from "../../components/Block/Block.js";
 import {IMessage} from './type.js'
 import {createRenderContent} from "../../scripts/utils.js";
 
-export default class Message extends Block {
+export default class Message extends Block<IMessage> {
     constructor(props: IMessage) {
         super(props);
     }

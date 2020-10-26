@@ -9,14 +9,14 @@ import Form from "../../../components/Form/Form.js";
 import MessengerInnerForm from "./MessengerInnerForm.js";
 import SearchInnerForm from "./SearchInnerForm.js";
 
-export default class Chat extends Block {
+export default class Chat extends Block<IChat> {
     constructor(props: IChat) {
         super(props);
     }
 
     createNestedComponents() {
         this.nestedComponents = {
-            messageList: this.props.messages.map((message:IMessage) => createNestedComponent(Message, () => message)),
+            messageList: (this.props.messages || []).map((message:IMessage) => createNestedComponent(Message, () => message)),
             user: createNestedComponent(User, () => ({...this.props.user})),
             contactList: this.props.contacts.map((contact:IContactBlock) => createNestedComponent(ContactBlock, () => contact)),
             chatForm: createNestedComponent(Form, () => ({

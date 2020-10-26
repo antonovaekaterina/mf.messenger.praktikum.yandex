@@ -10,20 +10,20 @@ export default class ProfileInnerForm extends Block {
         this.nestedComponents = {
             commonButton: createNestedComponent(Button, () => ({ label: 'Сохранить' })),
             passwordButton: createNestedComponent(Button, () => ({ label: 'Сохранить' })),
-            commonInputFieldList: this.props.commonFields.map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
-            passwordInputFieldList: this.props.passwordFields.map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
+            commonInputFieldList: (this.props.commonFields || []).map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
+            passwordInputFieldList: (this.props.passwordFields || []).map((field) => createNestedComponent(InputField, () => (Object.assign(Object.assign({}, field), { errors: this.props.formErrors && this.props.formErrors[field.attribute] })))),
         };
     }
     componentDidUpdate(oldProps, newProps) {
         const result = super.componentDidUpdate(oldProps, newProps);
         if (result) {
             //@ts-ignore
-            this.props.commonFields.forEach((field, index) => {
+            (this.props.commonFields || []).forEach((field, index) => {
                 const nestedItem = this.nestedComponents.commonInputFieldList[index];
                 nestedItem.component.setProps(nestedItem.getProps());
             });
             //@ts-ignore
-            this.props.passwordFields.forEach((field, index) => {
+            (this.props.passwordFields || []).forEach((field, index) => {
                 const nestedItem = this.nestedComponents.passwordInputFieldList[index];
                 nestedItem.component.setProps(nestedItem.getProps());
             });

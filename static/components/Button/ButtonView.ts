@@ -2,7 +2,7 @@ import Block from "../../components/Block/Block.js";
 import {IButtonProps} from './type.js';
 import {createRenderContent} from "../../scripts/utils.js";
 
-export default class ButtonView extends Block {
+export default class ButtonView extends Block<IButtonProps> {
     constructor(props: IButtonProps) {
         super(props);
     }

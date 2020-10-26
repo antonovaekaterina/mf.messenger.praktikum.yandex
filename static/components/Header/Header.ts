@@ -3,7 +3,7 @@ import {IHeader} from './type.js'
 import User from "../User/User.js";
 import {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
 
-export default class Header extends Block {
+export default class Header extends Block<IHeader> {
     constructor(props: IHeader) {
         super(props);
     }

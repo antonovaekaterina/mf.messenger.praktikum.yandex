@@ -2,9 +2,10 @@ import Block from "../../components/Block/Block.js";
 import renderDOM, {createNestedComponent, createRenderContent} from '../../scripts/utils.js';
 import Header from "../../components/Header/Header.js";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.js";
+import {INotFoundPage} from './type.js'
 
-export default class NotFoundPage extends Block {
-    constructor(props?: any) {
+export default class NotFoundPage extends Block<INotFoundPage> {
+    constructor(props: INotFoundPage) {
         super(props);
 
     }
@@ -39,6 +40,6 @@ export default class NotFoundPage extends Block {
     }
 }
 
-const notFoundPage = new NotFoundPage();
+const notFoundPage = new NotFoundPage({});
 
 renderDOM('.root', notFoundPage.getFragment());

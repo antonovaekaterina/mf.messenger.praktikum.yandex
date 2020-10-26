@@ -2,22 +2,22 @@ import Block from "../../../components/Block/Block.js";
 import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
 import Button from "../../../components/Button/Button.js";
 import InputField from "../../../components/InputField/InputField.js";
+import {IForm} from '../../../components/Form/types.js';
 
-export default class ProfileInnerForm extends Block {
+export default class ProfileInnerForm extends Block<IForm> {
     constructor(props?: any) {
         super(props);
-
     }
 
     createNestedComponents() {
         this.nestedComponents = {
             commonButton: createNestedComponent(Button, () =>({label: 'Сохранить'})),
             passwordButton: createNestedComponent(Button, () =>({label: 'Сохранить'})),
-            commonInputFieldList: this.props.commonFields.map((field:any) => createNestedComponent(InputField, () => ({
+            commonInputFieldList: (this.props.commonFields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
                 errors: this.props.formErrors && this.props.formErrors[field.attribute],
             }))),
-            passwordInputFieldList: this.props.passwordFields.map((field:any) => createNestedComponent(InputField, () => ({
+            passwordInputFieldList: (this.props.passwordFields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
                 errors: this.props.formErrors && this.props.formErrors[field.attribute],
             }))),
@@ -28,13 +28,13 @@ export default class ProfileInnerForm extends Block {
         const result = super.componentDidUpdate(oldProps, newProps);
         if (result) {
             //@ts-ignore
-            this.props.commonFields.forEach((field: any, index: number) => {
+            (this.props.commonFields || []).forEach((field: any, index: number) => {
                 const nestedItem = this.nestedComponents.commonInputFieldList[index];
                 nestedItem.component.setProps(nestedItem.getProps())
             });
 
             //@ts-ignore
-            this.props.passwordFields.forEach((field: any, index: number) => {
+            (this.props.passwordFields || []).forEach((field: any, index: number) => {
                 const nestedItem = this.nestedComponents.passwordInputFieldList[index];
                 nestedItem.component.setProps(nestedItem.getProps())
             })

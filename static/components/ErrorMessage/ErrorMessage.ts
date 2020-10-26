@@ -2,7 +2,7 @@ import Block from "../../components/Block/Block.js";
 import {IErrorMessage} from './type.js'
 import {createRenderContent} from "../../scripts/utils.js";
 
-export default class ErrorMessage extends Block {
+export default class ErrorMessage extends Block<IErrorMessage> {
     constructor(props: IErrorMessage) {
         super(props);
     }

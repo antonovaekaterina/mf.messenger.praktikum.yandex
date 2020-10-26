@@ -2,9 +2,9 @@ import Block from "../../components/Block/Block.js";
 import InputFieldView from "./InputFieldView.js";
 import {IInputField} from "./type.js";
 import {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
-import validate from "../../scripts/validate.js";
+import {validate} from "../../scripts/validate.js";
 
-export default class InputField extends Block {
+export default class InputField extends Block<IInputField> {
     constructor(props: IInputField) {
         super(props);
     }

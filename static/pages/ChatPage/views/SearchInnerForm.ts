@@ -1,7 +1,7 @@
 import Block from "../../../components/Block/Block.js";
 import {createRenderContent} from "../../../scripts/utils.js";
 
-export default class SearchInnerForm extends Block {
+export default class SearchInnerForm extends Block<SearchInnerForm> {
     render() {
         const source = (
             `<div class="SearchInnerForm">
