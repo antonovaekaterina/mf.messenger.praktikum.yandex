@@ -6,5 +6,7 @@ export interface IInputField {
     label: string,
     validationParams: validationParam[],
     errors?: string[],
-    onBlur?: (...args: any[]) => any
+    onBlur?: (...args: any[]) => any,
+    placeholder?: any,
+    value?: any
 }

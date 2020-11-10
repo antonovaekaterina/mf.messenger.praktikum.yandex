@@ -1,4 +1,5 @@
 import EventBus from '../EventBus/index.js';
+import isEqual from "../../utils/isEqual.js";
 export default class Block {
     constructor(props, className) {
         this.currentDomTree = [];
@@ -47,8 +48,7 @@ export default class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
         this.componentDidMount();
     }
-    componentDidMount() {
-    }
+    componentDidMount() { }
     _componentDidUpdate(oldProps, newProps) {
         const componentShouldUpdate = this.componentDidUpdate(oldProps, newProps);
         if (componentShouldUpdate) {
@@ -65,12 +65,7 @@ export default class Block {
         }
     }
     componentDidUpdate(oldProps, newProps) {
-        const keysOldProps = Object.keys(oldProps);
-        const keysNewProps = Object.keys(newProps);
-        if (keysOldProps.length !== keysNewProps.length) {
-            return true;
-        }
-        return keysOldProps.some((key) => newProps[key] !== oldProps[key]);
+        return !isEqual(oldProps, newProps);
     }
     _render() {
         this.content = this.render();
@@ -214,8 +209,7 @@ export default class Block {
         return this.nestedComponents[id];
     }
     // @ts-ignore
-    render() {
-    }
+    render() { }
     getFragment() {
         return this.fragment;
     }
@@ -226,6 +220,12 @@ export default class Block {
         Object.assign(this.props, nextProps);
     }
     ;
+    show() {
+        this.fragment.style.display = '';
+    }
+    hide() {
+        this.fragment.style.display = 'none';
+    }
 }
 Block.EVENTS = {
     INIT: 'init',

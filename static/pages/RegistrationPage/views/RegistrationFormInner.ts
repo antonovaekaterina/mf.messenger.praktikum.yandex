@@ -1,8 +1,9 @@
 import Block from "../../../components/Block/Block.js";
 import InputField from "../../../components/InputField/InputField.js";
 import Button from "../../../components/Button/Button.js";
-import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
 import {IForm} from '../../../components/Form/types.js';
+import {ROUTE_LOGIN, router} from "../../../index.js";
 
 export default class RegistrationFormInner extends Block<IForm> {
     constructor(props?: any) {
@@ -22,17 +23,29 @@ export default class RegistrationFormInner extends Block<IForm> {
         }
     }
 
+    componentDidMount() {
+        const root = this.getFragment();
+        const elemLogIn = root.querySelector('.RegistrationFormInner__login');
+        if (elemLogIn) {
+            elemLogIn.addEventListener('click', this.handleLogInClick)
+        }
+    }
 
     componentDidUpdate(oldProps: any, newProps: any): boolean {
-        const result = super.componentDidUpdate(oldProps, newProps);
-        if (result) {
-            //@ts-ignore
-            (this.props.fields || []).forEach((field: any, index: number) => {
-                const nestedItem = this.nestedComponents.inputList[index];
-                nestedItem.component.setProps(nestedItem.getProps())
-            })
+        const shouldUpdate = super.componentDidUpdate(oldProps, newProps);
+        if (shouldUpdate) {
+            this.updateNestedComponents();
         }
-        return result;
+        return shouldUpdate;
+    }
+
+    updateNestedComponents() {
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+    }
+
+    handleLogInClick(e: Event) {
+        e.preventDefault();
+        router.go(ROUTE_LOGIN);
     }
 
     render() {
@@ -42,7 +55,7 @@ export default class RegistrationFormInner extends Block<IForm> {
                     <span class="component" id="inputList" data-index="{{@index}}"></span>
                 {{/each}}
                 <span class="component" id="button"></span>
-                <a class="RegistrationFormInner__login" href="./login.html">Вход</a>
+                <a class="RegistrationFormInner__login" href="#">Вход</a>
             </div>`
         );
 

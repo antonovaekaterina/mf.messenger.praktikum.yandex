@@ -1,5 +1,5 @@
 import Block from "../../../components/Block/Block.js";
-import {createRenderContent} from "../../../scripts/utils.js";
+import {createRenderContent} from "../../../utils/render.js";
 
 export default class SearchInnerForm extends Block<SearchInnerForm> {
     render() {

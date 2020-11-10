@@ -1,65 +1,6 @@
 @import '../../../styles/variables';
 
 .ProfileInnerForm {
-  margin: 62px 0 200px;
-
-  &__user {
-    margin-bottom: 62px;
-    display: flex;
-  }
-
-  &__photo {
-    background: $grey;
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    padding: 0;
-    border: 1px solid $grey;
-    color: $dark-text;
-    font-size: 14px;
-  }
-
-  &__user-info {
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-    align-items: flex-start;
-  }
-
-
-  &__user-change-photo-label {
-    width: auto;
-    flex: 0 0 auto;
-    margin-top: auto;
-    font-weight: 400;
-  }
-
-  &__user-change-photo-btn {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-  }
-
-  &__user-fullname {
-    font-weight: 700;
-    font-size: 18px;
-    color: $dark-text;
-  }
-
-  &__user-display-name {
-    margin-top: 8px;
-    font-size: 14px;
-    color: $dark-text;
-  }
-
-  &__settings--password {
-    margin-top: 64px;
-  }
-
   &__title {
     width: 100%;
     display: flex;
@@ -74,12 +15,8 @@
       margin-left: 10px;
     }
 
-    &--common .Icon {
+    .Icon {
       background-image: url('/images/user.svg');
-    }
-
-    &--password .Icon {
-      background-image: url('/images/lock.svg');
     }
   }
 

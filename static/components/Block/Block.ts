@@ -1,10 +1,11 @@
 import EventBus from '../EventBus/index.js';
-import {IRenderContent} from '../../scripts/utils.js'
+import {IRenderContent} from '../../utils/render.js'
 import {IAttribute, IVirtualNode} from './types.js';
+import isEqual from "../../utils/isEqual.js";
 
 export default class Block<T extends Record<string, any>> {
     private fragment: HTMLElement;
-    readonly props: T;
+    protected props: T;
     private eventBus: EventBus;
     private content: IRenderContent;
     readonly className: string;
@@ -73,8 +74,7 @@ export default class Block<T extends Record<string, any>> {
         this.componentDidMount();
     }
 
-    componentDidMount(): void {
-    }
+    componentDidMount(): void {}
 
     private _componentDidUpdate(oldProps: T, newProps: T): void {
         const componentShouldUpdate: boolean = this.componentDidUpdate(oldProps, newProps);
@@ -96,24 +96,18 @@ export default class Block<T extends Record<string, any>> {
     }
 
     componentDidUpdate(oldProps: T, newProps: T): boolean {
-        const keysOldProps: string[] = Object.keys(oldProps);
-        const keysNewProps: string[] = Object.keys(newProps);
-
-        if (keysOldProps.length !== keysNewProps.length) {
-            return true;
-        }
-
-        return keysOldProps.some((key: string) => newProps[key] !== oldProps[key]);
+        return !isEqual(oldProps, newProps);
     }
 
     private _render(): void {
         this.content = this.render();
+
         const doc = new DOMParser().parseFromString(this.content.html, "text/html");
         const newDomTree = this.createDOMTreeFromDOM(doc.body).childNodes;
+
         if (!this.currentDomTree.length) {
             this.fragment.innerHTML = this.content.html;
 
-            //замена вложенных компонентов
             const nestedComponentsElements: HTMLElement[] = Array.from(this.fragment.querySelectorAll('.component'));
 
             nestedComponentsElements.forEach((nestedElement: HTMLElement) => {
@@ -134,6 +128,7 @@ export default class Block<T extends Record<string, any>> {
             const startDocumentFragmentNode = this.fragment;
             this.domApplyChanges(this.currentDomTree, newDomTree, startDocumentFragmentNode);
         }
+
         this.currentDomTree = newDomTree;
     }
 
@@ -262,8 +257,7 @@ export default class Block<T extends Record<string, any>> {
     }
 
     // @ts-ignore
-    render(): IRenderContent {
-    }
+    render(): IRenderContent {}
 
     getFragment(): HTMLElement {
         return this.fragment;
@@ -277,4 +271,11 @@ export default class Block<T extends Record<string, any>> {
         Object.assign(this.props, nextProps);
     };
 
+    show():void {
+        this.fragment.style.display = '';
+    }
+
+    hide():void {
+        this.fragment.style.display = 'none';
+    }
 }

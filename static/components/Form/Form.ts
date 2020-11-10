@@ -1,8 +1,8 @@
 import {IForm} from './types.js';
 import Block from "../Block/Block.js";
 import FormView from "./FormView.js";
-import {createRenderContent, createNestedComponent} from "../../scripts/utils.js";
-import {validate} from "../../scripts/validate.js";
+import {createRenderContent, createNestedComponent} from "../../utils/render.js";
+import {validate} from "../../utils/validate.js";
 
 export default class Form extends Block<IForm> {
     constructor(props: IForm) {
@@ -21,38 +21,43 @@ export default class Form extends Block<IForm> {
     onSubmit(e: Event) {
         e.preventDefault();
         const form: any = e.target;
+        const formValues = this.getFormValues(form.elements);
 
-        if (this.props.onSubmit) {
-            this.props.onSubmit(form);
+        this.logFormValues(formValues);
+        const formIsValid = this.validate(form);
+
+        if (formIsValid && this.props.onSubmit) {
+            this.props.onSubmit(formValues, form);
         }
-
-        this.logFormValues(form?.elements);
-
-        this.validate(form);
     }
 
-    validate(form: any) {
-        const fields = [...(this.props.fields || []), ...(this.props.commonFields || []), ...(this.props.passwordFields || [])];
-
-        const formErrors = fields.reduce((errorObj: any, field: any) => {
+    validate(form: any):boolean {
+        const formErrors = (this.props.fields || []).reduce((errorObj: any, field: any) => {
             const formElement = form.querySelector(`[name=${field.attribute}]`);
-            errorObj[field.attribute] = validate(field.validationParams, field.attribute, formElement.value);
+            const errorList = validate(field.validationParams, field.attribute, formElement.value);
+            if (errorList.length) {
+                errorObj[field.attribute] = errorList;
+            }
+
             return errorObj;
         }, {});
 
         this.setProps({formErrors});
+        return !Object.keys(formErrors).length;
     }
 
-    logFormValues(formElements: HTMLFormElement[]) {
-        const formValues: object = Array.from(formElements).reduce((obj: any, element: HTMLFormElement) => {
+    logFormValues(formValues: Record<string, any>) {
+        console.log(formValues);
+    }
+
+    getFormValues(formElements: HTMLFormElement[]):Record<string, any> {
+       return Array.from(formElements).reduce((obj: any, element: HTMLFormElement) => {
             if (element.name) {
                 obj[element.name] = element.value;
             }
 
             return obj;
         }, {});
-
-        console.log(formValues);
     }
 
     render() {

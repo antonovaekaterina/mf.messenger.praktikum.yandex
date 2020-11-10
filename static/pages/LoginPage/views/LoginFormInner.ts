@@ -1,8 +1,9 @@
 import Block from "../../../components/Block/Block.js";
 import InputField from "../../../components/InputField/InputField.js";
 import Button from "../../../components/Button/Button.js";
-import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
 import {IForm} from '../../../components/Form/types.js';
+import {ROUTE_REGISTRATION, router} from "../../../index.js";
 
 export default class LoginFormInner extends Block<IForm> {
     constructor(props: IForm) {
@@ -21,18 +22,30 @@ export default class LoginFormInner extends Block<IForm> {
         }
     }
 
-    componentDidUpdate(oldProps: any, newProps: any): boolean {
-
-        const result = super.componentDidUpdate(oldProps, newProps);
-
-        if (result) {
-            //@ts-ignore
-            (this.props.fields || []).forEach((field: any, index: number) => {
-                const nestedItem = this.nestedComponents.inputList[index];
-                nestedItem.component.setProps(nestedItem.getProps())
-            })
+    componentDidMount() {
+        const root = this.getFragment();
+        const elemSignIn = root.querySelector('.LoginFormInner__sigh-in');
+        if (elemSignIn) {
+            elemSignIn.addEventListener('click', this.handleSignInClick)
         }
-        return result;
+    }
+
+    componentDidUpdate(oldProps: any, newProps: any): boolean {
+        const shouldUpdate = super.componentDidUpdate(oldProps, newProps);
+
+        if (shouldUpdate) {
+            this.updateNestedComponents();
+        }
+        return shouldUpdate;
+    }
+
+    updateNestedComponents() {
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+    }
+
+    handleSignInClick(e: Event) {
+        e.preventDefault();
+        router.go(ROUTE_REGISTRATION);
     }
 
     render() {
@@ -43,7 +56,7 @@ export default class LoginFormInner extends Block<IForm> {
                 {{/each}}
                 <a href="#" class="LoginFormInner__forgot-password">Забыли пароль?</a>
                 <span class="component" id="button"></span>
-                <a class="LoginFormInner__sigh-in" href="./registration.html">Зарегистрироваться</a>
+                <a class="LoginFormInner__sigh-in" href="#">Зарегистрироваться</a>
             </div>`
         );
 

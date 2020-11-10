@@ -1,14 +1,15 @@
 import Block from "../../../components/Block/Block.js";
 import Form from "../../../components/Form/Form.js";
-import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
 import RegistrationFormInner from './RegistrationFormInner.js';
 import {IRegistrationForm} from '../type.js';
+import {ISignUpData} from "../../../api/authAPI.js";
+import {authServiceInstance} from "../../../services/authService.js";
 
 export default class RegistrationForm extends Block<IRegistrationForm> {
     constructor(props: IRegistrationForm, className: string) {
         super(props, className);
     }
-
 
     createNestedComponents() {
         this.nestedComponents = {
@@ -52,9 +53,14 @@ export default class RegistrationForm extends Block<IRegistrationForm> {
                         label: 'Пароль',
                         validationParams: ['required']
                     },
-                ]
+                ],
+                onSubmit: this.onSubmit
             }))
         }
+    }
+
+    onSubmit(formValues: ISignUpData) {
+        authServiceInstance.signUp(formValues);
     }
 
     render() {

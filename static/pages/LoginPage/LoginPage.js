@@ -1,6 +1,6 @@
 import Block from "../../components/Block/Block.js";
 import LoginForm from "./views/LoginForm.js";
-import renderDOM, { createNestedComponent, createRenderContent } from "../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../utils/render.js";
 export default class LoginPage extends Block {
     constructor(props) {
         super(props);
@@ -19,6 +19,4 @@ export default class LoginPage extends Block {
         return createRenderContent(source, this.props);
     }
 }
-const loginPage = new LoginPage({});
-renderDOM('.root', loginPage.getFragment());
 //# sourceMappingURL=LoginPage.js.map

@@ -4,10 +4,13 @@ import {IChat, IContactBlock} from '../type.js';
 import User from "../../../components/User/User.js";
 import {IMessage} from "../../../components/Message/type.js";
 import Message from "../../../components/Message/Message.js";
-import {createNestedComponent, createRenderContent} from "../../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
 import Form from "../../../components/Form/Form.js";
 import MessengerInnerForm from "./MessengerInnerForm.js";
 import SearchInnerForm from "./SearchInnerForm.js";
+import {store} from "../../../index.js";
+import {openModal} from "../../../actions/modal.js";
+import CreateChatModal from "./CreateChatModal.js";
 
 export default class Chat extends Block<IChat> {
     constructor(props: IChat) {
@@ -27,6 +30,14 @@ export default class Chat extends Block<IChat> {
                 name: 'SearchForm',
                 FormInner: SearchInnerForm
             })),
+        }
+    }
+
+    componentDidMount() {
+        const root = this.getFragment();
+        const addChatBtn = root.querySelector('.Chat__add-dialog-btn');
+        if (addChatBtn) {
+            addChatBtn.addEventListener('click', this.handleAddChatBtnClick);
         }
     }
 
@@ -50,6 +61,10 @@ export default class Chat extends Block<IChat> {
         });
 
         nestedComponentItems.splice(list.length);
+    }
+
+    handleAddChatBtnClick() {
+        store.dispatch(openModal('CreateChatModal', CreateChatModal))
     }
 
     render() {

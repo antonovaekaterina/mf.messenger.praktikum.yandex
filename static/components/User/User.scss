@@ -11,7 +11,9 @@
   }
 
   &__img {
-    background: $grey;
+    background-color: $grey;
+    background-size: cover;
+    background-position: center;
     width: 55px;
     height: 55px;
     border-radius: 50%;

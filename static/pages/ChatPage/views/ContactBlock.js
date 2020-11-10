@@ -1,6 +1,6 @@
 import Block from "../../../components/Block/Block.js";
 import User from "../../../components/User/User.js";
-import { createNestedComponent, createRenderContent } from "../../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../../utils/render.js";
 export default class ContactBlock extends Block {
     constructor(props) {
         super(props);

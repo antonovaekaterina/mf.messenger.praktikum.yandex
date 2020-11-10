@@ -1,5 +1,5 @@
 import Block from "../../components/Block/Block.js";
-import { createRenderContent } from "../../scripts/utils.js";
+import { createRenderContent } from "../../utils/render.js";
 export default class InputFieldView extends Block {
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ export default class InputFieldView extends Block {
     render() {
         const source = (`<div class="InputFieldView">
                 <label for="{{attribute}}">{{label}}</label>
-                <input type="{{type}}" id="{{attribute}}" name="{{attribute}}">
+                <input type="{{type}}" id="{{attribute}}" name="{{attribute}}" placeholder="{{placeholder}}" value="{{value}}">
                 {{#each errors}}
                     <div class="InputFieldView__error">{{this}}</div>
                 {{/each}}

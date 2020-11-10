@@ -1,7 +1,8 @@
 import Block from "../../../components/Block/Block.js";
 import Form from "../../../components/Form/Form.js";
-import { createNestedComponent, createRenderContent } from "../../../scripts/utils.js";
+import { createNestedComponent, createRenderContent } from "../../../utils/render.js";
 import RegistrationFormInner from './RegistrationFormInner.js';
+import { authServiceInstance } from "../../../services/authService.js";
 export default class RegistrationForm extends Block {
     constructor(props, className) {
         super(props, className);
@@ -48,9 +49,13 @@ export default class RegistrationForm extends Block {
                         label: 'Пароль',
                         validationParams: ['required']
                     },
-                ]
+                ],
+                onSubmit: this.onSubmit
             }))
         };
+    }
+    onSubmit(formValues) {
+        authServiceInstance.signUp(formValues);
     }
     render() {
         const source = (`<div class="RegistrationForm">

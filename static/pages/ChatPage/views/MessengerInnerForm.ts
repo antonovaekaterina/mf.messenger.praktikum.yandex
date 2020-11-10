@@ -1,5 +1,5 @@
 import Block from "../../../components/Block/Block.js";
-import {createRenderContent} from "../../../scripts/utils.js";
+import {createRenderContent} from "../../../utils/render.js";
 import {IMessengerInnerForm} from '../type.js';
 
 export default class MessengerInnerForm extends Block<IMessengerInnerForm> {

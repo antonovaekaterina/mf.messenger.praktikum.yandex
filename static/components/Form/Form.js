@@ -1,7 +1,7 @@
 import Block from "../Block/Block.js";
 import FormView from "./FormView.js";
-import { createRenderContent, createNestedComponent } from "../../scripts/utils.js";
-import { validate } from "../../scripts/validate.js";
+import { createRenderContent, createNestedComponent } from "../../utils/render.js";
+import { validate } from "../../utils/validate.js";
 export default class Form extends Block {
     constructor(props) {
         super(props);
@@ -14,29 +14,35 @@ export default class Form extends Block {
     onSubmit(e) {
         e.preventDefault();
         const form = e.target;
-        if (this.props.onSubmit) {
-            this.props.onSubmit(form);
+        const formValues = this.getFormValues(form.elements);
+        this.logFormValues(formValues);
+        const formIsValid = this.validate(form);
+        if (formIsValid && this.props.onSubmit) {
+            this.props.onSubmit(formValues, form);
         }
-        this.logFormValues(form === null || form === void 0 ? void 0 : form.elements);
-        this.validate(form);
     }
     validate(form) {
-        const fields = [...(this.props.fields || []), ...(this.props.commonFields || []), ...(this.props.passwordFields || [])];
-        const formErrors = fields.reduce((errorObj, field) => {
+        const formErrors = (this.props.fields || []).reduce((errorObj, field) => {
             const formElement = form.querySelector(`[name=${field.attribute}]`);
-            errorObj[field.attribute] = validate(field.validationParams, field.attribute, formElement.value);
+            const errorList = validate(field.validationParams, field.attribute, formElement.value);
+            if (errorList.length) {
+                errorObj[field.attribute] = errorList;
+            }
             return errorObj;
         }, {});
         this.setProps({ formErrors });
+        return !Object.keys(formErrors).length;
     }
-    logFormValues(formElements) {
-        const formValues = Array.from(formElements).reduce((obj, element) => {
+    logFormValues(formValues) {
+        console.log(formValues);
+    }
+    getFormValues(formElements) {
+        return Array.from(formElements).reduce((obj, element) => {
             if (element.name) {
                 obj[element.name] = element.value;
             }
             return obj;
         }, {});
-        console.log(formValues);
     }
     render() {
         const source = '<span class="component" id="formView"></span>';

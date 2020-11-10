@@ -1,9 +1,10 @@
+import IUser from "../../types/UserType.js";
+import {IForm} from "../../components/Form/types.js";
 
 export interface IProfilePageProps {
-    user: {
-        firstName: string,
-        lastName: string,
-        displayName: string
-    }
+
 }
 
+export interface IProfileInnerForm extends IForm {
+    user: IUser
+}

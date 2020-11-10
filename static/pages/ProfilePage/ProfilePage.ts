@@ -1,9 +1,13 @@
 import Block from "../../components/Block/Block.js";
-import renderDOM, {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../utils/render.js";
 import Header from "../../components/Header/Header.js";
 import Form from "../../components/Form/Form.js";
 import ProfileInnerForm from "./views/ProfileInnerForm.js";
 import {IProfilePageProps} from './type.js';
+import AvatarInnerForm from "./views/AvatarInnerForm.js";
+import PasswordInnerForm from "./views/PasswordInnerForm.js";
+import {IProfileData, IPasswordData} from "../../api/userAPI.js";
+import {userServiceInstance} from "../../services/userService.js";
 
 export default class ProfilePage extends Block<IProfilePageProps> {
     constructor(props: IProfilePageProps) {
@@ -13,10 +17,23 @@ export default class ProfilePage extends Block<IProfilePageProps> {
     createNestedComponents() {
         this.nestedComponents = {
             header: createNestedComponent(Header, () => ({isProfilePage: true})),
+            avatarForm: createNestedComponent(Form, () => ({
+                name: 'AvatarForm',
+                FormInner: AvatarInnerForm,
+                fields: [
+                    {
+                        attribute: 'avatar',
+                        type: 'file',
+                        label: '',
+                        validationParams: ['required']
+                    },
+                ],
+                onSubmit: this.onAvatarFormFormSubmit
+            })),
             profileForm: createNestedComponent(Form, () => ({
                 name: 'ProfileForm',
                 FormInner: ProfileInnerForm,
-                commonFields: [
+                fields: [
                     {
                         attribute: 'first_name',
                         type: 'text',
@@ -54,42 +71,52 @@ export default class ProfilePage extends Block<IProfilePageProps> {
                         validationParams: ['required']
                     },
                 ],
-                passwordFields: [
+                onSubmit: this.onProfileFormSubmit
+            })),
+            passwordForm: createNestedComponent(Form, () => ({
+                name: 'PasswordForm',
+                FormInner: PasswordInnerForm,
+                fields: [
                     {
                         attribute: 'oldPassword',
                         type: 'password',
-                        label: 'Старый пароль'
+                        label: 'Старый пароль',
+                        validationParams: ['required']
                     },
                     {
                         attribute: 'newPassword',
                         type: 'password',
-                        label: 'Новый пароль'
+                        label: 'Новый пароль',
+                        validationParams: ['required']
                     },
                 ],
-                user: this.props.user
+                onSubmit: this.onPasswordFormSubmit
             }))
         }
+    }
 
+    onProfileFormSubmit(formValues: IProfileData) {
+        userServiceInstance.refreshProfile(formValues);
+    }
+
+    onPasswordFormSubmit(formValues: IPasswordData) {
+        userServiceInstance.refreshPassword(formValues);
+    }
+
+    //@ts-ignore
+    onAvatarFormFormSubmit(formValues, form: any) {
+        userServiceInstance.refreshAvatar(form);
     }
 
     render() {
         const source:string = (
             `<span class="component" id="header"></span>
-            <span class="component" id="profileForm"></span>`
+            <span class="component" id="avatarForm"></span>
+            <span class="component" id="profileForm"></span>
+            <span class="component" id="passwordForm"></span>`
         );
 
         return createRenderContent(source, this.props);
     }
 }
 
-const props = {
-    user: {
-        firstName: 'Прасковья',
-        lastName: 'Добролюбова',
-        displayName: 'Прасковья Иосифовна'
-    }
-};
-
-const profilePage = new ProfilePage(props);
-
-renderDOM('.root', profilePage.getFragment());

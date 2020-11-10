@@ -1,6 +1,6 @@
 import {IForm} from './types.js';
 import Block from "../Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../utils/render.js";
 
 export default class FormView extends Block<IForm> {
     constructor(props: IForm) {

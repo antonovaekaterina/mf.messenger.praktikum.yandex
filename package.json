@@ -7,8 +7,8 @@
     "start": "node server.js",
     "build-js": "tsc --build",
     "clean-js": "tsc --build --clean",
-    "build-css": "node-sass static/pages -o static/pages",
-    "build-postcss": "postcss static/pages/**/*.css --base static --use autoprefixer --dir pages"
+    "build-css": "node-sass static/index.scss static/index.css",
+    "build-postcss": "postcss static/index.css --use autoprefixer"
   },
   "repository": {
     "type": "git",

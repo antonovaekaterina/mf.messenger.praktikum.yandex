@@ -1,6 +1,6 @@
 import Block from "../../components/Block/Block.js";
 import LoginForm from "./views/LoginForm.js";
-import renderDOM, {createNestedComponent, createRenderContent} from "../../scripts/utils.js";
+import {createNestedComponent, createRenderContent} from "../../utils/render.js";
 import {ILoginPage} from './type.js';
 
 export default class LoginPage extends Block<ILoginPage> {
@@ -26,7 +26,3 @@ export default class LoginPage extends Block<ILoginPage> {
         return createRenderContent(source, this.props)
     }
 }
-
-const loginPage = new LoginPage({});
-
-renderDOM('.root', loginPage.getFragment());

@@ -1,5 +1,5 @@
 import Block from "../../components/Block/Block.js";
-import renderDOM, {createNestedComponent, createRenderContent} from '../../scripts/utils.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.js";
 import Header from "../../components/Header/Header.js";
 import {IErrorPage} from './type.js';
@@ -38,7 +38,3 @@ export default class ErrorPage extends Block<IErrorPage> {
         return createRenderContent(source, this.props)
     }
 }
-
-const errorPage = new ErrorPage({});
-
-renderDOM('.root', errorPage.getFragment());

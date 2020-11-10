@@ -8,13 +8,13 @@
     "strictNullChecks": true,
     "noEmitOnError": true,
     "removeComments": false,
-    "target": "es2016",
+    "target": "es2017",
     "module": "ES6"
   },
   "include": [
     "static/components/**/*",
     "static/pages/**/*",
-    "static/scripts/*"
+    "static/utils/*"
   ],
   "files": [
     "global.d.ts"
