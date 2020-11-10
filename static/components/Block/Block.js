@@ -134,9 +134,23 @@ export default class Block {
             newDocumentNode = document.createTextNode(newNode.textContent ? newNode.textContent : '');
         }
         else {
-            newDocumentNode = document.createElement(newNode.tagName);
-            for (const attrKey in newNode.attributes) {
-                newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
+            if (newNode.attributes && newNode.attributes.class === 'component') {
+                let nestedComponent;
+                const dataIndex = newNode.attributes['data-index'];
+                const id = newNode.attributes.id;
+                if (dataIndex !== undefined) {
+                    nestedComponent = this.getNestedComponent(id)[dataIndex].component;
+                }
+                else {
+                    nestedComponent = this.getNestedComponent(id).component;
+                }
+                newDocumentNode = nestedComponent.getFragment();
+            }
+            else {
+                newDocumentNode = document.createElement(newNode.tagName);
+                for (const attrKey in newNode.attributes) {
+                    newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
+                }
             }
         }
         if (needReplace) {

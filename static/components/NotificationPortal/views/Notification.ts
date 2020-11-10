@@ -1,5 +1,5 @@
 import Block from "../../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
+import {createRenderContent} from "../../../utils/render.js";
 import {INotificationProps} from '../types.js';
 
 export default class Notification extends Block<INotificationProps> {
@@ -7,16 +7,10 @@ export default class Notification extends Block<INotificationProps> {
         super(props);
     }
 
-    createNestedComponents() {
-        this.nestedComponents = {
-            notificationInner: createNestedComponent(this.props.notification.component, () => ({...this.props}))
-        }
-    }
-
     componentDidMount() {
         const root = this.getFragment();
 
-        const closeElem = root.querySelector('.Notification_close');
+        const closeElem = root.querySelector('.Notification__close');
         if (closeElem) {
             closeElem.addEventListener('click', this.props.onClose)
         }
@@ -25,9 +19,9 @@ export default class Notification extends Block<INotificationProps> {
     render() {
         const source:string = (
             `<div class="Notification">
-                <div class="Notification_inner">
-                    <div class="Notification_close">Закрыть</div>
-                    <span class="component" id="notificationInner"></span>
+                <div class="Notification__inner">
+                    <div class="Notification__close">Закрыть</div>
+                    <div class="Notification__content">{{notification.props.text}}</div>
                 </div>
             </div>`
         );

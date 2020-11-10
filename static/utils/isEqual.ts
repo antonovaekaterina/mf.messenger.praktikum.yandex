@@ -29,6 +29,10 @@ export default function isEqual(a: Record<string, any>, b: Record<string, any>):
             const bValueIsArray = Array.isArray(bValue);
 
             if (aValueIsArray && bValueIsArray) {
+                if (aValue.length !== bValue.length) {
+                    return false;
+                }
+
                 return aValue.every((aValueItem: any, index: number) => {
                     return aValueItem === bValue[index]
                 })

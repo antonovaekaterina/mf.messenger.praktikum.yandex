@@ -527,6 +527,9 @@ h1 {
     right: 10px;
     background-image: url("/images/search.svg"); }
 
+.CreateChatModal h1 {
+  margin-bottom: 30px; }
+
 .Chat {
   display: flex; }
   .Chat__grid {
@@ -1365,3 +1368,68 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.Modal__layout {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  background: rgba(71, 64, 73, 0.5);
+  z-index: 1000; }
+
+.Modal__modal {
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px;
+  background: #ffffff;
+  display: flex;
+  border-radius: 7px; }
+
+.Modal__inner {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 50px 40px 40px; }
+
+.Modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: opacity ease 0.15s; }
+  .Modal__close:hover {
+    opacity: 0.8; }
+
+.Notification {
+  width: 100%;
+  min-width: 150px;
+  padding: 30px 20px;
+  border-radius: 7px;
+  background: #946bd6;
+  color: #ffffff; }
+  .Notification__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: opacity ease 0.15s;
+    color: #ffffff;
+    font-size: 12px; }
+    .Notification__close:hover {
+      opacity: 0.8; }
+
+.NotificationPortal {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column; }
+  .NotificationPortal .Block {
+    flex: 0 0 auto;
+    width: 100%; }

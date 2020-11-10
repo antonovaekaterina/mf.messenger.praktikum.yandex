@@ -1,6 +1,7 @@
 import { userAPIInstance } from '../api/userAPI.js';
 import { store } from '../index.js';
 import { setUser } from "../actions/auth.js";
+import { openNotification } from "../actions/notification.js";
 class UserService {
     refreshProfile(data) {
         return userAPIInstance.profile(data)
@@ -9,9 +10,13 @@ class UserService {
                 throw this.makeErrorDescription(result);
             }
             this.setUser(result);
+            store.dispatch(openNotification('RefreshProfileErrorNotification', { text: 'Информация успешно обновлена' }));
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            store.dispatch(openNotification('RefreshProfileErrorNotification', { text: err }));
+            console.error(err);
+        });
     }
     refreshPassword(data) {
         return userAPIInstance.password(data)
@@ -19,9 +24,13 @@ class UserService {
             if (this.hasError(result.status)) {
                 throw this.makeErrorDescription(result);
             }
+            store.dispatch(openNotification('RefreshProfileErrorNotification', { text: 'Пароль успешно изменен' }));
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            store.dispatch(openNotification('RefreshPasswordErrorNotification', { text: err }));
+            console.error(err);
+        });
     }
     refreshAvatar(form) {
         return userAPIInstance.avatar(form)
@@ -30,9 +39,13 @@ class UserService {
                 throw this.makeErrorDescription(result);
             }
             this.setUser(result);
+            store.dispatch(openNotification('RefreshProfileErrorNotification', { text: 'Аватар успешно изменен' }));
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            store.dispatch(openNotification('RefreshAvatarErrorNotification', { text: err }));
+            console.error(err);
+        });
     }
     setUser(result) {
         const newUser = JSON.parse(result.response);

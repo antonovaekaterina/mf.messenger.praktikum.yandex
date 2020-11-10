@@ -12,7 +12,6 @@ export default (state = [], action) => {
                 {
                     id: action.id,
                     props: action.props || null,
-                    component: action.component
                 }
             ];
         default:

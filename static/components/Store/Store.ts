@@ -17,6 +17,8 @@ export default class Store {
             return Store.__instance;
         }
 
+        //@ts-ignore
+        window._store = this;
         this.reducer = reducer;
         this.state = this.makeStateProxy(reducer(initialState));
         this.eventBus = new EventBus();

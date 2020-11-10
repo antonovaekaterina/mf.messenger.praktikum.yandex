@@ -16,7 +16,7 @@ export default class Modal extends Block<IModalProps> {
     componentDidMount() {
         const root = this.getFragment();
 
-        const closeElem = root.querySelector('.Modal_close');
+        const closeElem = root.querySelector('.Modal__close');
         if (closeElem) {
             closeElem.addEventListener('click', this.props.onClose)
         }

@@ -1,10 +1,10 @@
 import Block from "../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../utils/render.js";
 import {INotificationPortal} from "./types.js";
 import {store} from "../../index.js";
-import {closeNotification} from "../../actions/notification.js";
 import Notification from "./views/Notification.js";
 import {INotification} from "../../reducers/notification.js";
+import {closeNotification} from "../../actions/notification.js";
 
 export default class NotificationPortal extends Block<INotificationPortal> {
     constructor(props: INotificationPortal) {
@@ -13,10 +13,14 @@ export default class NotificationPortal extends Block<INotificationPortal> {
 
     createNestedComponents() {
         this.nestedComponents = {
-            notificationsList: (this.props.notifications || []).map((notification:INotification) => createNestedComponent(Notification, () => ({
-                notification,
-                onClose: () => store.dispatch(closeNotification(notification.id))
-            }))),
+            notificationsList: (this.props.notifications || []).map((_notification:INotification, index: number) => createNestedComponent(Notification, () => {
+                // @ts-ignore
+                const notificationItem = this.props.modals[index];
+                return {
+                    notification: notificationItem,
+                    onClose: () => store.dispatch(closeNotification(notificationItem.id))
+                }
+            })),
         }
     }
 
@@ -36,11 +40,39 @@ export default class NotificationPortal extends Block<INotificationPortal> {
     }
 
     updateNestedComponents() {
-        //@ts-ignore
-        (this.props.notifications || []).forEach((notification:INotification, index: number) => {
-            const nestedItem = this.nestedComponents.notificationsList[index];
-            nestedItem.component.setProps(nestedItem.getProps())
-        })
+        if (!this.props.notifications) return;
+
+        if (this.props.notifications.length !== this.nestedComponents.notificationsList.length) {
+            const propsNotificationsLength = this.props.notifications.length;
+            const componentNotificationsLength = this.nestedComponents.notificationsList.length;
+
+            if (propsNotificationsLength < componentNotificationsLength) {
+                this.nestedComponents.notificationsList.splice(propsNotificationsLength);
+                this.setPropsNestedComponents();
+            } else {
+                this.setPropsNestedComponents();
+
+                let counter = componentNotificationsLength;
+                while (counter < propsNotificationsLength) {
+                    const index = counter;
+                    this.nestedComponents.notificationsList.push(createNestedComponent(Notification, () => {
+                        // @ts-ignore
+                        const notificationItem = this.props.notifications[index];
+                        return {
+                            notification: notificationItem,
+                            onClose: () => store.dispatch(closeNotification(notificationItem.id))
+                        }
+                    }));
+                    ++counter;
+                }
+            }
+        } else {
+            this.setPropsNestedComponents();
+        }
+    }
+
+    setPropsNestedComponents() {
+        this.nestedComponents.notificationsList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()));
     }
 
     render() {

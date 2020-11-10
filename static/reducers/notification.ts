@@ -1,11 +1,9 @@
 import {TYPE_OPEN_NOTIFICATION, TYPE_CLOSE_NOTIFICATION} from "../actions/notification.js";
 import {IAction} from '../components/Store/types.js';
-import {ComponentType} from "../components/Block/types.js";
 
 export interface INotification {
     id: string | number,
     props: Record<string, any> | null,
-    component: ComponentType<any>
 }
 
 export default (state: INotification[] = [], action?: IAction):INotification[] => {
@@ -22,7 +20,6 @@ export default (state: INotification[] = [], action?: IAction):INotification[] =
                 {
                     id: action.id,
                     props: action.props || null,
-                    component: action.component
                 }
             ]
         default:

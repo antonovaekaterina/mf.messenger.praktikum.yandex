@@ -1,6 +1,7 @@
 import { authAPIInstance } from "../api/authAPI.js";
 import { router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION } from "../index.js";
 import { setUser } from "../actions/auth.js";
+import { openNotification } from "../actions/notification.js";
 class AuthService {
     signUp(data) {
         return authAPIInstance.signUp(data)
@@ -20,7 +21,10 @@ class AuthService {
             this.setUser(result);
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            store.dispatch(openNotification('SignUpErrorNotification', { text: err }));
+            console.error(err);
+        });
     }
     signIn(data) {
         return authAPIInstance.signIn(data)
@@ -40,7 +44,10 @@ class AuthService {
             this.setUser(result);
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            console.error(err);
+            store.dispatch(openNotification('SignInErrorNotification', { text: err }));
+        });
     }
     logout() {
         return authAPIInstance.logout()
@@ -52,7 +59,10 @@ class AuthService {
             router.go(ROUTE_LOGIN);
             return result;
         })
-            .catch(err => console.error(err));
+            .catch(err => {
+            store.dispatch(openNotification('LogoutErrorNotification', { text: err }));
+            console.error(err);
+        });
     }
     init() {
         return authAPIInstance.getUser()
@@ -65,6 +75,7 @@ class AuthService {
         })
             .catch(err => {
             console.error(err);
+            store.dispatch(openNotification('InitErrorNotification', { text: err }));
             if (!this.isAuthPage()) {
                 router.go(ROUTE_LOGIN);
             }

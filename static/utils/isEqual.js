@@ -23,6 +23,9 @@ export default function isEqual(a, b) {
             const aValueIsArray = Array.isArray(aValue);
             const bValueIsArray = Array.isArray(bValue);
             if (aValueIsArray && bValueIsArray) {
+                if (aValue.length !== bValue.length) {
+                    return false;
+                }
                 return aValue.every((aValueItem, index) => {
                     return aValueItem === bValue[index];
                 });
