@@ -9,10 +9,14 @@ export default class ModalPortal extends Block {
     }
     createNestedComponents() {
         this.nestedComponents = {
-            modalsList: (this.props.modals || []).map((modal) => createNestedComponent(Modal, () => ({
-                modal,
-                onClose: () => store.dispatch(closeModal(modal.id))
-            }))),
+            modalsList: (this.props.modals || []).map((_modal, index) => createNestedComponent(Modal, () => {
+                // @ts-ignore
+                const modalItem = this.props.modals[index];
+                return {
+                    modal: modalItem,
+                    onClose: () => store.dispatch(closeModal(modalItem.id))
+                };
+            })),
         };
     }
     componentDidMount() {
@@ -33,11 +37,38 @@ export default class ModalPortal extends Block {
         return shouldUpdate;
     }
     updateNestedComponents() {
-        //@ts-ignore
-        (this.props.modals || []).forEach((modal, index) => {
-            const nestedItem = this.nestedComponents.modalsList[index];
-            nestedItem.component.setProps(nestedItem.getProps());
-        });
+        if (!this.props.modals)
+            return;
+        if (this.props.modals.length !== this.nestedComponents.modalsList.length) {
+            const propsModalsLength = this.props.modals.length;
+            const componentModalsLength = this.nestedComponents.modalsList.length;
+            if (propsModalsLength < componentModalsLength) {
+                this.nestedComponents.modalsList.splice(propsModalsLength);
+                this.setPropsNestedComponents();
+            }
+            else {
+                this.setPropsNestedComponents();
+                let counter = componentModalsLength;
+                while (counter < propsModalsLength) {
+                    const index = counter;
+                    this.nestedComponents.modalsList.push(createNestedComponent(Modal, () => {
+                        // @ts-ignore
+                        const modalItem = this.props.modals[index];
+                        return {
+                            modal: modalItem,
+                            onClose: () => store.dispatch(closeModal(modalItem.id))
+                        };
+                    }));
+                    ++counter;
+                }
+            }
+        }
+        else {
+            this.setPropsNestedComponents();
+        }
+    }
+    setPropsNestedComponents() {
+        this.nestedComponents.modalsList.forEach((nestedItem) => nestedItem.component.setProps(nestedItem.getProps()));
     }
     render() {
         const source = (`<div class="ModalPortal">

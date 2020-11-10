@@ -56,6 +56,7 @@ export default class Chat extends Block {
         nestedComponentItems.splice(list.length);
     }
     handleAddChatBtnClick() {
+        console.log('handleAddChatBtnClick');
         store.dispatch(openModal('CreateChatModal', CreateChatModal));
     }
     render() {

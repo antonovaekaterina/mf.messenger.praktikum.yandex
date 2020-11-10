@@ -22,16 +22,12 @@ export default class CreateChatInnerForm extends Block {
         return shouldUpdate;
     }
     updateNestedComponents() {
-        //@ts-ignore
-        (this.props.fields || []).forEach((field, index) => {
-            const nestedItem = this.nestedComponents.inputList[index];
-            nestedItem.component.setProps(nestedItem.getProps());
-        });
+        this.nestedComponents.inputList.forEach((nestedItem) => nestedItem.component.setProps(nestedItem.getProps()));
     }
     render() {
         const source = (`<div class="CreateChatInnerForm">
                 {{#each fields}}
-                    <span class="component" id="input"></span>
+                    <span class="component" id="inputList" data-index="{{@index}}"></span>
                 {{/each}}
                 <span class="component" id="button"></span>
             </div>`);

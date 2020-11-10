@@ -180,6 +180,7 @@ export default class Block<T extends Record<string, any>> {
                 newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
             }
         }
+
         if (needReplace) {
             documentFragmentNodeChildren.replaceWith(newDocumentNode);
         } else {

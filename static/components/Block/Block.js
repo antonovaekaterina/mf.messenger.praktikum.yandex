@@ -73,7 +73,6 @@ export default class Block {
         const newDomTree = this.createDOMTreeFromDOM(doc.body).childNodes;
         if (!this.currentDomTree.length) {
             this.fragment.innerHTML = this.content.html;
-            //замена вложенных компонентов
             const nestedComponentsElements = Array.from(this.fragment.querySelectorAll('.component'));
             nestedComponentsElements.forEach((nestedElement) => {
                 let nestedComponent;

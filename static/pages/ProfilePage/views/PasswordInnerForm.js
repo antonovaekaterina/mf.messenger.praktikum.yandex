@@ -20,11 +20,7 @@ export default class PasswordInnerForm extends Block {
         return shouldUpdate;
     }
     updateNestedComponents() {
-        //@ts-ignore
-        (this.props.fields || []).forEach((field, index) => {
-            const nestedItem = this.nestedComponents.inputList[index];
-            nestedItem.component.setProps(nestedItem.getProps());
-        });
+        this.nestedComponents.inputList.forEach((nestedItem) => nestedItem.component.setProps(nestedItem.getProps()));
     }
     render() {
         const source = (`<div class="PasswordInnerForm">

@@ -64,6 +64,7 @@ export default class Chat extends Block<IChat> {
     }
 
     handleAddChatBtnClick() {
+        console.log('handleAddChatBtnClick')
         store.dispatch(openModal('CreateChatModal', CreateChatModal))
     }
 

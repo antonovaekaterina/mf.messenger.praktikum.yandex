@@ -38,7 +38,7 @@ export default class CreateChatInnerForm extends Block<IForm> {
         const source = (
             `<div class="CreateChatInnerForm">
                 {{#each fields}}
-                    <span class="component" id="input"></span>
+                    <span class="component" id="inputList" data-index="{{@index}}"></span>
                 {{/each}}
                 <span class="component" id="button"></span>
             </div>`
