@@ -1,15 +1,5 @@
 import BasicAPI from "./BasicAPI.js";
-import {chatHTTPInstance} from "../components/HTTP/HTTP.js";
-
-export interface ICreateChatData {
-    title: string,
-}
-
-export interface IAddUsersData {
-    users: number[],
-    chatId: number
-}
-
+import { chatHTTPInstance } from "../components/HTTP/HTTP.js";
 class ChatAPI extends BasicAPI {
     getChats() {
         return chatHTTPInstance.get('', {
@@ -18,8 +8,7 @@ class ChatAPI extends BasicAPI {
             }
         });
     }
-
-    createChat(data:ICreateChatData) {
+    createChat(data) {
         return chatHTTPInstance.post('', {
             data: JSON.stringify(data),
             headers: {
@@ -27,16 +16,13 @@ class ChatAPI extends BasicAPI {
             }
         });
     }
-
-    avatar(form: any) {
+    avatar(form) {
         const formData = new FormData(form);
-
         return chatHTTPInstance.put('/avatar', {
             data: formData,
         });
     }
-
-    addUsers(data: IAddUsersData) {
+    addUsers(data) {
         return chatHTTPInstance.put('/users', {
             data: JSON.stringify(data),
             headers: {
@@ -44,8 +30,7 @@ class ChatAPI extends BasicAPI {
             }
         });
     }
-
-    deleteUsers(data: IAddUsersData) {
+    deleteUsers(data) {
         return chatHTTPInstance.delete('/users', {
             data: JSON.stringify(data),
             headers: {
@@ -53,8 +38,7 @@ class ChatAPI extends BasicAPI {
             }
         });
     }
-
-    getUsers(id: number) {
+    getUsers(id) {
         return chatHTTPInstance.get(`/${id}/users`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -62,5 +46,5 @@ class ChatAPI extends BasicAPI {
         });
     }
 }
-
 export const chatAPIInstance = new ChatAPI();
+//# sourceMappingURL=chatAPI.js.map

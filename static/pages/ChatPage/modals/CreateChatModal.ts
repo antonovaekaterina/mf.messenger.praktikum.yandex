@@ -3,6 +3,8 @@ import {createNestedComponent, createRenderContent} from '../../../utils/render.
 import {IModalProps} from "../../../components/ModalPortal/types.js";
 import Form from "../../../components/Form/Form.js";
 import CreateChatInnerForm from "./CreateChatInnerForm.js";
+import {chatServiceInstance} from "../../../services/chatService.js";
+import {ICreateChatData} from "../../../api/chatAPI.js";
 
 export default class CreateChatModal extends Block<IModalProps> {
     constructor(props: IModalProps) {
@@ -22,9 +24,15 @@ export default class CreateChatModal extends Block<IModalProps> {
                         validationParams: ['required']
                     },
                 ],
-                //onSubmit: this.onSubmit
+                onSubmit: this.onSubmit.bind(this)
             }))
         }
+    }
+
+    onSubmit(formValues: ICreateChatData) {
+        chatServiceInstance.createChat(formValues).then(() => {
+            this.props.onClose()
+        });
     }
 
     render() {

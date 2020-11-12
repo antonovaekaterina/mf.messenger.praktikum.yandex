@@ -2,6 +2,7 @@ import {authAPIInstance, ISignInData, ISignUpData} from "../api/authAPI.js";
 import {router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION} from "../index.js";
 import {setUser} from "../actions/auth.js";
 import {openNotification} from "../actions/notification.js";
+import {chatServiceInstance} from "./chatService.js";
 
 class AuthService {
 
@@ -83,6 +84,7 @@ class AuthService {
                 }
 
                 this.setUser(result);
+                chatServiceInstance.getChats();
 
                 return result;
             })

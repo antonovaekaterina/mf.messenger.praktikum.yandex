@@ -1,5 +1,5 @@
 import Block from "../../components/Block/Block.js";
-import IUser from '../../types/UserType.js';
+import {IUser} from './type.js';
 import {createRenderContent} from "../../utils/render.js";
 
 export default class User extends Block<IUser> {

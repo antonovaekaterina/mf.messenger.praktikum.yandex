@@ -1,18 +1,14 @@
 import {IUser} from "../../components/User/type.js";
 import {IMessage} from "../../components/Message/type.js";
+import {IActiveChatState} from "../../reducers/chats.js";
+import ChatType from "../../types/ChatType.js";
 
-export interface IContactBlock {
-    id: number,
-    name: string;
-    status: 'online' | 'offline' | 'idle',
-    thumbnailURL?: string,
-    message?: string,
-    newMessageCount: number,
-    isActive?: boolean
+export interface IChatItem {
+    item: ChatType,
+    isActive: boolean
 }
 
 export interface IChat {
-    contacts: IContactBlock[],
     user: IUser,
     messages?: IMessage[]
 }
@@ -25,3 +21,11 @@ export interface SearchInnerForm {
 
 }
 
+export interface IChatList {
+    chatList?: ChatType[],
+    activeChat?: IActiveChatState
+}
+
+export interface IChatMain {
+    activeChat?: IActiveChatState
+}

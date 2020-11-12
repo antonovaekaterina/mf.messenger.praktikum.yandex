@@ -6,5 +6,6 @@ export default interface IUser {
     login: string,
     email: string,
     phone: string,
-    avatar: string
+    avatar: string,
+    role?: string
 }

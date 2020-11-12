@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+
+.ChatsList {
+  position: relative;
+  width: 400px;
+  border: 1px solid $light-text;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    height: 100%;
+    flex: 0 1 auto;
+    overflow: auto;
+  }
+
+  &__search-dialogs {
+    flex: 0 0 auto;
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid $light-text;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    .Block, form {
+      width: 100%;
+    }
+  }
+
+  &__add-dialog-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    background-color: $lavender;
+    box-shadow: 0 5px 10px rgba(148, 107, 214, 0.5);
+    transition: opacity $short-effect;
+    cursor: pointer;
+
+    &.Icon {
+      background-image: url('/images/add.svg');
+
+      &:hover {
+        background-color: $lavender;
+      }
+
+      &:active {
+        background-color: $lavender;
+      }
+    }
+  }
+}
