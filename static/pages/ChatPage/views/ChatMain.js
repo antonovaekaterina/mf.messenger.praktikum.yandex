@@ -4,6 +4,8 @@ import { createNestedComponent, createRenderContent } from "../../../utils/rende
 import Form from "../../../components/Form/Form.js";
 import MessengerInnerForm from "../forms/MessengerInnerForm.js";
 import { store } from "../../../index.js";
+import { openModal } from "../../../actions/modal.js";
+import SettingsModal from "../modals/SettingsModal.js";
 export default class ChatMain extends Block {
     constructor(props) {
         super(props);
@@ -30,16 +32,28 @@ export default class ChatMain extends Block {
         store.subscribe(this, (state) => ({
             activeChat: state.chat.activeChat
         }));
+        this.addSettingsHandle();
     }
     componentDidUpdate(oldProps, newProps) {
+        this.addSettingsHandle();
         return super.componentDidUpdate(oldProps, newProps);
+    }
+    addSettingsHandle() {
+        const root = this.getFragment();
+        const settingsElem = root.querySelector('.ChatMain__settings');
+        if (settingsElem) {
+            settingsElem.onclick = () => this.handleSettingsClick();
+        }
+    }
+    handleSettingsClick() {
+        store.dispatch(openModal('SettingsModal', SettingsModal));
     }
     render() {
         const source = (`<main class="ChatMain">
                 {{#if activeChat.id}}
                     <div class="ChatMain__personal-info">
                         <span class="component" id="activeChatInfo"></span>
-                        <button class="Icon" title="Настройки чата"></button>
+                        <button class="Icon ChatMain__settings" title="Настройки чата"></button>
                     </div>
                 {{/if}}
                 <div class="ChatMain__messenger {{#if activeChat.id}}{{else}}ChatMain__messenger--empty{{/if}}">

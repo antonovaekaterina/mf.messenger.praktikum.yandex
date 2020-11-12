@@ -1,0 +1,22 @@
+@import '../../../styles/variables';
+
+.AddUserModal {
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__users-wrap {
+    margin-top: 40px;
+  }
+
+  .User__name {
+    color: $black !important;
+  }
+}

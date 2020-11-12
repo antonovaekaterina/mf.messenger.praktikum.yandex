@@ -1,4 +1,4 @@
-import {userAPIInstance, IProfileData, IPasswordData} from '../api/userAPI.js';
+import {userAPIInstance, IProfileData, IPasswordData, ISearchData} from '../api/userAPI.js';
 import {store} from '../index.js';
 import {setUser} from "../actions/auth.js";
 import {openNotification} from "../actions/notification.js";
@@ -54,11 +54,25 @@ class UserService {
             })
     }
 
+    searchUser(data: ISearchData) {
+        return userAPIInstance.search(data)
+            .then((result: any) => {
+                if (this.hasError(result.status)) {
+                    throw this.makeErrorDescription(result);
+                }
+
+                return JSON.parse(result.response);
+            })
+            .catch(err => {
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}))
+                console.error(err)
+            })
+    }
+
     setUser(result: any) {
         const newUser = JSON.parse(result.response);
         const oldUser = store.getState().user;
         store.dispatch(setUser({...oldUser, ...newUser}));
-        console.log(store)
     }
 
     hasError(status: number) {

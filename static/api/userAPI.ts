@@ -19,6 +19,10 @@ export interface IAvatarData {
     avatar: string,
 }
 
+export interface ISearchData {
+    login: string,
+}
+
 class UserAPI extends BasicAPI {
     profile(data:IProfileData) {
         return userHTTPInstance.put('/profile', {
@@ -44,6 +48,15 @@ class UserAPI extends BasicAPI {
 
         return userHTTPInstance.put('/profile/avatar', {
             data: formData,
+        });
+    }
+
+    search(data: ISearchData) {
+        return userHTTPInstance.post('/search', {
+            data: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
     }
 }

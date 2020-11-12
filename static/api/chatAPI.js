@@ -16,8 +16,7 @@ class ChatAPI extends BasicAPI {
             }
         });
     }
-    avatar(form) {
-        const formData = new FormData(form);
+    avatar(formData) {
         return chatHTTPInstance.put('/avatar', {
             data: formData,
         });

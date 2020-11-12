@@ -166,6 +166,7 @@ export default class Block {
         }
         else {
             this.appendNode(newTextNode, documentFragmentNodeChildren, true);
+            oldNode.childNodes = [];
         }
     }
     applyChangesForElement(oldNode, newNode, documentFragmentNodeChildren) {
@@ -174,6 +175,7 @@ export default class Block {
         }
         else {
             this.appendNode(newNode, documentFragmentNodeChildren, true);
+            oldNode.childNodes = [];
         }
     }
     applyChangesForElementAttributes(oldNode, newNode, documentFragmentNodeChildren) {

@@ -10,7 +10,7 @@ export const setChats = (chats: ChatType[]) => ({
     value: chats
 });
 
-export const setActiveChat = (chat: ChatType) => ({
+export const setActiveChat = (chat: ChatType | null) => ({
     type: TYPE_SET_ACTIVE_CHAT,
     value: chat
 });

@@ -210,6 +210,7 @@ export default class Block<T extends Record<string, any>> {
             documentFragmentNodeChildren.textContent = newTextNode.textContent;
         } else {
             this.appendNode(newTextNode,documentFragmentNodeChildren,true);
+            oldNode.childNodes = [];
         }
     }
 
@@ -218,6 +219,7 @@ export default class Block<T extends Record<string, any>> {
             this.applyChangesForElementAttributes(oldNode,newNode,documentFragmentNodeChildren);
         } else {
             this.appendNode(newNode,documentFragmentNodeChildren,true);
+            oldNode.childNodes = [];
         }
     }
 

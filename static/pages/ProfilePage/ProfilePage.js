@@ -96,8 +96,7 @@ export default class ProfilePage extends Block {
     onPasswordFormSubmit(formValues) {
         userServiceInstance.refreshPassword(formValues);
     }
-    //@ts-ignore
-    onAvatarFormFormSubmit(formValues, form) {
+    onAvatarFormFormSubmit(_formValues, form) {
         userServiceInstance.refreshAvatar(form);
     }
     render() {

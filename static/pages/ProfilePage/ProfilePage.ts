@@ -103,8 +103,7 @@ export default class ProfilePage extends Block<IProfilePageProps> {
         userServiceInstance.refreshPassword(formValues);
     }
 
-    //@ts-ignore
-    onAvatarFormFormSubmit(formValues, form: any) {
+    onAvatarFormFormSubmit(_formValues: any, form: any) {
         userServiceInstance.refreshAvatar(form);
     }
 

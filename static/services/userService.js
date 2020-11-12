@@ -47,11 +47,23 @@ class UserService {
             console.error(err);
         });
     }
+    searchUser(data) {
+        return userAPIInstance.search(data)
+            .then((result) => {
+            if (this.hasError(result.status)) {
+                throw this.makeErrorDescription(result);
+            }
+            return JSON.parse(result.response);
+        })
+            .catch(err => {
+            store.dispatch(openNotification('RefreshProfileErrorNotification', { text: err }));
+            console.error(err);
+        });
+    }
     setUser(result) {
         const newUser = JSON.parse(result.response);
         const oldUser = store.getState().user;
         store.dispatch(setUser(Object.assign(Object.assign({}, oldUser), newUser)));
-        console.log(store);
     }
     hasError(status) {
         return status !== 200;

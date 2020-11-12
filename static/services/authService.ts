@@ -3,6 +3,7 @@ import {router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION} from "../index.js"
 import {setUser} from "../actions/auth.js";
 import {openNotification} from "../actions/notification.js";
 import {chatServiceInstance} from "./chatService.js";
+import {setActiveChat, setChats} from "../actions/chat.js";
 
 class AuthService {
 
@@ -67,6 +68,8 @@ class AuthService {
                 }
 
                 store.dispatch(setUser(null));
+                store.dispatch(setChats([]))
+                store.dispatch(setActiveChat(null))
                 router.go(ROUTE_LOGIN);
                 return result;
             })
@@ -84,7 +87,6 @@ class AuthService {
                 }
 
                 this.setUser(result);
-                chatServiceInstance.getChats();
 
                 return result;
             })
@@ -100,7 +102,7 @@ class AuthService {
     setUser(result: any) {
         const user = JSON.parse(result.response);
         store.dispatch(setUser(user));
-        console.log(store)
+        chatServiceInstance.getChats();
         if (this.isAuthPage()) {
             router.go(ROOT);
         }

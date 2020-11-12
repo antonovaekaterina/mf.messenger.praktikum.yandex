@@ -5,8 +5,11 @@ import {createNestedComponent, createRenderContent} from "../../../utils/render.
 import Form from "../../../components/Form/Form.js";
 import MessengerInnerForm from "../forms/MessengerInnerForm.js";
 import {store} from "../../../index.js";
+import {openModal} from "../../../actions/modal.js";
+import SettingsModal from "../modals/SettingsModal.js";
 
 export default class ChatMain extends Block<IChatMain> {
+
     constructor(props: IChatMain) {
         super(props);
     }
@@ -33,15 +36,25 @@ export default class ChatMain extends Block<IChatMain> {
             activeChat: state.chat.activeChat
         }))
 
+        this.addSettingsHandle();
+    }
+
+    componentDidUpdate(oldProps: IChatMain, newProps: IChatMain): boolean {
+        this.addSettingsHandle();
+
+        return super.componentDidUpdate(oldProps, newProps);
+    }
+
+    addSettingsHandle() {
         const root = this.getFragment();
-        const chatSettingsElem = root.querySelector('.ChatMain__settings');
-        if (chatSettingsElem) {
-            chatSettingsElem.addEventListener('click', this.handleSettingsClick)
+        const settingsElem: HTMLElement | null = root.querySelector('.ChatMain__settings');
+        if (settingsElem) {
+            settingsElem.onclick = () => this.handleSettingsClick();
         }
     }
 
     handleSettingsClick() {
-
+        store.dispatch(openModal('SettingsModal', SettingsModal))
     }
     
     render() {

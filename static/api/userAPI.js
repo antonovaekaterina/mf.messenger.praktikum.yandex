@@ -23,6 +23,14 @@ class UserAPI extends BasicAPI {
             data: formData,
         });
     }
+    search(data) {
+        return userHTTPInstance.post('/search', {
+            data: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
 }
 export const userAPIInstance = new UserAPI();
 //# sourceMappingURL=userAPI.js.map

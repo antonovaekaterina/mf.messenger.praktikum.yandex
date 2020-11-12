@@ -1,0 +1,18 @@
+@import '../../../styles/variables';
+
+.RemoveUserModal {
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .User__name {
+    color: $black !important;
+  }
+}

@@ -2,6 +2,8 @@ import { authAPIInstance } from "../api/authAPI.js";
 import { router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION } from "../index.js";
 import { setUser } from "../actions/auth.js";
 import { openNotification } from "../actions/notification.js";
+import { chatServiceInstance } from "./chatService.js";
+import { setActiveChat, setChats } from "../actions/chat.js";
 class AuthService {
     signUp(data) {
         return authAPIInstance.signUp(data)
@@ -56,6 +58,8 @@ class AuthService {
                 throw this.makeErrorDescription(result);
             }
             store.dispatch(setUser(null));
+            store.dispatch(setChats([]));
+            store.dispatch(setActiveChat(null));
             router.go(ROUTE_LOGIN);
             return result;
         })
@@ -84,7 +88,7 @@ class AuthService {
     setUser(result) {
         const user = JSON.parse(result.response);
         store.dispatch(setUser(user));
-        console.log(store);
+        chatServiceInstance.getChats();
         if (this.isAuthPage()) {
             router.go(ROOT);
         }

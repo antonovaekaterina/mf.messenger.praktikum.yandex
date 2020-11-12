@@ -7,7 +7,7 @@ export interface ICreateChatData {
 
 export interface IAddUsersData {
     users: number[],
-    chatId: number
+    chatId: any
 }
 
 class ChatAPI extends BasicAPI {
@@ -28,9 +28,7 @@ class ChatAPI extends BasicAPI {
         });
     }
 
-    avatar(form: any) {
-        const formData = new FormData(form);
-
+    avatar(formData: any) {
         return chatHTTPInstance.put('/avatar', {
             data: formData,
         });
