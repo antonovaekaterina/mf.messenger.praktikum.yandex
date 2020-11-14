@@ -9,13 +9,15 @@
     "noEmitOnError": true,
     "removeComments": false,
     "target": "es2017",
-    "module": "ES6"
+    "module": "ES6",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": [
+      "jest"
+    ]
   },
-  "include": [
-    "static/components/**/*",
-    "static/pages/**/*",
-    "static/utils/*"
-  ],
+  "include": ["static/**/*"],
+  "exclude": ["node_modules", "test/**/*"],
   "files": [
     "global.d.ts"
   ]

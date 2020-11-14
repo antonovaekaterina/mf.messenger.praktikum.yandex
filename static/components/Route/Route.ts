@@ -15,7 +15,7 @@ export default class Route<T extends Block<any>> {
         view: new (...args: any[]) => T,
         props: Record<string, any>,
         rootSelector: string,
-        className?: string
+        className?: string,
     ) {
         this._pathname = pathname;
         this._blockConstructor = view;

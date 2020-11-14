@@ -22,7 +22,7 @@ router
     .use(ROUTE_PROFILE, ProfilePage)
     .use(ROUTE_LOGIN, LoginPage)
     .use(ROUTE_REGISTRATION, RegistrationPage)
-    .use(ROUTE_NOT_FOUND, NotFoundPage) //сделать 404
+    .use(ROUTE_NOT_FOUND, NotFoundPage)
     .use(ROUTE_ERROR, ErrorPage)
     .start();
 //authServiceInstance.logout();
