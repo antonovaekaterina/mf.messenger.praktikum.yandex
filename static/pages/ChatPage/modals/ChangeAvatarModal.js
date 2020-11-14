@@ -25,7 +25,6 @@ export default class ChangeAvatarModal extends Block {
         };
     }
     onSubmit(_formValues, form) {
-        console.log('submit');
         chatServiceInstance.refreshAvatar(form);
     }
     render() {

@@ -30,7 +30,6 @@ export default class ChangeAvatarModal extends Block<IModalProps> {
     }
 
     onSubmit(_formValues: any, form: any) {
-        console.log('submit')
         chatServiceInstance.refreshAvatar(form);
     }
 

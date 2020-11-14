@@ -26,7 +26,6 @@ export default class ChatMain extends Block {
                 FormInner: MessengerInnerForm
             })),
         };
-        console.log(this.nestedComponents);
     }
     componentDidMount() {
         store.subscribe(this, (state) => ({
