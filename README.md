@@ -4,7 +4,7 @@
 
 To run the project use ```npm start``` and ```npm run server``` commands.
 
-To bulds use ```npm run build``` command.
+To bulds use ```npm run build```.
 
 For tests use ```npm test```.
 
