@@ -5,7 +5,7 @@ import {createNestedComponent, createRenderContent, ICreateNestedComponent} from
 import Form from "../../../components/Form/Form.js";
 import SearchInnerForm from "../forms/SearchInnerForm.js";
 import {store} from "../../../index.js";
-import {openModal} from "../../../actions/modal.js";
+import {openModal} from "../../../core/Store/actions/modal.js";
 import CreateChatModal from "../modals/CreateChatModal.js";
 
 export default class ChatsList extends Block<IChatList> {

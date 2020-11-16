@@ -4,16 +4,16 @@ import {createRenderContent} from "../src/utils/render";
 describe('Component', () => {
     class Example extends Block<any> {
         componentDidMount() {
-            componentDidMountCallback();
+            this.props.componentDidMountCallback();
         }
 
         componentDidUpdate(oldProps: any, newProps: any): boolean {
-            componentDidUpdateCallback();
+            this.props.componentDidUpdateCallback();
             return super.componentDidUpdate(oldProps, newProps);
         }
 
         render() {
-            renderCallback();
+            this.props.renderCallback();
             const source:string = (
                 `<div class="Example">{{text}}</div>`
             );
@@ -22,20 +22,29 @@ describe('Component', () => {
         }
     }
 
-    const componentDidMountCallback = jest.fn();
-    const componentDidUpdateCallback = jest.fn();
-    const renderCallback = jest.fn();
+    let componentDidMountCallback: () => any;
+    let componentDidUpdateCallback: () => any;
+    let renderCallback: () => any;
+
     const text = 'Example!';
-    const newText = 'newProps!'
+    const newText = 'newProps!';
 
-    const exampleProps = {
-        text,
-        componentDidMountCallback,
-        componentDidUpdateCallback,
-        renderCallback
-    }
+    let exampleInstance: Example | null = null;
 
-    const exampleInstance = new Example(exampleProps);
+    beforeEach(() => {
+        componentDidMountCallback = jest.fn();
+        componentDidUpdateCallback = jest.fn();
+        renderCallback = jest.fn();
+
+        const exampleProps = {
+            text,
+            componentDidMountCallback,
+            componentDidUpdateCallback,
+            renderCallback
+        }
+
+        exampleInstance = new Example(exampleProps);
+    });
 
     test('component work correctly with new() call', () => {
         expect(exampleInstance).toBeTruthy();
@@ -43,47 +52,50 @@ describe('Component', () => {
 
     describe('Component build DOM element', () => {
         test('method .getFragment return DOM element', () => {
-            expect(exampleInstance.getFragment() instanceof HTMLElement).toBeTruthy();
+            expect(exampleInstance?.getFragment() instanceof HTMLElement).toBeTruthy();
         });
 
         test('method .getFragment return DOM element with correct markup', () => {
-            const fragment = exampleInstance.getFragment();
-            expect(fragment.querySelector('.Example')?.innerHTML === text).toBeTruthy();
+            const fragment = exampleInstance?.getFragment();
+            expect(fragment?.querySelector('.Example')?.innerHTML === text).toBeTruthy();
         });
     })
 
     describe('Calling component methods after init', () => {
         test('method .componentDidMount call once after init', () => {
-            expect(componentDidMountCallback).toHaveBeenCalledTimes(1)
+            expect(componentDidMountCallback).toHaveBeenCalledTimes(1);
         });
 
         test('method .render call once after init', () => {
-            expect(renderCallback).toHaveBeenCalledTimes(1)
+            expect(renderCallback).toHaveBeenCalledTimes(1);
         });
 
         test('method .componentDidUpdate not call after init', () => {
-            expect(componentDidUpdateCallback).toHaveBeenCalledTimes(0)
+            expect(componentDidUpdateCallback).toHaveBeenCalledTimes(0);
         });
     })
 
     describe('Calling component methods after props updates', () => {
-        test('method .componentDidUpdate call once after prop update', () => {
-            exampleInstance.setProps({
+        const updateProps = () => {
+            exampleInstance?.setProps({
                 text: newText
-            });
+            })
+        }
 
-            expect(componentDidUpdateCallback).toHaveBeenCalledTimes(1)
+        test('method .componentDidUpdate call once after prop update', () => {
+            updateProps();
+            expect(componentDidUpdateCallback).toHaveBeenCalledTimes(1);
         });
 
         test('method .render called a second time after prop update', () => {
-            expect(renderCallback).toHaveBeenCalledTimes(2)
+            updateProps();
+            expect(renderCallback).toHaveBeenCalledTimes(2);
         });
 
         test('method .getFragment return DOM element with updated markup', () => {
-            const fragment = exampleInstance.getFragment();
-            expect(fragment.querySelector('.Example')?.innerHTML === newText).toBeTruthy();
+            updateProps();
+            const fragment = exampleInstance?.getFragment();
+            expect(fragment?.querySelector('.Example')?.innerHTML === newText).toBeTruthy();
         });
     })
-
-
 });

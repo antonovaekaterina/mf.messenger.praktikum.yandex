@@ -1,6 +1,6 @@
 import {IOptions} from "./types.js";
 
-const METHODS = {
+export const METHODS = {
     GET: 'GET',
     PUT: 'PUT',
     POST: 'POST',
@@ -47,6 +47,10 @@ export default class HTTPTransport {
 
             xhr.open(method, url);
             xhr.timeout = timeout;
+
+            if (!(data instanceof FormData)) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            }
 
             if (headers) {
                 Object.entries(headers).forEach(header => xhr.setRequestHeader(header[0], header[1]))

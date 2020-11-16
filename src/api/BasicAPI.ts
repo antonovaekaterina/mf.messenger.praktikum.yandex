@@ -1,4 +1,4 @@
-export default class BasicAPI {
+export default abstract class BasicAPI {
     create() {}
 
     request() {}

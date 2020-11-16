@@ -12,19 +12,12 @@ export interface IAddUsersData {
 
 class ChatAPI extends BasicAPI {
     getChats() {
-        return chatHTTPInstance.get('', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return chatHTTPInstance.get('');
     }
 
     createChat(data:ICreateChatData) {
         return chatHTTPInstance.post('', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
@@ -36,28 +29,18 @@ class ChatAPI extends BasicAPI {
 
     addUsers(data: IAddUsersData) {
         return chatHTTPInstance.put('/users', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
     deleteUsers(data: IAddUsersData) {
         return chatHTTPInstance.delete('/users', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
     getUsers(id: number) {
-        return chatHTTPInstance.get(`/${id}/users`, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return chatHTTPInstance.get(`/${id}/users`);
     }
 }
 

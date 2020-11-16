@@ -1,4 +1,4 @@
-import {IAction, StateType} from "../core/Store/types";
+import {IAction, StateType} from "../types";
 import notification from "./notification.js";
 import modal from "./modal.js";
 import user from "./user.js";

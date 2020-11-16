@@ -1,4 +1,4 @@
-import Router from './core/Router/Router.js';
+import Router from './core/router/Router/Router.js';
 import LoginPage from './pages/LoginPage/LoginPage.js';
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.js";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.js";
@@ -6,7 +6,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage.js";
 import ChatPage from "./pages/ChatPage/ChatPage.js";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.js";
 import Store from "./core/Store/Store.js";
-import reducer from './reducers/index.js';
+import reducer from './core/Store/reducers/index.js';
 import {authServiceInstance} from "./services/authService.js";
 
 export const store = new Store(reducer);

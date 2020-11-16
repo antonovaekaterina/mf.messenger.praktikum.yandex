@@ -1,7 +1,11 @@
 import Block from "../../../components/Block/Block.js";
 import InputField from "../../../components/InputField/InputField.js";
 import Button from "../../../components/Button/Button.js";
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
+import {
+    createNestedComponent,
+    createRenderContent,
+    ICreateNestedComponent
+} from "../../../utils/render.js";
 import {IForm} from '../../../components/Form/types.js';
 
 export default class AddUserInnerForm extends Block<IForm> {

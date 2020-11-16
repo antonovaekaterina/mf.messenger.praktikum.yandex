@@ -1,22 +1,12 @@
 import {router} from '../src';
-import Route from "../src/core/Router/parts/Route/Route";
+import Route from "../src/core/router/Route/Route";
 import Block from "../src/components/Block/Block";
 import {createRenderContent} from "../src/utils/render";
-import Router from "../src/core/Router";
-
-
+import Router from "../src/core/router/Router";
 
 describe('Routing', () => {
     router.back();
-    /* Это хак - если так не сделать, то тест падает с ошибкой: "TypeError: _Route.default is not a constructor"
-    * в файле 'static/components/Router' на 30 строке.
-    * Думаю, это происходит потому, что внутри модуля Route импортируется Layout, который импортирует ModalPortal,
-    * который, в свою очередь, импортирует store из static/index.js.
-    * Модуль static/index.js исполняется и инициализирует Router,
-    * который внутри себя вызывает new Route (тестируемый компонент) и тест падает с ошибкой.
-    * Пробовала использовать mock для Layout и Router, ничего не помогает.
-    * Прокомментируйте, пожалуйста, как можно решить эту проблему.
-    * */
+
     function createRootContainer(rootClassName: string) {
         const root = document.createElement('div');
         root.classList.add(rootClassName);
@@ -39,10 +29,15 @@ describe('Routing', () => {
     }
 
     describe('Test Route Component', () => {
-        const routeInstance = new Route(pathname, Example, {}, rootSelector)
+        let routeInstance: Route<any> | null = null;
+
+        beforeEach(() => {
+            routeInstance?.leave();
+            routeInstance = new Route(pathname, Example, {}, rootSelector);
+        });
 
         afterAll(() => {
-            routeInstance.leave();
+            routeInstance?.leave();
         })
 
         test('constructor work correctly', () => {
@@ -50,25 +45,26 @@ describe('Routing', () => {
         });
 
         test('method .render append node in document', () => {
-            routeInstance.render();
+            routeInstance?.render();
             expect(document.getElementById('Example')).toBeTruthy();
         });
 
         test('method .match compare pathnames', () => {
-            expect(routeInstance.match('/test')).toBeFalsy();
-            expect(routeInstance.match(pathname)).toBeTruthy();
+            expect(routeInstance?.match('/test')).toBeFalsy();
+            expect(routeInstance?.match(pathname)).toBeTruthy();
         });
 
         test('method .leave remove node from document', () => {
-            routeInstance.leave();
+            routeInstance?.render();
+            routeInstance?.leave();
             expect(document.getElementById('Example')).toBeFalsy();
         });
 
         test('method .navigate check pathname and append node in document', () => {
-            routeInstance.navigate('/test');
+            routeInstance?.navigate('/test');
             expect(document.getElementById('Example')).toBeFalsy();
 
-            routeInstance.navigate(pathname);
+            routeInstance?.navigate(pathname);
             expect(document.getElementById('Example')).toBeTruthy();
         });
     })

@@ -1,4 +1,4 @@
-import {INotification} from "../../reducers/notification.js";
+import {INotification} from "../../core/Store/reducers/notification.js";
 
 export interface INotificationPortal {
     notifications?: INotification[]

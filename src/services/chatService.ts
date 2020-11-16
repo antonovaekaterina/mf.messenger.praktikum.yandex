@@ -1,12 +1,13 @@
 import {chatAPIInstance, IAddUsersData, ICreateChatData} from '../api/chatAPI.js';
 import {store} from '../index.js';
-import {openNotification} from "../actions/notification.js";
-import {setChats, setActiveChatUsers, setActiveChat} from "../actions/chat.js";
+import {openNotification} from "../core/Store/actions/notification.js";
+import {setChats, setActiveChatUsers, setActiveChat} from "../core/Store/actions/chat.js";
 import ChatType from "../types/ChatType.js";
 import UserType from "../types/UserType.js";
-import {closeModal} from "../actions/modal.js";
+import {closeModal} from "../core/Store/actions/modal.js";
+import Service from "./Service.js";
 
-class ChatService {
+class ChatService extends Service {
     createChat(data: ICreateChatData) {
         return chatAPIInstance.createChat(data)
             .then((result: any) => {
@@ -121,20 +122,6 @@ class ChatService {
                 store.dispatch(openNotification('RefreshChatAvatarErrorNotification', {text: err}))
                 console.error(err)
             })
-    }
-
-    hasError(status: number) {
-        return status !== 200;
-    }
-
-    makeErrorDescription(result: any) {
-        let reason: string | undefined;
-
-        if (result.response && (typeof result.response === 'string')) {
-            const response = JSON.parse(result.response)
-            reason = response.reason;
-        }
-        return new Error(`Ответ от сервера: ${result.status} | ${reason}`);
     }
 }
 

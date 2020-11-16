@@ -1,11 +1,12 @@
 import {authAPIInstance, ISignInData, ISignUpData} from "../api/authAPI.js";
 import {router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION} from "../index.js";
-import {setUser} from "../actions/auth.js";
-import {openNotification} from "../actions/notification.js";
+import {setUser} from "../core/Store/actions/auth.js";
+import {openNotification} from "../core/Store/actions/notification.js";
 import {chatServiceInstance} from "./chatService.js";
-import {setActiveChat, setChats} from "../actions/chat.js";
+import {setActiveChat, setChats} from "../core/Store/actions/chat.js";
+import Service from "./Service.js";
 
-class AuthService {
+class AuthService extends Service {
 
     signUp(data: ISignUpData) {
         return authAPIInstance.signUp(data)
@@ -110,20 +111,6 @@ class AuthService {
 
     isAuthPage() {
         return (window.location.pathname === ROUTE_LOGIN || window.location.pathname === ROUTE_REGISTRATION);
-    }
-
-    hasError(status: number) {
-        return status !== 200;
-    }
-
-    makeErrorDescription(result: any) {
-        let reason: string | undefined;
-
-        if (result.response && (typeof result.response === 'string')) {
-            const response = JSON.parse(result.response)
-            reason = response.reason;
-        }
-        return new Error(`Ответ от сервера: ${result.status} | ${reason}`);
     }
 }
 

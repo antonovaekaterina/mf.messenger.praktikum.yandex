@@ -1,5 +1,3 @@
-export interface ILoginPage {
-}
+export type LoginPageType = Record<string, any>;
 
-export interface ILoginForm {
-}
+export type LoginFormType = Record<string, any>;

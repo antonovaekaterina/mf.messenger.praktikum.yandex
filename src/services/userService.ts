@@ -1,9 +1,10 @@
 import {userAPIInstance, IProfileData, IPasswordData, ISearchData} from '../api/userAPI.js';
 import {store} from '../index.js';
-import {setUser} from "../actions/auth.js";
-import {openNotification} from "../actions/notification.js";
+import {setUser} from "../core/Store/actions/auth.js";
+import {openNotification} from "../core/Store/actions/notification.js";
+import Service from "./Service.js";
 
-class UserService {
+class UserService extends Service {
 
     refreshProfile(data: IProfileData) {
         return userAPIInstance.profile(data)
@@ -73,20 +74,6 @@ class UserService {
         const newUser = JSON.parse(result.response);
         const oldUser = store.getState().user;
         store.dispatch(setUser({...oldUser, ...newUser}));
-    }
-
-    hasError(status: number) {
-        return status !== 200;
-    }
-
-    makeErrorDescription(result: any) {
-        let reason: string | undefined;
-
-        if (result.response && (typeof result.response === 'string')) {
-            const response = JSON.parse(result.response)
-            reason = response.reason;
-        }
-        return new Error(`Ответ от сервера: ${result.status} | ${reason}`);
     }
 }
 

@@ -2,12 +2,12 @@ import Block from "../../../components/Block/Block.js";
 import Form from "../../../components/Form/Form.js";
 import LoginFormInner from "./LoginFormInner.js";
 import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
-import {ILoginForm} from '../type.js';
+import {LoginFormType} from '../type.js';
 import {authServiceInstance} from '../../../services/authService.js';
 import {ISignUpData} from '../../../api/authAPI.js';
 
-export default class LoginForm extends Block<ILoginForm> {
-    constructor(props: ILoginForm, className: string) {
+export default class LoginForm extends Block<LoginFormType> {
+    constructor(props: LoginFormType, className: string) {
         super(props, className);
     }
 

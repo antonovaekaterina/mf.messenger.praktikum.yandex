@@ -12,42 +12,28 @@ export interface ISignUpData {
 
 export interface ISignInData {
     login: string,
-    password: string,
+    password: string
 }
 
 class AuthAPI extends BasicAPI {
     signUp(data:ISignUpData) {
         return authHTTPInstance.post('/signup', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
     signIn(data:ISignInData) {
         return authHTTPInstance.post('/signin', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
     logout() {
-        return authHTTPInstance.post('/logout', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return authHTTPInstance.post('/logout');
     }
 
     getUser() {
-        return authHTTPInstance.get('/user', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        return authHTTPInstance.get('/user');
     }
 }
 

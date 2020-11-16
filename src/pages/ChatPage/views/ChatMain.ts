@@ -5,7 +5,7 @@ import {createNestedComponent, createRenderContent} from "../../../utils/render.
 import Form from "../../../components/Form/Form.js";
 import MessengerInnerForm from "../forms/MessengerInnerForm.js";
 import {store} from "../../../index.js";
-import {openModal} from "../../../actions/modal.js";
+import {openModal} from "../../../core/Store/actions/modal.js";
 import SettingsModal from "../modals/SettingsModal.js";
 
 export default class ChatMain extends Block<IChatMain> {

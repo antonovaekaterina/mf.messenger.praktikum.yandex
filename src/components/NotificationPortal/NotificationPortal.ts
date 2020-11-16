@@ -3,8 +3,8 @@ import {createNestedComponent, createRenderContent, ICreateNestedComponent} from
 import {INotificationPortal} from "./types.js";
 import {store} from "../../index.js";
 import Notification from "./views/Notification.js";
-import {INotification} from "../../reducers/notification.js";
-import {closeNotification} from "../../actions/notification.js";
+import {INotification} from "../../core/Store/reducers/notification.js";
+import {closeNotification} from "../../core/Store/actions/notification.js";
 
 export default class NotificationPortal extends Block<INotificationPortal> {
     constructor(props: INotificationPortal) {

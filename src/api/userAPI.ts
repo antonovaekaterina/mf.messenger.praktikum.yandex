@@ -26,19 +26,13 @@ export interface ISearchData {
 class UserAPI extends BasicAPI {
     profile(data:IProfileData) {
         return userHTTPInstance.put('/profile', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
     password(data:IPasswordData) {
         return userHTTPInstance.put('/password', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 
@@ -53,10 +47,7 @@ class UserAPI extends BasicAPI {
 
     search(data: ISearchData) {
         return userHTTPInstance.post('/search', {
-            data: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: JSON.stringify(data)
         });
     }
 }

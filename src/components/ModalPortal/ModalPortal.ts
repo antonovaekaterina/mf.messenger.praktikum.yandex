@@ -3,8 +3,8 @@ import {createNestedComponent, createRenderContent, ICreateNestedComponent} from
 import {IModalPortal} from "./types.js";
 import {store} from "../../index.js";
 import Modal from "./views/Modal.js";
-import {IModal} from "../../reducers/modal.js";
-import {closeModal} from "../../actions/modal.js";
+import {IModal} from "../../core/Store/reducers/modal.js";
+import {closeModal} from "../../core/Store/actions/modal.js";
 
 export default class ModalPortal extends Block<IModalPortal> {
     constructor(props: IModalPortal) {

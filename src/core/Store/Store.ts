@@ -9,7 +9,7 @@ export default class Store {
     private reducer: ReducerType
 
     static EVENTS = {
-        STORE_UPDATE: 'store-did-update'
+        STORE_UPDATE: 'Store-did-update'
     }
 
     constructor(reducer: ReducerType, initialState: StateType = {}) {

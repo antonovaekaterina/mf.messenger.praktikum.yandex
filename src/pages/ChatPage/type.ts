@@ -1,6 +1,6 @@
 import {IUser} from "../../components/User/type.js";
 import {IMessage} from "../../components/Message/type.js";
-import {IActiveChatState} from "../../reducers/chats.js";
+import {IActiveChatState} from "../../core/Store/reducers/chats.js";
 import ChatType from "../../types/ChatType.js";
 import {IModalProps} from "../../components/ModalPortal/types.js";
 import UserType from "../../types/UserType";

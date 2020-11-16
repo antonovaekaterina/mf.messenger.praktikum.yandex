@@ -1,6 +1,6 @@
-import Block from "../../../../components/Block/Block.js";
-import renderDOM, {unmountDOM} from "../../../../utils/render.js";
-import Layout from "../../../../components/Layout/Layout.js";
+import Block from "../../../components/Block/Block.js";
+import renderDOM, {unmountDOM} from "../../../utils/render.js";
+import Layout from "../../../components/Layout/Layout.js";
 
 export default class Route<T extends Block<any>> {
     private _pathname: string;

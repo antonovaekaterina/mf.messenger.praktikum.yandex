@@ -16,7 +16,7 @@ export default class Block<T extends Record<string, any>> {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_RENDER: 'flow:render',
-        FLOW_CDU: 'flow:component-did-update',
+        FLOW_CDU: 'flow:component-did-update'
     };
 
     constructor(props: T, className?: any) {
@@ -30,12 +30,11 @@ export default class Block<T extends Record<string, any>> {
     }
 
     private makePropsProxy(props: T): T {
-        const self = this;
         return new Proxy(props, {
-            set(target: any, name: string, value: any) {
+            set: (target: any, name: string, value: any) => {
                 const oldProps = {...target};
                 target[name] = value;
-                self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, target);
+                this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, target);
                 return true;
             },
             deleteProperty() {
@@ -105,7 +104,7 @@ export default class Block<T extends Record<string, any>> {
         const doc = new DOMParser().parseFromString(this.content.html, "text/html");
         const newDomTree = this.createDOMTreeFromDOM(doc.body).childNodes;
 
-        if (!this.currentDomTree.length) {
+        if (this.currentDomTree.length === 0) {
             this.fragment.innerHTML = this.content.html;
 
             const nestedComponentsElements: HTMLElement[] = Array.from(this.fragment.querySelectorAll('.component'));
@@ -121,7 +120,7 @@ export default class Block<T extends Record<string, any>> {
 
                 let componentNodes = nestedComponent.getFragment();
 
-                nestedElement.replaceWith(componentNodes)
+                nestedElement.replaceWith(componentNodes);
             });
 
         } else {
@@ -241,11 +240,10 @@ export default class Block<T extends Record<string, any>> {
     private createDOMTreeFromDOM(domElement: any): IVirtualNode {
         const elementAttributes = Array.from(domElement.attributes);
 
-        //@ts-ignore
-        const attributes: IAttribute = elementAttributes.reduce((acc: IAttribute, attribute: Attr):IAttribute => {
+        const attributes: IAttribute = elementAttributes.reduce((acc: IAttribute, attribute: Attr): IAttribute => {
             acc[attribute.name] = attribute.value;
             return acc;
-        }, {} as IAttribute);
+        }, {}) as IAttribute;
 
         const DOMTree: IVirtualNode = {
             nodeTypeCode: 'node',
