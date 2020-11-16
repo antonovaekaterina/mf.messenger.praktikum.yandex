@@ -1,0 +1,82 @@
+@import 'src/styles/variables.scss';
+@import 'src/styles/fonts.scss';
+@import 'src/styles/reset.scss';
+
+body {
+  font-family: 'Raleway', sans-serif;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+a {
+  display: inline-block;
+  color: $secondary-text;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button, input[type='submit'], .btn {
+  background: $lavender;
+  border: 1px solid $purple;
+  padding: 10px 25px;
+  color: $light-text;
+  font-size: 16px;
+  transition: background-color $short-effect;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: $purple;
+  }
+
+  &:active {
+    background: $fuchsia;
+  }
+
+  &.Icon {
+    padding: 0;
+    border: none;
+    transition: opacity $short-effect;
+
+    &:hover {
+      background-color: $pink-layout;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: $opacity;
+    }
+
+    &:active {
+      background-color: $pink-layout;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+.Icon {
+  background-color: $pink-layout;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 36px;
+}

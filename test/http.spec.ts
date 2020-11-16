@@ -1,4 +1,4 @@
-import HTTP from "../static/components/HTTP";
+import HTTP from "../src/components/HTTP";
 
 describe('HTTP', () => {
     const httpInstance = new HTTP();

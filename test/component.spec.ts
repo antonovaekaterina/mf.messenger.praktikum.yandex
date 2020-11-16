@@ -1,5 +1,5 @@
-import Block from "../static/components/Block/Block";
-import {createRenderContent} from "../static/utils/render";
+import Block from "../src/components/Block/Block";
+import {createRenderContent} from "../src/utils/render";
 
 describe('Component', () => {
     class Example extends Block<any> {
