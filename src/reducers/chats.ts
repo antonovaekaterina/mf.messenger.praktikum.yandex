@@ -1,5 +1,5 @@
 import ChatType from "../types/ChatType.js";
-import {IAction} from "../components/Store/types.js";
+import {IAction} from "../core/Store/types.js";
 import {TYPE_SET_ACTIVE_CHAT_USERS, TYPE_SET_CHATS, TYPE_SET_ACTIVE_CHAT} from "../actions/chat.js";
 import UserType from "../types/UserType.js";
 

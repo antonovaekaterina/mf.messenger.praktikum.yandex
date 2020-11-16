@@ -1,8 +1,8 @@
 import {router} from '../src';
-import Route from "../src/components/Route/Route";
+import Route from "../src/core/Router/parts/Route/Route";
 import Block from "../src/components/Block/Block";
 import {createRenderContent} from "../src/utils/render";
-import Router from "../src/components/Router";
+import Router from "../src/core/Router";
 
 
 

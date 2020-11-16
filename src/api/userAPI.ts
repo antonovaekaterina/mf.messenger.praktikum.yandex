@@ -1,5 +1,5 @@
 import BasicAPI from "./BasicAPI.js";
-import {userHTTPInstance} from "../components/HTTP/HTTP.js";
+import {userHTTPInstance} from "./HTTP/HTTP.js";
 
 export interface IProfileData {
     first_name: string,

@@ -1,5 +1,5 @@
 import {TYPE_CLOSE_MODAL, TYPE_OPEN_MODAL} from "../actions/modal.js";
-import {IAction} from '../components/Store/types.js';
+import {IAction} from '../core/Store/types.js';
 import {ComponentType} from "../components/Block/types.js";
 
 export interface IModal {

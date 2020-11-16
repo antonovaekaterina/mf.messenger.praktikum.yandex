@@ -1,4 +1,4 @@
-import {IAction} from '../components/Store/types.js';
+import {IAction} from '../core/Store/types.js';
 import {TYPE_SET_USER} from "../actions/auth.js";
 import UserType from "../types/UserType.js";
 

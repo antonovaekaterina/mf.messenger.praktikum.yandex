@@ -1,4 +1,4 @@
-import EventBus from '../EventBus/index.js';
+import EventBus from '../../core/EventBus/index.js';
 import {IRenderContent} from '../../utils/render.js'
 import {IAttribute, IVirtualNode} from './types.js';
 import isEqual from "../../utils/isEqual.js";

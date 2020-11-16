@@ -1,5 +1,5 @@
-import Route from "../Route/Route.js";
-import Block from "../Block/Block.js";
+import Route from "./parts/Route/Route.js";
+import Block from "../../components/Block/Block.js";
 
 export default class Router {
     private static __instance: Router;
