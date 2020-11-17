@@ -1,6 +1,6 @@
-import {TYPE_CLOSE_MODAL, TYPE_OPEN_MODAL} from "../actions/modal.js";
+import {TYPE_CLOSE_MODAL, TYPE_OPEN_MODAL} from '../actions/modal.js';
 import {IAction} from '../types.js';
-import {ComponentType} from "../../../components/Block/types.js";
+import {ComponentType} from '../../../components/Block/types.js';
 
 export interface IModal {
     id: string | number,

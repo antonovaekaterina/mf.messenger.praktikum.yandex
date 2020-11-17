@@ -1,5 +1,5 @@
-import IUser from "../../types/UserType.js";
-import {IForm} from "../../components/Form/types.js";
+import IUser from '../../types/UserType.js';
+import {IForm} from '../../components/Form/types.js';
 
 export interface IProfilePageProps {
 

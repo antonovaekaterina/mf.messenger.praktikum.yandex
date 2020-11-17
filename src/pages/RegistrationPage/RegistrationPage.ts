@@ -1,6 +1,6 @@
-import Block from "../../components/Block/Block.js";
-import RegistrationForm from "./views/RegistrationForm.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
+import Block from '../../components/Block/Block.js';
+import RegistrationForm from './views/RegistrationForm.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
 import {IRegistrationPage} from './type.js';
 
 export default class RegistrationPage extends Block<IRegistrationPage> {
@@ -16,9 +16,9 @@ export default class RegistrationPage extends Block<IRegistrationPage> {
 
     render() {
         const source:string = (
-            `<section class="RegistrationPage">
-                <div class="container-fluid">
-                    <span class="component" id="registrationForm"></span>
+            `<section class='RegistrationPage'>
+                <div class='container-fluid'>
+                    <span class='component' id='registrationForm'></span>
                 </div>
             </section>`
         );

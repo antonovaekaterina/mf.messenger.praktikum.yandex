@@ -1,5 +1,5 @@
-import BasicAPI from "./BasicAPI.js";
-import {chatHTTPInstance} from "./HTTP/HTTP.js";
+import BasicAPI from './BasicAPI.js';
+import {chatHTTPInstance} from './HTTP/HTTP.js';
 
 export interface ICreateChatData {
     title: string,
@@ -12,7 +12,7 @@ export interface IAddUsersData {
 
 class ChatAPI extends BasicAPI {
     getChats() {
-        return chatHTTPInstance.get('');
+        return chatHTTPInstance.get();
     }
 
     createChat(data:ICreateChatData) {
@@ -23,7 +23,7 @@ class ChatAPI extends BasicAPI {
 
     avatar(formData: any) {
         return chatHTTPInstance.put('/avatar', {
-            data: formData,
+            data: formData
         });
     }
 

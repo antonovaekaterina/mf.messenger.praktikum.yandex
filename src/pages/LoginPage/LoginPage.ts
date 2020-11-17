@@ -1,6 +1,6 @@
-import Block from "../../components/Block/Block.js";
-import LoginForm from "./views/LoginForm.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
+import Block from '../../components/Block/Block.js';
+import LoginForm from './views/LoginForm.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
 import {LoginPageType} from './type.js';
 
 export default class LoginPage extends Block<LoginPageType> {
@@ -16,9 +16,9 @@ export default class LoginPage extends Block<LoginPageType> {
 
     render() {
         const source:string = (
-            `<section class="LoginPage">
-                <div class="container-fluid">
-                    <span class="component" id="loginForm"></span>
+            `<section class='LoginPage'>
+                <div class='container-fluid'>
+                    <span class='component' id='loginForm'></span>
                 </div>
             </section>`
         );

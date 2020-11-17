@@ -1,12 +1,12 @@
-import Block from "../../../components/Block/Block.js";
+import Block from '../../../components/Block/Block.js';
 import {IChatMain} from '../type.js';
-import User from "../../../components/User/User.js";
-import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
-import Form from "../../../components/Form/Form.js";
-import MessengerInnerForm from "../forms/MessengerInnerForm.js";
-import {store} from "../../../index.js";
-import {openModal} from "../../../core/Store/actions/modal.js";
-import SettingsModal from "../modals/SettingsModal.js";
+import User from '../../../components/User/User.js';
+import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
+import Form from '../../../components/Form/Form.js';
+import MessengerInnerForm from '../forms/MessengerInnerForm.js';
+import {store} from '../../../index.js';
+import {openModal} from '../../../core/Store/actions/modal.js';
+import SettingsModal from '../modals/SettingsModal.js';
 
 export default class ChatMain extends Block<IChatMain> {
 
@@ -57,17 +57,17 @@ export default class ChatMain extends Block<IChatMain> {
     
     render() {
         const source:string = (
-            `<main class="ChatMain">
+            `<main class='ChatMain'>
                 {{#if activeChat.id}}
-                    <div class="ChatMain__personal-info">
-                        <span class="component" id="activeChatInfo"></span>
-                        <button class="Icon ChatMain__settings" title="Настройки чата"></button>
+                    <div class='ChatMain__personal-info'>
+                        <span class='component' id='activeChatInfo'></span>
+                        <button class='Icon ChatMain__settings' title='Настройки чата'></button>
                     </div>
                 {{/if}}
-                <div class="ChatMain__messenger {{#if activeChat.id}}{{else}}ChatMain__messenger--empty{{/if}}">
+                <div class='ChatMain__messenger {{#if activeChat.id}}{{else}}ChatMain__messenger--empty{{/if}}'>
                     {{#if activeChat.id}}
-                        <div class="ChatMain__messenger-window"></div>
-                        <span class="component" id="chatForm"></span>
+                        <div class='ChatMain__messenger-window'></div>
+                        <span class='component' id='chatForm'></span>
                      {{else}}
                         <p>Выберите чат, чтобы отправить сообщение</p>
                      {{/if}}

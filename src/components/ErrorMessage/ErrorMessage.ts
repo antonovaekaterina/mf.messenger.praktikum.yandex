@@ -1,7 +1,7 @@
-import Block from "../../components/Block/Block.js";
+import Block from '../../components/Block/Block.js';
 import {IErrorMessage} from './type.js'
-import {createRenderContent} from "../../utils/render.js";
-import {ROOT, router} from "../../index.js";
+import {createRenderContent} from '../../utils/render.js';
+import {ROOT, router} from '../../index.js';
 
 export default class ErrorMessage extends Block<IErrorMessage> {
     constructor(props: IErrorMessage) {
@@ -24,15 +24,15 @@ export default class ErrorMessage extends Block<IErrorMessage> {
 
     render() {
         const source:string = (
-            `<div class="ErrorMessage {{errorType}}">
-                <div class="ErrorMessage__img">
-                    <div class="ErrorMessage__img-code">{{imgText}}</div>
-                    <div class="ErrorMessage__img-icon"></div>
+            `<div class='ErrorMessage {{errorType}}'>
+                <div class='ErrorMessage__img'>
+                    <div class='ErrorMessage__img-code'>{{imgText}}</div>
+                    <div class='ErrorMessage__img-icon'></div>
                 </div>
-                <div class="ErrorMessage__info">
+                <div class='ErrorMessage__info'>
                     <h3>{{title}}</h3>
                     <p>{{subtitle}}</p>
-                    <a class="btn ErrorMessage__back-btn" href="#">Вернуться к чатам</a>
+                    <a class='btn ErrorMessage__back-btn' href='#'>Вернуться к чатам</a>
                 </div>
             </div>`
         );

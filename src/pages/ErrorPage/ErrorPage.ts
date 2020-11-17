@@ -1,7 +1,7 @@
-import Block from "../../components/Block/Block.js";
+import Block from '../../components/Block/Block.js';
 import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.js";
-import Header from "../../components/Header/Header.js";
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.js';
+import Header from '../../components/Header/Header.js';
 import {IErrorPage} from './type.js';
 
 export default class ErrorPage extends Block<IErrorPage> {
@@ -25,11 +25,11 @@ export default class ErrorPage extends Block<IErrorPage> {
 
     render() {
         const source:string = (
-            `<span class="component" id="header"></span>
-            <section class="ErrorPage">
-                <div class="container-fluid">
-                    <div class="ErrorPage__wrap">
-                        <span class="component" id="errorMessage"></span>
+            `<span class='component' id='header'></span>
+            <section class='ErrorPage'>
+                <div class='container-fluid'>
+                    <div class='ErrorPage__wrap'>
+                        <span class='component' id='errorMessage'></span>
                     </div>
                 </div>
             </section>`

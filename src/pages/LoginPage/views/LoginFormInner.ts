@@ -1,9 +1,9 @@
-import Block from "../../../components/Block/Block.js";
-import InputField from "../../../components/InputField/InputField.js";
-import Button from "../../../components/Button/Button.js";
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
+import Block from '../../../components/Block/Block.js';
+import InputField from '../../../components/InputField/InputField.js';
+import Button from '../../../components/Button/Button.js';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
 import {IForm} from '../../../components/Form/types.js';
-import {ROUTE_REGISTRATION, router} from "../../../index.js";
+import {ROUTE_REGISTRATION, router} from '../../../index.js';
 
 export default class LoginFormInner extends Block<IForm> {
     constructor(props: IForm) {
@@ -50,13 +50,13 @@ export default class LoginFormInner extends Block<IForm> {
 
     render() {
         const source = (
-            `<div class="LoginFormInner">
+            `<div class='LoginFormInner'>
                 {{#each fields}}
-                    <span class="component" id="inputList" data-index="{{@index}}"></span>
+                    <span class='component' id='inputList' data-index="{{@index}}"></span>
                 {{/each}}
-                <a href="#" class="LoginFormInner__forgot-password">Забыли пароль?</a>
-                <span class="component" id="button"></span>
-                <a class="LoginFormInner__sigh-in" href="#">Зарегистрироваться</a>
+                <a href='#' class='LoginFormInner__forgot-password'>Забыли пароль?</a>
+                <span class='component' id='button'></span>
+                <a class='LoginFormInner__sigh-in' href='#'>Зарегистрироваться</a>
             </div>`
         );
 

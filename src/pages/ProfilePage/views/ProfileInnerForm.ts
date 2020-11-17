@@ -1,8 +1,8 @@
-import Block from "../../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
-import Button from "../../../components/Button/Button.js";
-import InputField from "../../../components/InputField/InputField.js";
-import {store} from "../../../index.js";
+import Block from '../../../components/Block/Block.js';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
+import Button from '../../../components/Button/Button.js';
+import InputField from '../../../components/InputField/InputField.js';
+import {store} from '../../../index.js';
 import {IProfileInnerForm} from '../type.js'
 
 export default class ProfileInnerForm extends Block<IProfileInnerForm> {

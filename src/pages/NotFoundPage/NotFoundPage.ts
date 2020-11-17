@@ -1,7 +1,7 @@
-import Block from "../../components/Block/Block.js";
+import Block from '../../components/Block/Block.js';
 import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import Header from "../../components/Header/Header.js";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.js";
+import Header from '../../components/Header/Header.js';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.js';
 import {INotFoundPage} from './type.js'
 
 export default class NotFoundPage extends Block<INotFoundPage> {
@@ -26,11 +26,11 @@ export default class NotFoundPage extends Block<INotFoundPage> {
 
     render() {
         const source:string = (
-            `<span class="component" id="header"></span>
-            <section class="NotFoundPage">
-                <div class="container-fluid">
-                    <div class="NotFoundPage__wrap">
-                        <span class="component" id="errorMessage"></span>
+            `<span class='component' id='header'></span>
+            <section class='NotFoundPage'>
+                <div class='container-fluid'>
+                    <div class='NotFoundPage__wrap'>
+                        <span class='component' id='errorMessage'></span>
                     </div>
                 </div>
             </section>`

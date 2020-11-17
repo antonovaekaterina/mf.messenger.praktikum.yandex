@@ -1,12 +1,12 @@
-import Block from "../../../components/Block/Block.js";
-import ChatItem from "./ChatItem.js";
+import Block from '../../../components/Block/Block.js';
+import ChatItem from './ChatItem.js';
 import {IChatList} from '../type.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../../utils/render.js";
-import Form from "../../../components/Form/Form.js";
-import SearchInnerForm from "../forms/SearchInnerForm.js";
-import {store} from "../../../index.js";
-import {openModal} from "../../../core/Store/actions/modal.js";
-import CreateChatModal from "../modals/CreateChatModal.js";
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
+import Form from '../../../components/Form/Form.js';
+import SearchInnerForm from '../forms/SearchInnerForm.js';
+import {store} from '../../../index.js';
+import {openModal} from '../../../core/Store/actions/modal.js';
+import CreateChatModal from '../modals/CreateChatModal.js';
 
 export default class ChatsList extends Block<IChatList> {
     constructor(props: IChatList) {
@@ -96,16 +96,16 @@ export default class ChatsList extends Block<IChatList> {
 
     render() {
         const source:string = (
-            `<aside class="ChatsList">
-                <div class="ChatsList__search-dialogs">
-                    <span class="component" id="searchForm"></span>
+            `<aside class='ChatsList'>
+                <div class='ChatsList__search-dialogs'>
+                    <span class='component' id='searchForm'></span>
                 </div>
-                <div class="ChatsList__list">
+                <div class='ChatsList__list'>
                     {{#each chatList}}
-                        <span class="component" id="chats" data-index="{{@index}}"></span>
+                        <span class='component' id='chats' data-index='{{@index}}'></span>
                     {{/each}}
                 </div>
-                <button class="ChatsList__add-dialog-btn Icon" title="Добавить контакт"></button>
+                <button class='ChatsList__add-dialog-btn Icon' title='Добавить контакт'></button>
             </aside>`
         );
 

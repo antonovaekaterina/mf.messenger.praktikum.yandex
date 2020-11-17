@@ -1,13 +1,13 @@
-import Block from "../../../components/Block/Block.js";
+import Block from '../../../components/Block/Block.js';
 import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IAddUsersModal} from "../type.js";
-import Form from "../../../components/Form/Form.js";
-import {userServiceInstance} from "../../../services/userService.js";
-import {ISearchData} from "../../../api/userAPI.js";
-import AddUserInnerForm from "../forms/AddUserInnerForm.js";
-import User from "../../../components/User/User.js";
-import {store} from "../../../index.js";
-import {chatServiceInstance} from "../../../services/chatService.js";
+import {IAddUsersModal} from '../type.js';
+import Form from '../../../components/Form/Form.js';
+import {userServiceInstance} from '../../../services/userService.js';
+import {ISearchData} from '../../../api/userAPI.js';
+import AddUserInnerForm from '../forms/AddUserInnerForm.js';
+import User from '../../../components/User/User.js';
+import {store} from '../../../index.js';
+import {chatServiceInstance} from '../../../services/chatService.js';
 
 export default class AddUserModal extends Block<IAddUsersModal> {
     constructor(props: IAddUsersModal) {
@@ -117,15 +117,15 @@ export default class AddUserModal extends Block<IAddUsersModal> {
 
     render() {
         const source:string = (
-            `<div class="AddUserModal">
+            `<div class='AddUserModal'>
                 <h1>Добавить пользователей в чат</h1>
-                <span class="component" id="form"></span>
-                    <div class="AddUserModal__users-wrap">
+                <span class='component' id='form'></span>
+                    <div class='AddUserModal__users-wrap'>
                         {{#if foundUsers}}
                            {{#each foundUsers}}
-                             <div class="AddUserModal__user">
-                                <span class="component" id="users" data-index="{{@index}}"></span>
-                                <a class="AddUserModal__add-btn" href="#" data-user-id="{{this.id}}">Добавить</a>
+                             <div class='AddUserModal__user'>
+                                <span class='component' id='users' data-index='{{@index}}'></span>
+                                <a class='AddUserModal__add-btn' href='#' data-user-id='{{this.id}}'>Добавить</a>
                             </div>
                            {{/each}}
                        {{/if}}

@@ -1,7 +1,7 @@
-import Block from "../../components/Block/Block.js";
-import ButtonView from "./ButtonView.js";
-import {IButtonProps} from "./types.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
+import Block from '../../components/Block/Block.js';
+import ButtonView from './ButtonView.js';
+import {IButtonProps} from './types.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
 
 export default class Button extends Block<IButtonProps> {
     constructor(props: IButtonProps) {
@@ -15,7 +15,7 @@ export default class Button extends Block<IButtonProps> {
     }
 
     render() {
-        const source:string = '<span class="component" id="buttonView"></span>';
+        const source:string = `<span class='component' id='buttonView'></span>`;
 
         return createRenderContent(source, this.props);
     }

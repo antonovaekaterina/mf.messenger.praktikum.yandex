@@ -1,4 +1,4 @@
-import HTTP, {METHODS} from "../src/api/HTTP/HTTP";
+import HTTP, {METHODS} from '../src/api/HTTP/HTTP';
 
 describe('HTTP', () => {
     let httpInstance: null | HTTP;

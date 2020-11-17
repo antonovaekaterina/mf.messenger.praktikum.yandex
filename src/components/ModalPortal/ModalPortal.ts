@@ -1,10 +1,10 @@
-import Block from "../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../utils/render.js";
-import {IModalPortal} from "./types.js";
-import {store} from "../../index.js";
-import Modal from "./views/Modal.js";
-import {IModal} from "../../core/Store/reducers/modal.js";
-import {closeModal} from "../../core/Store/actions/modal.js";
+import Block from '../../components/Block/Block.js';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render.js';
+import {IModalPortal} from './types.js';
+import {store} from '../../index.js';
+import Modal from './views/Modal.js';
+import {IModal} from '../../core/Store/reducers/modal.js';
+import {closeModal} from '../../core/Store/actions/modal.js';
 
 export default class ModalPortal extends Block<IModalPortal> {
     constructor(props: IModalPortal) {
@@ -14,11 +14,14 @@ export default class ModalPortal extends Block<IModalPortal> {
     createNestedComponents() {
         this.nestedComponents = {
             modalsList: (this.props.modals || []).map((_modal:IModal, index: number) => createNestedComponent(Modal, () => {
-                // @ts-ignore
-                const modalItem = this.props.modals[index];
+                const modalItem = this.props.modals?.[index];
                 return {
                     modal: modalItem,
-                    onClose: () => store.dispatch(closeModal(modalItem.id))
+                    onClose: () => {
+                        if (modalItem) {
+                            store.dispatch(closeModal(modalItem.id))
+                        }
+                    }
                 }
             })),
         }
@@ -84,9 +87,9 @@ export default class ModalPortal extends Block<IModalPortal> {
 
     render() {
         const source:string = (
-            `<div class="ModalPortal">
+            `<div class='ModalPortal'>
                 {{#each modals}}
-                    <span class="component" id="modalsList" data-index="{{@index}}"></span>
+                    <span class='component' id='modalsList' data-index='{{@index}}'></span>
                 {{/each}}
             </div>`
         );

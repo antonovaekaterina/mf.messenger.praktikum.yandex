@@ -1,8 +1,8 @@
 import {router} from '../src';
-import Route from "../src/core/router/Route/Route";
-import Block from "../src/components/Block/Block";
-import {createRenderContent} from "../src/utils/render";
-import Router from "../src/core/router/Router";
+import Route from '../src/core/router/Route/Route';
+import Block from '../src/components/Block/Block';
+import {createRenderContent} from '../src/utils/render';
+import Router from '../src/core/router/Router';
 
 describe('Routing', () => {
     router.back();
@@ -21,7 +21,7 @@ describe('Routing', () => {
     class Example extends Block<any> {
         render() {
             const source:string = (
-                `<div id="Example">Example</div>`
+                `<div id='Example'>Example</div>`
             );
 
             return createRenderContent(source, this.props);
