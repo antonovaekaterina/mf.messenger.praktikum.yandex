@@ -1,2 +1,2 @@
-import RegistrationPage from "./RegistrationPage.js";
+import RegistrationPage from './RegistrationPage.js';
 export default RegistrationPage;

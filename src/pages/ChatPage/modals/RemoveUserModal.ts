@@ -1,9 +1,9 @@
-import Block from "../../../components/Block/Block.js";
+import Block from '../../../components/Block/Block.js';
 import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IRemoveUsersModal} from "../type.js";
-import User from "../../../components/User/User.js";
-import {store} from "../../../index.js";
-import {chatServiceInstance} from "../../../services/chatService.js";
+import {IRemoveUsersModal} from '../type.js';
+import User from '../../../components/User/User.js';
+import {store} from '../../../index.js';
+import {chatServiceInstance} from '../../../services/chatService.js';
 
 export default class RemoveUserModal extends Block<IRemoveUsersModal> {
 
@@ -95,13 +95,13 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
 
     render() {
         const source:string = (
-            `<div class="RemoveUserModal">
+            `<div class='RemoveUserModal'>
                 <h1>Удалить пользователей из чата</h1>
                     {{#if activeChat.users}}
                         {{#each activeChat.users}}
-                            <div class="RemoveUserModal__user">
-                                <span class="component" id="users" data-index="{{@index}}"></span>
-                                <a class="RemoveUserModal__removing-btn" href="#" data-user-id="{{this.id}}">Удалить</a>
+                            <div class='RemoveUserModal__user'>
+                                <span class='component' id='users' data-index='{{@index}}'></span>
+                                <a class='RemoveUserModal__removing-btn' href='#' data-user-id='{{this.id}}'>Удалить</a>
                             </div>
                         {{/each}}
                     {{/if}}

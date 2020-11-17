@@ -48,7 +48,9 @@
     border-radius: 50%;
     color: $crimson;
     font-weight: 700;
-    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), $chat-layout;
+    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+      $chat-layout;
   }
 
   &__img-icon {
@@ -61,7 +63,9 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), $chat-layout;
+    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+      $chat-layout;
 
     &:after {
       content: '';

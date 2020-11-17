@@ -1,4 +1,4 @@
-import {IOptions} from "./types.js";
+import {IOptions} from './types.js';
 
 export const METHODS = {
     GET: 'GET',
@@ -14,23 +14,23 @@ export default class HTTPTransport {
         this.prefix = prefix;
     }
 
-    get(url: string, options: IOptions = {}) {
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+    get(url: string = '', options: IOptions = {}) {
+        return this.request(url, {...options, method: METHODS.GET as 'GET'}, options.timeout);
     };
 
-    put(url: string, options: IOptions = {}) {
-        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+    put(url: string = '', options: IOptions = {}) {
+        return this.request(url, {...options, method: METHODS.PUT as 'PUT'}, options.timeout);
     };
 
-    post(url: string, options: IOptions = {}) {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+    post(url: string = '', options: IOptions = {}) {
+        return this.request(url, {...options, method: METHODS.POST as 'POST'}, options.timeout);
     };
 
-    delete(url: string, options: IOptions = {}) {
-        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+    delete(url: string = '', options: IOptions = {}) {
+        return this.request(url, {...options, method: METHODS.DELETE as 'DELETE'}, options.timeout);
     };
 
-    request(url: string, options: IOptions = {}, timeout = 5000) {
+    request(url: string = '', options: IOptions = {}, timeout = 5000) {
         const {headers, data, method = METHODS.GET} = options;
 
         if (this.prefix) {

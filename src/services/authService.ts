@@ -1,10 +1,10 @@
-import {authAPIInstance, ISignInData, ISignUpData} from "../api/authAPI.js";
-import {router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION} from "../index.js";
-import {setUser} from "../core/Store/actions/auth.js";
-import {openNotification} from "../core/Store/actions/notification.js";
-import {chatServiceInstance} from "./chatService.js";
-import {setActiveChat, setChats} from "../core/Store/actions/chat.js";
-import Service from "./Service.js";
+import {authAPIInstance, ISignInData, ISignUpData} from '../api/authAPI.js';
+import {router, store, ROOT, ROUTE_LOGIN, ROUTE_REGISTRATION} from '../index.js';
+import {setUser} from '../core/Store/actions/auth.js';
+import {openNotification} from '../core/Store/actions/notification.js';
+import {chatServiceInstance} from './chatService.js';
+import {setActiveChat, setChats} from '../core/Store/actions/chat.js';
+import Service from './Service.js';
 
 class AuthService extends Service {
 

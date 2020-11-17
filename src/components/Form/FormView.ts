@@ -1,6 +1,6 @@
 import {IForm} from './types.js';
-import Block from "../Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
+import Block from '../Block/Block.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
 
 export default class FormView extends Block<IForm> {
     constructor(props: IForm) {
@@ -22,8 +22,8 @@ export default class FormView extends Block<IForm> {
 
     render() {
         const source:string = (
-            `<form name="{{name}}">
-                <span class="component" id="formInner"></span>
+            `<form name='{{name}}'>
+                <span class='component' id='formInner'></span>
             </form>`
         );
 

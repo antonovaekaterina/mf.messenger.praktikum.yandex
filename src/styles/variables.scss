@@ -18,6 +18,10 @@ $black: #000000;
 $short-effect: ease 0.15s;
 $opacity: 0.8;
 
+//z-index
+$zindex-modal: 1000;
+$zindex-popover: 1020;
+
 //mixins
 @mixin placeholder {
   &::-webkit-input-placeholder {@content}

@@ -1,5 +1,5 @@
-import Block from "../src/components/Block/Block";
-import {createRenderContent} from "../src/utils/render";
+import Block from '../src/components/Block/Block';
+import {createRenderContent} from '../src/utils/render';
 
 describe('Component', () => {
     class Example extends Block<any> {
@@ -15,7 +15,7 @@ describe('Component', () => {
         render() {
             this.props.renderCallback();
             const source:string = (
-                `<div class="Example">{{text}}</div>`
+                `<div class='Example'>{{text}}</div>`
             );
 
             return createRenderContent(source, this.props);

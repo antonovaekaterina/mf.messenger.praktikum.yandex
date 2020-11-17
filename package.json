@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node server.js",
     "start": "node createDist && tsc --build && node-sass src/index.scss dist/index.css",
-    "build": "npm install && node createDist && tsc --build && node-sass src/index.scss dist/index.css",
+    "build": "npm install && npm run start",
     "test": "jest"
   },
   "repository": {

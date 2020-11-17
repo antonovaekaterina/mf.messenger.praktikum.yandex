@@ -1,7 +1,7 @@
 import EventBus from '../../core/EventBus/index.js';
 import {IRenderContent} from '../../utils/render.js'
 import {IAttribute, IVirtualNode} from './types.js';
-import isEqual from "../../utils/isEqual.js";
+import isEqual from '../../utils/isEqual.js';
 
 export default class Block<T extends Record<string, any>> {
     private fragment: HTMLElement;
@@ -101,7 +101,7 @@ export default class Block<T extends Record<string, any>> {
     private _render(): void {
         this.content = this.render();
 
-        const doc = new DOMParser().parseFromString(this.content.html, "text/html");
+        const doc = new DOMParser().parseFromString(this.content.html, 'text/html');
         const newDomTree = this.createDOMTreeFromDOM(doc.body).childNodes;
 
         if (this.currentDomTree.length === 0) {
@@ -137,10 +137,10 @@ export default class Block<T extends Record<string, any>> {
             const newEl = newDomTree[k];
             if (curEl) {
                 switch (curEl.nodeTypeCode) {
-                    case "node":
+                    case 'node':
                         this.applyChangesForElement(curEl,newEl,documentFragmentNode.childNodes[k]);
                         break;
-                    case "text":
+                    case 'text':
                         this.applyChangesForTextNode(curEl,newEl,documentFragmentNode.childNodes[k]);
                         break;
                     default:

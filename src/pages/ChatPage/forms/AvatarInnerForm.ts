@@ -1,8 +1,8 @@
-import Block from "../../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
-import {store} from "../../../index.js";
-import Button from "../../../components/Button/Button.js";
-import {IAvatarInnerForm} from "../type.js";
+import Block from '../../../components/Block/Block.js';
+import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
+import {store} from '../../../index.js';
+import Button from '../../../components/Button/Button.js';
+import {IAvatarInnerForm} from '../type.js';
 
 
 export default class AvatarInnerForm extends Block<IAvatarInnerForm> {

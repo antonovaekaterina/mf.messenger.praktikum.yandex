@@ -1,11 +1,11 @@
 import {chatAPIInstance, IAddUsersData, ICreateChatData} from '../api/chatAPI.js';
 import {store} from '../index.js';
-import {openNotification} from "../core/Store/actions/notification.js";
-import {setChats, setActiveChatUsers, setActiveChat} from "../core/Store/actions/chat.js";
-import ChatType from "../types/ChatType.js";
-import UserType from "../types/UserType.js";
-import {closeModal} from "../core/Store/actions/modal.js";
-import Service from "./Service.js";
+import {openNotification} from '../core/Store/actions/notification.js';
+import {setChats, setActiveChatUsers, setActiveChat} from '../core/Store/actions/chat.js';
+import ChatType from '../types/ChatType.js';
+import UserType from '../types/UserType.js';
+import {closeModal} from '../core/Store/actions/modal.js';
+import Service from './Service.js';
 
 class ChatService extends Service {
     createChat(data: ICreateChatData) {

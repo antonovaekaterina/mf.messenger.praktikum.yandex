@@ -1,10 +1,10 @@
-import Block from "../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from "../../utils/render.js";
-import {INotificationPortal} from "./types.js";
-import {store} from "../../index.js";
-import Notification from "./views/Notification.js";
-import {INotification} from "../../core/Store/reducers/notification.js";
-import {closeNotification} from "../../core/Store/actions/notification.js";
+import Block from '../../components/Block/Block.js';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render.js';
+import {INotificationPortal} from './types.js';
+import {store} from '../../index.js';
+import Notification from './views/Notification.js';
+import {INotification} from '../../core/Store/reducers/notification.js';
+import {closeNotification} from '../../core/Store/actions/notification.js';
 
 export default class NotificationPortal extends Block<INotificationPortal> {
     constructor(props: INotificationPortal) {
@@ -77,9 +77,9 @@ export default class NotificationPortal extends Block<INotificationPortal> {
 
     render() {
         const source:string = (
-            `<div class="NotificationPortal">
+            `<div class='NotificationPortal'>
                 {{#each notifications}}
-                    <span class="component" id="notificationsList" data-index="{{@index}}"></span>
+                    <span class='component' id='notificationsList' data-index='{{@index}}'></span>
                 {{/each}}
             </div>`
         );

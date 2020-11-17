@@ -1,6 +1,6 @@
-import EventBus from "../EventBus/EventBus.js";
-import Block from "../../components/Block/Block.js";
-import {IAction, ReducerType, StateType} from "./types.js";
+import EventBus from '../EventBus/EventBus.js';
+import Block from '../../components/Block/Block.js';
+import {IAction, ReducerType, StateType} from './types.js';
 
 export default class Store {
     private static __instance: Store;
@@ -17,8 +17,6 @@ export default class Store {
             return Store.__instance;
         }
 
-        //@ts-ignore
-        window._store = this;
         this.reducer = reducer;
         this.state = this.makeStateProxy(reducer(initialState));
         this.eventBus = new EventBus();
@@ -27,11 +25,10 @@ export default class Store {
     }
 
     private makeStateProxy<T extends StateType>(state: T): T {
-        const self = this;
         return new Proxy(state, {
-            set(target: any, name: string, value: any) {
+            set: (target: any, name: string, value: any) => {
                 target[name] = value;
-                self.eventBus.emit(Store.EVENTS.STORE_UPDATE, target);
+                this.eventBus.emit(Store.EVENTS.STORE_UPDATE, target);
                 return true;
             },
             deleteProperty() {

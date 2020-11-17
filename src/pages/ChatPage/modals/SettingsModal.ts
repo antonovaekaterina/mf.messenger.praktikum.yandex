@@ -1,11 +1,11 @@
-import Block from "../../../components/Block/Block.js";
+import Block from '../../../components/Block/Block.js';
 import {createRenderContent} from '../../../utils/render.js';
-import {store} from "../../../index.js";
-import {openModal} from "../../../core/Store/actions/modal.js";
-import RemoveUserModal from "./RemoveUserModal.js";
-import AddUserModal from "./AddUserModal.js";
-import {IModalProps} from "../../../components/ModalPortal/types.js";
-import ChangeAvatarModal from "./ChangeAvatarModal.js";
+import {store} from '../../../index.js';
+import {openModal} from '../../../core/Store/actions/modal.js';
+import RemoveUserModal from './RemoveUserModal.js';
+import AddUserModal from './AddUserModal.js';
+import {IModalProps} from '../../../components/ModalPortal/types.js';
+import ChangeAvatarModal from './ChangeAvatarModal.js';
 
 export default class SettingsModal extends Block<IModalProps> {
     constructor(props: IModalProps) {
@@ -47,12 +47,12 @@ export default class SettingsModal extends Block<IModalProps> {
 
     render() {
         const source:string = (
-            `<div class="SettingsModal">
+            `<div class='SettingsModal'>
                 <h1>Настройки чата</h1>
                 <ul>
-                    <li class="SettingsModal__add-users"><a href="#">Добавить пользователей в чат</a></li>
-                    <li class="SettingsModal__remove-users"><a href="#">Удалить пользователей из чата</a></li>
-                    <li class="SettingsModal__change-avatar"><a href="#">Изменить аватар беседы</a></li>
+                    <li class='SettingsModal__add-users'><a href='#'>Добавить пользователей в чат</a></li>
+                    <li class='SettingsModal__remove-users'><a href='#'>Удалить пользователей из чата</a></li>
+                    <li class='SettingsModal__change-avatar'><a href='#'>Изменить аватар беседы</a></li>
                 </ul>
             </div>`
         );

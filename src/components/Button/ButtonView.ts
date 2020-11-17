@@ -1,6 +1,6 @@
-import Block from "../../components/Block/Block.js";
+import Block from '../../components/Block/Block.js';
 import {IButtonProps} from './types.js';
-import {createRenderContent} from "../../utils/render.js";
+import {createRenderContent} from '../../utils/render.js';
 
 export default class ButtonView extends Block<IButtonProps> {
     constructor(props: IButtonProps) {
@@ -9,7 +9,7 @@ export default class ButtonView extends Block<IButtonProps> {
 
     render() {
         const source:string = (
-            `<input class="ButtonView" type="submit" value="{{label}}">`
+            `<input class='ButtonView' type='submit' value='{{label}}'>`
         );
 
         return createRenderContent(source, this.props);

@@ -1,8 +1,8 @@
-import Block from "../../components/Block/Block.js";
-import InputFieldView from "./InputFieldView.js";
-import {IInputField} from "./type.js";
-import {createNestedComponent, createRenderContent} from "../../utils/render.js";
-import {validate} from "../../utils/validate.js";
+import Block from '../../components/Block/Block.js';
+import InputFieldView from './InputFieldView.js';
+import {IInputField} from './type.js';
+import {createNestedComponent, createRenderContent} from '../../utils/render.js';
+import {validate} from '../../utils/validate.js';
 
 export default class InputField extends Block<IInputField> {
     constructor(props: IInputField) {
@@ -27,7 +27,7 @@ export default class InputField extends Block<IInputField> {
     }
 
     render() {
-        const source:string = '<span class="component" id="inputFieldView"></span>';
+        const source:string = `<span class='component' id='inputFieldView'></span>`;
 
         return createRenderContent(source, this.props);
     }

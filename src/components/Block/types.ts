@@ -1,4 +1,4 @@
-import Block from "./Block";
+import Block from './Block';
 
 export type IAttribute = Record<string, string>
 

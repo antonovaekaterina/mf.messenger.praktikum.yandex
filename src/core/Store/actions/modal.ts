@@ -1,4 +1,4 @@
-import {ComponentType} from "../../../components/Block/types.js";
+import {ComponentType} from '../../../components/Block/types.js';
 
 export const TYPE_OPEN_MODAL = 'open-modal';
 export const TYPE_CLOSE_MODAL = 'close-modal';

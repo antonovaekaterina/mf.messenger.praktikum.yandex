@@ -1,6 +1,6 @@
-import Block from "../../../components/Block/Block.js";
-import {createNestedComponent, createRenderContent} from "../../../utils/render.js";
-import {IModalProps} from "../types.js";
+import Block from '../../../components/Block/Block.js';
+import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
+import {IModalProps} from '../types.js';
 
 export default class Modal extends Block<IModalProps> {
     constructor(props: IModalProps) {
@@ -24,12 +24,12 @@ export default class Modal extends Block<IModalProps> {
 
     render() {
         const source:string = (
-            `<div class="Modal">
-                <div class="Modal__layout">
-                    <div class="Modal__modal">
-                        <div class="Modal__inner">
-                            <div class="Modal__close">Закрыть</div>
-                            <span class="component" id="modalInner"></span>
+            `<div class='Modal'>
+                <div class='Modal__layout'>
+                    <div class='Modal__modal'>
+                        <div class='Modal__inner'>
+                            <div class='Modal__close'>Закрыть</div>
+                            <span class='component' id='modalInner'></span>
                         </div>
                     </div>
                 </div>
