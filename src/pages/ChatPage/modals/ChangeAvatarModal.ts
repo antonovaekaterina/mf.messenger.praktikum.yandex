@@ -1,9 +1,10 @@
-import Block from '../../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import {IModalProps} from '../../../components/ModalPortal/types.js';
-import Form from '../../../components/Form/Form.js';
-import AvatarInnerForm from '../forms/AvatarInnerForm.js';
-import {chatServiceInstance} from '../../../services/chatService.js';
+import Block from '../../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import {IModalProps} from '../../../components/ModalPortal/types';
+import Form from '../../../components/Form/Form';
+import AvatarInnerForm from '../forms/AvatarInnerForm';
+import {chatServiceInstance} from '../../../services/chatService';
+import './ChangeAvatarModal.scss';
 
 export default class ChangeAvatarModal extends Block<IModalProps> {
 

@@ -1,8 +1,9 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import {ILayout} from './types.js';
-import ModalPortal from '../ModalPortal/ModalPortal.js';
-import NotificationPortal from '../NotificationPortal/NotificationPortal.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import {ILayout} from './types';
+import ModalPortal from '../ModalPortal/ModalPortal';
+import NotificationPortal from '../NotificationPortal/NotificationPortal';
+import './Layout.scss';
 
 export default class Layout extends Block<ILayout> {
     constructor(props: ILayout) {

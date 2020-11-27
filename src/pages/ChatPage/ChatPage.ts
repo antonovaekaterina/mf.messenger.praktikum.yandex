@@ -1,8 +1,9 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import Header from '../../components/Header/Header.js';
-import Chat from './views/Chat.js';
-import {IChat} from './type.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import Header from '../../components/Header/Header';
+import Chat from './views/Chat';
+import {IChat} from './type';
+import './ChatPage.scss';
 
 export default class ChatPage extends Block<IChat> {
     constructor(props: IChat) {
@@ -17,6 +18,7 @@ export default class ChatPage extends Block<IChat> {
             chat: createNestedComponent(Chat, () => ({...this.props}))
         }
     }
+
 
     render() {
         const source:string = (

@@ -1,5 +1,5 @@
-import UserType from '../../../types/UserType.js';
-import ChatType from '../../../types/ChatType.js';
+import UserType from '../../../types/UserType';
+import ChatType from '../../../types/ChatType';
 
 export const TYPE_SET_CHATS = 'set-chats';
 export const TYPE_SET_ACTIVE_CHAT = 'set-active-chat';

@@ -1,6 +1,7 @@
-import Block from '../../components/Block/Block.js';
-import {IInputField} from './type.js';
-import {createRenderContent} from '../../utils/render.js';
+import Block from '../../components/Block/Block';
+import {IInputField} from './type';
+import {createRenderContent} from '../../utils/render';
+import './InputFieldView.scss';
 
 export default class InputFieldView extends Block<IInputField> {
     constructor(props: IInputField) {

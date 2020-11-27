@@ -1,8 +1,9 @@
-import Block from '../../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IForm} from '../../../components/Form/types.js';
-import Button from '../../../components/Button/Button.js';
-import InputField from '../../../components/InputField/InputField.js';
+import Block from '../../../components/Block/Block';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render';
+import {IForm} from '../../../components/Form/types';
+import Button from '../../../components/Button/Button';
+import InputField from '../../../components/InputField/InputField';
+import './PasswordInnerForm.scss';
 
 export default class PasswordInnerForm extends Block<IForm> {
     constructor(props: IForm) {

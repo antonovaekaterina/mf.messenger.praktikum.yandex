@@ -1,10 +1,11 @@
-import Block from '../../../components/Block/Block.js';
-import User from '../../../components/User/User.js';
-import {IChatItem} from '../type.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import {chatServiceInstance} from '../../../services/chatService.js';
-import {store} from '../../../index.js';
-import {setActiveChat} from '../../../core/Store/actions/chat.js';
+import Block from '../../../components/Block/Block';
+import User from '../../../components/User/User';
+import {IChatItem} from '../type';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import {chatServiceInstance} from '../../../services/chatService';
+import {store} from '../../../index';
+import {setActiveChat} from '../../../core/Store/actions/chat';
+import './ChatItem.scss';
 
 export default class ChatItem extends Block<IChatItem> {
     constructor(props: IChatItem) {

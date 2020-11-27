@@ -1,2 +1,2 @@
-import HTTP from './HTTP.js';
+import HTTP from './HTTP';
 export default HTTP;

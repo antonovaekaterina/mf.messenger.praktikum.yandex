@@ -1,6 +1,7 @@
-import Block from '../../components/Block/Block.js';
-import {IButtonProps} from './types.js';
-import {createRenderContent} from '../../utils/render.js';
+import Block from '../../components/Block/Block';
+import {IButtonProps} from './types';
+import {createRenderContent} from '../../utils/render';
+import './ButtonView.scss';
 
 export default class ButtonView extends Block<IButtonProps> {
     constructor(props: IButtonProps) {

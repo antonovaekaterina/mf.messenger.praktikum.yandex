@@ -1,4 +1,4 @@
-import IUser from '../../types/UserType.js';
+import IUser from '../../types/UserType';
 
 export interface IHeader {
     isProfilePage?: boolean,

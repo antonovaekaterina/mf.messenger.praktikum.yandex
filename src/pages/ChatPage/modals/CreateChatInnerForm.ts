@@ -1,8 +1,9 @@
-import Block from '../../../components/Block/Block.js';
-import InputField from '../../../components/InputField/InputField.js';
-import Button from '../../../components/Button/Button.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IForm} from '../../../components/Form/types.js';
+import Block from '../../../components/Block/Block';
+import InputField from '../../../components/InputField/InputField';
+import Button from '../../../components/Button/Button';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render';
+import {IForm} from '../../../components/Form/types';
+import './CreateChatInnerForm.scss';
 
 export default class CreateChatInnerForm extends Block<IForm> {
     constructor(props: IForm) {

@@ -1,5 +1,5 @@
-import BasicAPI from './BasicAPI.js';
-import {authHTTPInstance} from './HTTP/HTTP.js';
+import BasicAPI from './BasicAPI';
+import {authHTTPInstance} from './HTTP/HTTP';
 
 export interface ISignUpData {
     first_name: string,

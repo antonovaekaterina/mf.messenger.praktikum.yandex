@@ -1,9 +1,10 @@
-import Block from '../../components/Block/Block.js';
-import {IHeader} from './type.js'
-import User from '../User/User.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import {ROOT, ROUTE_PROFILE, router, store} from '../../index.js';
-import {authServiceInstance} from '../../services/authService.js';
+import Block from '../../components/Block/Block';
+import {IHeader} from './type'
+import User from '../User/User';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import {ROOT, ROUTE_PROFILE, router, store} from '../../index';
+import {authServiceInstance} from '../../services/authService';
+import './Header.scss';
 
 export default class Header extends Block<IHeader> {
     constructor(props: IHeader) {

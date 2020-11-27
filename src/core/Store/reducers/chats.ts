@@ -1,7 +1,7 @@
-import ChatType from '../../../types/ChatType.js';
-import {IAction} from '../types.js';
-import {TYPE_SET_ACTIVE_CHAT_USERS, TYPE_SET_CHATS, TYPE_SET_ACTIVE_CHAT} from '../actions/chat.js';
-import UserType from '../../../types/UserType.js';
+import ChatType from '../../../types/ChatType';
+import {IAction} from '../types';
+import {TYPE_SET_ACTIVE_CHAT_USERS, TYPE_SET_CHATS, TYPE_SET_ACTIVE_CHAT} from '../actions/chat';
+import UserType from '../../../types/UserType';
 
 export interface IActiveChatState extends ChatType {
     users?: UserType[]

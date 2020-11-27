@@ -1,11 +1,12 @@
-import Block from '../../../components/Block/Block.js';
-import {createRenderContent} from '../../../utils/render.js';
-import {store} from '../../../index.js';
-import {openModal} from '../../../core/Store/actions/modal.js';
-import RemoveUserModal from './RemoveUserModal.js';
-import AddUserModal from './AddUserModal.js';
-import {IModalProps} from '../../../components/ModalPortal/types.js';
-import ChangeAvatarModal from './ChangeAvatarModal.js';
+import Block from '../../../components/Block/Block';
+import {createRenderContent} from '../../../utils/render';
+import {store} from '../../../index';
+import {openModal} from '../../../core/Store/actions/modal';
+import RemoveUserModal from './RemoveUserModal';
+import AddUserModal from './AddUserModal';
+import {IModalProps} from '../../../components/ModalPortal/types';
+import ChangeAvatarModal from './ChangeAvatarModal';
+import './SettingsModal.scss';
 
 export default class SettingsModal extends Block<IModalProps> {
     constructor(props: IModalProps) {

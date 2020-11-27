@@ -1,7 +1,7 @@
-import EventBus from '../../core/EventBus/index.js';
-import {IRenderContent} from '../../utils/render.js'
-import {IAttribute, IVirtualNode} from './types.js';
-import isEqual from '../../utils/isEqual.js';
+import EventBus from '../../core/EventBus/index';
+import {IRenderContent} from '../../utils/render'
+import {IAttribute, IVirtualNode} from './types';
+import isEqual from '../../utils/isEqual';
 
 export default class Block<T extends Record<string, any>> {
     private fragment: HTMLElement;

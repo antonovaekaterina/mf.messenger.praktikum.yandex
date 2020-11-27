@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.static('./dist/'));
 app.use('/profile', express.static('./dist/'));

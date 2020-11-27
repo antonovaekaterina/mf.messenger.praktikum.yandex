@@ -1,6 +1,7 @@
-import Block from '../../components/Block/Block.js';
-import {IMessage} from './type.js'
-import {createRenderContent} from '../../utils/render.js';
+import Block from '../../components/Block/Block';
+import {IMessage} from './type'
+import {createRenderContent} from '../../utils/render';
+import './Message.scss';
 
 export default class Message extends Block<IMessage> {
     constructor(props: IMessage) {

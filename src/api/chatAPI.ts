@@ -1,5 +1,5 @@
-import BasicAPI from './BasicAPI.js';
-import {chatHTTPInstance} from './HTTP/HTTP.js';
+import BasicAPI from './BasicAPI';
+import {chatHTTPInstance} from './HTTP/HTTP';
 
 export interface ICreateChatData {
     title: string,

@@ -12,7 +12,7 @@
 
     #{$root}__img-icon {
       &:after {
-        background-image: url('/images/question.svg');
+        background-image: url('../../../public/images/question.svg');
       }
     }
   }
@@ -24,7 +24,7 @@
 
     #{$root}__img-icon {
       &:after {
-        background-image: url('/images/warning.svg');
+        background-image: url('../../../public/images/warning.svg');
       }
 
     }

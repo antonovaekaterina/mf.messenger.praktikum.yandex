@@ -1,7 +1,8 @@
-import Block from '../../components/Block/Block.js';
-import LoginForm from './views/LoginForm.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import {LoginPageType} from './type.js';
+import Block from '../../components/Block/Block';
+import LoginForm from './views/LoginForm';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import {LoginPageType} from './type';
+import './LoginPage.scss';
 
 export default class LoginPage extends Block<LoginPageType> {
     constructor(props: LoginPageType) {

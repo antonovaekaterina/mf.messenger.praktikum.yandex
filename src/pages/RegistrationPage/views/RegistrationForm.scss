@@ -1,6 +1,4 @@
 @import '../../../styles/variables';
-@import '../../../components/InputField/InputFieldView.scss';
-@import './RegistrationFormInner.scss';
 
 .RegistrationForm {
   width: 100%;
@@ -22,7 +20,7 @@
   }
 
   .Icon {
-    background-image: url('/images/user.svg');
+    background-image: url('../../../../public/images/user.svg');
     margin-left: 10px;
   }
 

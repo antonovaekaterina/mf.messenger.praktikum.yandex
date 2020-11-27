@@ -1,8 +1,9 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import Header from '../../components/Header/Header.js';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.js';
-import {INotFoundPage} from './type.js'
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import Header from '../../components/Header/Header';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import {INotFoundPage} from './type';
+import './NotFoundPage.scss';
 
 export default class NotFoundPage extends Block<INotFoundPage> {
     constructor(props: INotFoundPage) {

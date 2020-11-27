@@ -1,12 +1,13 @@
-import Block from '../../../components/Block/Block.js';
-import ChatItem from './ChatItem.js';
-import {IChatList} from '../type.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import Form from '../../../components/Form/Form.js';
-import SearchInnerForm from '../forms/SearchInnerForm.js';
-import {store} from '../../../index.js';
-import {openModal} from '../../../core/Store/actions/modal.js';
-import CreateChatModal from '../modals/CreateChatModal.js';
+import Block from '../../../components/Block/Block';
+import ChatItem from './ChatItem';
+import {IChatList} from '../type';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render';
+import Form from '../../../components/Form/Form';
+import SearchInnerForm from '../forms/SearchInnerForm';
+import {store} from '../../../index';
+import {openModal} from '../../../core/Store/actions/modal';
+import CreateChatModal from '../modals/CreateChatModal';
+import './ChatsList.scss';
 
 export default class ChatsList extends Block<IChatList> {
     constructor(props: IChatList) {

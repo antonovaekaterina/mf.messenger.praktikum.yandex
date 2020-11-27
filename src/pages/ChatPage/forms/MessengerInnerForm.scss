@@ -32,13 +32,13 @@
     margin-right: 20px;
 
     &.Icon {
-      background-image: url('/images/attachment.svg');
+      background-image: url('../../../../public/images/attachment.svg');
     }
   }
 
   &__messenger-send-btn {
     flex: 0 0 auto;
-    background: $purple url('/images/arrow-send.svg') !important;
+    background: $purple url('../../../../public/images/arrow-send.svg') !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     width: 36px !important;
@@ -55,13 +55,13 @@
 
     &:hover {
       box-shadow: none;
-      background: $purple url('/images/arrow-send.svg') !important;
+      background: $purple url('../../../../public/images/arrow-send.svg') !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
     }
 
     &:active {
-      background: $purple url('/images/arrow-send.svg') !important;
+      background: $purple url('../../../../public/images/arrow-send.svg') !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
     }

@@ -1,2 +1,2 @@
-import LoginPage from './LoginPage.js';
+import LoginPage from './LoginPage';
 export default LoginPage;

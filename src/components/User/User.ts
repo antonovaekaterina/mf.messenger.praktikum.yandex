@@ -1,6 +1,7 @@
-import Block from '../../components/Block/Block.js';
-import {IUser} from './type.js';
-import {createRenderContent} from '../../utils/render.js';
+import Block from '../../components/Block/Block';
+import {IUser} from './type';
+import {createRenderContent} from '../../utils/render';
+import './User.scss';
 
 export default class User extends Block<IUser> {
     constructor(props: IUser) {

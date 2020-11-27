@@ -1,13 +1,14 @@
-import Block from '../../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IAddUsersModal} from '../type.js';
-import Form from '../../../components/Form/Form.js';
-import {userServiceInstance} from '../../../services/userService.js';
-import {ISearchData} from '../../../api/userAPI.js';
-import AddUserInnerForm from '../forms/AddUserInnerForm.js';
-import User from '../../../components/User/User.js';
-import {store} from '../../../index.js';
-import {chatServiceInstance} from '../../../services/chatService.js';
+import Block from '../../../components/Block/Block';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render';
+import {IAddUsersModal} from '../type';
+import Form from '../../../components/Form/Form';
+import {userServiceInstance} from '../../../services/userService';
+import {ISearchData} from '../../../api/userAPI';
+import AddUserInnerForm from '../forms/AddUserInnerForm';
+import User from '../../../components/User/User';
+import {store} from '../../../index';
+import {chatServiceInstance} from '../../../services/chatService';
+import './AddUserModal.scss';
 
 export default class AddUserModal extends Block<IAddUsersModal> {
     constructor(props: IAddUsersModal) {

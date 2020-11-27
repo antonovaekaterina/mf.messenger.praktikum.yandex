@@ -42,7 +42,7 @@
     cursor: pointer;
 
     &.Icon {
-      background-image: url('/images/add.svg');
+      background-image: url('../../../../public/images/add.svg');
 
       &:hover {
         background-color: $lavender;

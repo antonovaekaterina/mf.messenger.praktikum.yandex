@@ -1,3 +1,5 @@
+import Handlebars from 'handlebars'
+
 export interface IRenderContent {
     html: string,
 }
@@ -18,7 +20,7 @@ export const unmountDOM = (node: HTMLElement): void => {
 }
 
 export const createRenderContent = (source: string, props: Record<string, any>):IRenderContent => {
-    const template = window.Handlebars.compile(source);
+    const template = Handlebars.compile(source);
 
     return {
         html: template(props),

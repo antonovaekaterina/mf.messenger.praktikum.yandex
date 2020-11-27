@@ -1,8 +1,9 @@
-import Block from '../../../components/Block/Block.js';
-import {IChat} from '../type.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import ChatsList from './ChatsList.js';
-import ChatMain from './ChatMain.js';
+import Block from '../../../components/Block/Block';
+import {IChat} from '../type';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import ChatsList from './ChatsList';
+import ChatMain from './ChatMain';
+import './Chat.scss';
 
 export default class Chat extends Block<IChat> {
     constructor(props: IChat) {

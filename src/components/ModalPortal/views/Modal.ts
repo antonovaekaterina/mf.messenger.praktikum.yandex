@@ -1,6 +1,6 @@
-import Block from '../../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import {IModalProps} from '../types.js';
+import Block from '../../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import {IModalProps} from '../types';
 
 export default class Modal extends Block<IModalProps> {
     constructor(props: IModalProps) {

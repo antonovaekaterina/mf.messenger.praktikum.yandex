@@ -1,8 +1,8 @@
 import {IAction, StateType} from '../types';
-import notification from './notification.js';
-import modal from './modal.js';
-import user from './user.js';
-import chats from './chats.js';
+import notification from './notification';
+import modal from './modal';
+import user from './user';
+import chats from './chats';
 
 export default (state: StateType, action?: IAction):StateType => ({
     user: user(state.user, action),

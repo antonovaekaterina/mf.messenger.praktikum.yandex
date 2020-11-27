@@ -1,4 +1,4 @@
-import {IModal} from '../../core/Store/reducers/modal.js';
+import {IModal} from '../../core/Store/reducers/modal';
 
 export interface IModalPortal {
     modals?: IModal[]

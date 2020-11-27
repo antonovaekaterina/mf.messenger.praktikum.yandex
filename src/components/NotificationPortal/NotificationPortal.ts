@@ -1,10 +1,11 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render.js';
-import {INotificationPortal} from './types.js';
-import {store} from '../../index.js';
-import Notification from './views/Notification.js';
-import {INotification} from '../../core/Store/reducers/notification.js';
-import {closeNotification} from '../../core/Store/actions/notification.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render';
+import {INotificationPortal} from './types';
+import {store} from '../../index';
+import Notification from './views/Notification';
+import {INotification} from '../../core/Store/reducers/notification';
+import {closeNotification} from '../../core/Store/actions/notification';
+import './NotificationPortal.scss';
 
 export default class NotificationPortal extends Block<INotificationPortal> {
     constructor(props: INotificationPortal) {

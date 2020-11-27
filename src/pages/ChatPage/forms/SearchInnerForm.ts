@@ -1,5 +1,6 @@
-import Block from '../../../components/Block/Block.js';
-import {createRenderContent} from '../../../utils/render.js';
+import Block from '../../../components/Block/Block';
+import {createRenderContent} from '../../../utils/render';
+import './SearchInnerForm.scss';
 
 export default class SearchInnerForm extends Block<SearchInnerForm> {
     render() {

@@ -1,10 +1,11 @@
-import Block from '../../../components/Block/Block.js';
-import Form from '../../../components/Form/Form.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import RegistrationFormInner from './RegistrationFormInner.js';
-import {IRegistrationForm} from '../type.js';
-import {ISignUpData} from '../../../api/authAPI.js';
-import {authServiceInstance} from '../../../services/authService.js';
+import Block from '../../../components/Block/Block';
+import Form from '../../../components/Form/Form';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import RegistrationFormInner from './RegistrationFormInner';
+import {IRegistrationForm} from '../type';
+import {ISignUpData} from '../../../api/authAPI';
+import {authServiceInstance} from '../../../services/authService';
+import './RegistrationForm.scss';
 
 export default class RegistrationForm extends Block<IRegistrationForm> {
     constructor(props: IRegistrationForm, className: string) {

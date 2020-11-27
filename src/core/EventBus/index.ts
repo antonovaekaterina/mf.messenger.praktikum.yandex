@@ -1,2 +1,2 @@
-import EventBus from './EventBus.js';
+import EventBus from './EventBus';
 export default EventBus;

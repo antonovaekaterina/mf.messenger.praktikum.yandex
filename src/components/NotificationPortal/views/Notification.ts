@@ -1,6 +1,6 @@
-import Block from '../../../components/Block/Block.js';
-import {createRenderContent} from '../../../utils/render.js';
-import {INotificationProps} from '../types.js';
+import Block from '../../../components/Block/Block';
+import {createRenderContent} from '../../../utils/render';
+import {INotificationProps} from '../types';
 
 export default class Notification extends Block<INotificationProps> {
     constructor(props: INotificationProps) {

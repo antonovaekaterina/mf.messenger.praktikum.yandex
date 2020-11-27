@@ -1,6 +1,6 @@
-import EventBus from '../EventBus/EventBus.js';
-import Block from '../../components/Block/Block.js';
-import {IAction, ReducerType, StateType} from './types.js';
+import EventBus from '../EventBus/EventBus';
+import Block from '../../components/Block/Block';
+import {IAction, ReducerType, StateType} from './types';
 
 export default class Store {
     private static __instance: Store;

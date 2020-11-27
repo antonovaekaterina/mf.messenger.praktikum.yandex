@@ -1,13 +1,14 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import Header from '../../components/Header/Header.js';
-import Form from '../../components/Form/Form.js';
-import ProfileInnerForm from './views/ProfileInnerForm.js';
-import {IProfilePageProps} from './type.js';
-import AvatarInnerForm from './views/AvatarInnerForm.js';
-import PasswordInnerForm from './views/PasswordInnerForm.js';
-import {IProfileData, IPasswordData} from '../../api/userAPI.js';
-import {userServiceInstance} from '../../services/userService.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import Header from '../../components/Header/Header';
+import Form from '../../components/Form/Form';
+import ProfileInnerForm from './views/ProfileInnerForm';
+import {IProfilePageProps} from './type';
+import AvatarInnerForm from './views/AvatarInnerForm';
+import PasswordInnerForm from './views/PasswordInnerForm';
+import {IProfileData, IPasswordData} from '../../api/userAPI';
+import {userServiceInstance} from '../../services/userService';
+import './ProfilePage.scss';
 
 export default class ProfilePage extends Block<IProfilePageProps> {
     constructor(props: IProfilePageProps) {

@@ -1,5 +1,5 @@
-import {TYPE_OPEN_NOTIFICATION, TYPE_CLOSE_NOTIFICATION} from '../actions/notification.js';
-import {IAction} from '../types.js';
+import {TYPE_OPEN_NOTIFICATION, TYPE_CLOSE_NOTIFICATION} from '../actions/notification';
+import {IAction} from '../types';
 
 export interface INotification {
     id: string | number,

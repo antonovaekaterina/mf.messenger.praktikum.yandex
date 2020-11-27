@@ -1,8 +1,9 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent} from '../../utils/render.js';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.js';
-import Header from '../../components/Header/Header.js';
-import {IErrorPage} from './type.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent} from '../../utils/render';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Header from '../../components/Header/Header';
+import {IErrorPage} from './type';
+import './ErrorPage.scss';
 
 export default class ErrorPage extends Block<IErrorPage> {
     constructor(props: IErrorPage) {

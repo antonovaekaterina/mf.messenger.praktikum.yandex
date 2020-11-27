@@ -1,10 +1,11 @@
-import Block from '../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render.js';
-import {IModalPortal} from './types.js';
-import {store} from '../../index.js';
-import Modal from './views/Modal.js';
-import {IModal} from '../../core/Store/reducers/modal.js';
-import {closeModal} from '../../core/Store/actions/modal.js';
+import Block from '../../components/Block/Block';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../utils/render';
+import {IModalPortal} from './types';
+import {store} from '../../index';
+import Modal from './views/Modal';
+import {IModal} from '../../core/Store/reducers/modal';
+import {closeModal} from '../../core/Store/actions/modal';
+import './ModalPortal.scss';
 
 export default class ModalPortal extends Block<IModalPortal> {
     constructor(props: IModalPortal) {

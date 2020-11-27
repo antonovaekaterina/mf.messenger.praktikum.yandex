@@ -1,8 +1,8 @@
-import {userAPIInstance, IProfileData, IPasswordData, ISearchData} from '../api/userAPI.js';
-import {store} from '../index.js';
-import {setUser} from '../core/Store/actions/auth.js';
-import {openNotification} from '../core/Store/actions/notification.js';
-import Service from './Service.js';
+import {userAPIInstance, IProfileData, IPasswordData, ISearchData} from '../api/userAPI';
+import {store} from '../index';
+import {setUser} from '../core/Store/actions/auth';
+import {openNotification} from '../core/Store/actions/notification';
+import Service from './Service';
 
 class UserService extends Service {
 

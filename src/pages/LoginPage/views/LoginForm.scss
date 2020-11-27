@@ -1,5 +1,4 @@
 @import '../../../styles/variables';
-@import './LoginFormInner.scss';
 
 .LoginForm {
   width: 100%;
@@ -21,7 +20,7 @@
   }
 
   .Icon {
-    background-image: url('/images/enter.svg');
+    background-image: url('../../../../public/images/enter.svg');
     margin-left: 10px;
   }
 

@@ -1,12 +1,13 @@
-import Block from '../../../components/Block/Block.js';
-import {IChatMain} from '../type.js';
-import User from '../../../components/User/User.js';
-import {createNestedComponent, createRenderContent} from '../../../utils/render.js';
-import Form from '../../../components/Form/Form.js';
-import MessengerInnerForm from '../forms/MessengerInnerForm.js';
-import {store} from '../../../index.js';
-import {openModal} from '../../../core/Store/actions/modal.js';
-import SettingsModal from '../modals/SettingsModal.js';
+import Block from '../../../components/Block/Block';
+import {IChatMain} from '../type';
+import User from '../../../components/User/User';
+import {createNestedComponent, createRenderContent} from '../../../utils/render';
+import Form from '../../../components/Form/Form';
+import MessengerInnerForm from '../forms/MessengerInnerForm';
+import {store} from '../../../index';
+import {openModal} from '../../../core/Store/actions/modal';
+import SettingsModal from '../modals/SettingsModal';
+import './ChatMain.scss';
 
 export default class ChatMain extends Block<IChatMain> {
 

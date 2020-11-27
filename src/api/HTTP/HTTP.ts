@@ -1,4 +1,4 @@
-import {IOptions} from './types.js';
+import {IOptions} from './types';
 
 export const METHODS = {
     GET: 'GET',

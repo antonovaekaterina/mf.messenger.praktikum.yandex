@@ -1,6 +1,6 @@
-import {IAction} from '../types.js';
-import {TYPE_SET_USER} from '../actions/auth.js';
-import UserType from '../../../types/UserType.js';
+import {IAction} from '../types';
+import {TYPE_SET_USER} from '../actions/auth';
+import UserType from '../../../types/UserType';
 
 export default (state: UserType | null = null, action?: IAction):UserType | null => {
     if (!action) {

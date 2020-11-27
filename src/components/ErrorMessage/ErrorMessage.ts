@@ -1,7 +1,8 @@
-import Block from '../../components/Block/Block.js';
-import {IErrorMessage} from './type.js'
-import {createRenderContent} from '../../utils/render.js';
-import {ROOT, router} from '../../index.js';
+import Block from '../../components/Block/Block';
+import {IErrorMessage} from './type'
+import {createRenderContent} from '../../utils/render';
+import {ROOT, router} from '../../index';
+import './ErrorMessage.scss';
 
 export default class ErrorMessage extends Block<IErrorMessage> {
     constructor(props: IErrorMessage) {

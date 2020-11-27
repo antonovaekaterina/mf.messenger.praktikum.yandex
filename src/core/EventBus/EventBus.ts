@@ -1,4 +1,4 @@
-import {handler, IListener} from './types.js';
+import {handler, IListener} from './types';
 
 export default class EventBus {
     listeners: IListener;

@@ -1,4 +1,4 @@
-import isObject from './isObject.js';
+import isObject from './isObject';
 
 export default function queryStringify(data: Record<string, any>): string | never {
     if (!isObject(data)) {

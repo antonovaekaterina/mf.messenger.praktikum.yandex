@@ -1,9 +1,10 @@
-import Block from '../../../components/Block/Block.js';
-import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render.js';
-import {IRemoveUsersModal} from '../type.js';
-import User from '../../../components/User/User.js';
-import {store} from '../../../index.js';
-import {chatServiceInstance} from '../../../services/chatService.js';
+import Block from '../../../components/Block/Block';
+import {createNestedComponent, createRenderContent, ICreateNestedComponent} from '../../../utils/render';
+import {IRemoveUsersModal} from '../type';
+import User from '../../../components/User/User';
+import {store} from '../../../index';
+import {chatServiceInstance} from '../../../services/chatService';
+import './RemoveUserModal.scss';
 
 export default class RemoveUserModal extends Block<IRemoveUsersModal> {
 
