@@ -15,11 +15,11 @@ class ChatService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('CreateChatSuccessNotification', {text: 'Чат успешно создан'}));
+                store.dispatch(openNotification({text: 'Чат успешно создан'}));
                 return this.getChats();
             })
             .catch(err => {
-                store.dispatch(openNotification('CreateChatErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -37,7 +37,7 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('GetChatErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -49,12 +49,12 @@ class ChatService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('AddUsersSuccessNotification', {text: 'Пользователи добавлены успешно'}));
+                store.dispatch(openNotification({text: 'Пользователи добавлены успешно'}));
 
                 return this.getUsers(data.chatId);
             })
             .catch(err => {
-                store.dispatch(openNotification('AddUserErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -66,7 +66,7 @@ class ChatService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('DeleteUsersSuccessNotification', {text: 'Пользователь удален из беседы'}));
+                store.dispatch(openNotification({text: 'Пользователь удален из беседы'}));
 
                 if (isOwner) {
                     store.dispatch(closeModal('RemoveUserModal'));
@@ -77,7 +77,7 @@ class ChatService extends Service {
                 }
             })
             .catch(err => {
-                store.dispatch(openNotification('DeleteUserErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -95,7 +95,7 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('GetUsersErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -111,7 +111,7 @@ class ChatService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('RefreshChatAvatarNotification', {text: 'Аватар успешно изменен'}));
+                store.dispatch(openNotification({text: 'Аватар успешно изменен'}));
 
                 this.getChats().then(() => {
                     const activeChat = store.getState().chat.chatList.find((item:any) => item.id === activeChatId);
@@ -121,7 +121,7 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshChatAvatarErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }

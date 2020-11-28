@@ -13,11 +13,11 @@ class UserService extends Service {
                 }
 
                 this.setUser(result);
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Информация успешно обновлена'}));
+                store.dispatch(openNotification({text: 'Информация успешно обновлена'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -29,11 +29,11 @@ class UserService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Пароль успешно изменен'}));
+                store.dispatch(openNotification({text: 'Пароль успешно изменен'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshPasswordErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -46,11 +46,11 @@ class UserService extends Service {
                 }
 
                 this.setUser(result);
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Аватар успешно изменен'}));
+                store.dispatch(openNotification({text: 'Аватар успешно изменен'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshAvatarErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -65,7 +65,7 @@ class UserService extends Service {
                 return JSON.parse(result.response);
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }

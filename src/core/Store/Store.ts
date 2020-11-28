@@ -22,6 +22,8 @@ export default class Store {
         this.eventBus = new EventBus();
 
         Store.__instance = this;
+        // @ts-ignore
+        window._store = this;
     }
 
     private makeStateProxy<T extends StateType>(state: T): T {

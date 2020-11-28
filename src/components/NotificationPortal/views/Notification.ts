@@ -6,9 +6,9 @@ export default class Notification extends Block<INotificationProps> {
     componentDidMount() {
         const root = this.getFragment();
 
-        const closeElem = root.querySelector('.Notification__close');
+        const closeElem:HTMLElement | null = root.querySelector('.Notification__close');
         if (closeElem) {
-            closeElem.addEventListener('click', this.props.onClose);
+            closeElem.onclick = () => this.props.onClose();
         }
     }
 

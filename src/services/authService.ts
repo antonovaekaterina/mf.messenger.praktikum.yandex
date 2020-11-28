@@ -29,7 +29,7 @@ class AuthService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('SignUpErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -56,7 +56,7 @@ class AuthService extends Service {
             })
             .catch(err => {
                 console.error(err);
-                store.dispatch(openNotification('SignInErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
             });
     }
 
@@ -74,7 +74,7 @@ class AuthService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('LogoutErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 console.error(err);
             });
     }
@@ -92,7 +92,7 @@ class AuthService extends Service {
             })
             .catch(err => {
                 console.error(err);
-                store.dispatch(openNotification('InitErrorNotification', {text: err}));
+                store.dispatch(openNotification({text: err}));
                 if (!this.isAuthPage()) {
                     router.go(ROUTE_LOGIN);
                 }
