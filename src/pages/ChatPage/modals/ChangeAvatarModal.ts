@@ -7,11 +7,6 @@ import {chatServiceInstance} from '../../../services/chatService';
 import './ChangeAvatarModal.scss';
 
 export default class ChangeAvatarModal extends Block<IModalProps> {
-
-    constructor(props: IModalProps) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             form: createNestedComponent(Form, () => ({
@@ -23,11 +18,11 @@ export default class ChangeAvatarModal extends Block<IModalProps> {
                         type: 'file',
                         label: '',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onSubmit
             }))
-        }
+        };
     }
 
     onSubmit(_formValues: any, form: any) {
@@ -42,6 +37,6 @@ export default class ChangeAvatarModal extends Block<IModalProps> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

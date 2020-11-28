@@ -15,7 +15,7 @@ export interface IChatState {
 const initialChatState = {
     chatList: [],
     activeChat: null
-}
+};
 
 export default (state: IChatState = initialChatState, action?: IAction) => {
     if (!action) {
@@ -23,27 +23,27 @@ export default (state: IChatState = initialChatState, action?: IAction) => {
     }
 
     switch (action.type) {
-        case TYPE_SET_CHATS:
-            return {
-                ...state,
-                chatList: action.value
+    case TYPE_SET_CHATS:
+        return {
+            ...state,
+            chatList: action.value
+        };
+    case TYPE_SET_ACTIVE_CHAT:
+        return {
+            ...state,
+            activeChat: action.value ?
+                {...(state.activeChat || {}), ...action.value} :
+                null
+        };
+    case TYPE_SET_ACTIVE_CHAT_USERS:
+        return {
+            ...state,
+            activeChat: {
+                ...(state.activeChat || {}),
+                users: action.value
             }
-        case TYPE_SET_ACTIVE_CHAT:
-            return {
-                ...state,
-                activeChat: action.value
-                    ? {...(state.activeChat || {}), ...action.value}
-                    : null
-            }
-        case TYPE_SET_ACTIVE_CHAT_USERS:
-            return {
-                ...state,
-                activeChat: {
-                    ...(state.activeChat || {}),
-                    users: action.value,
-                }
-            }
-        default:
-            return state;
+        };
+    default:
+        return state;
     }
-}
+};

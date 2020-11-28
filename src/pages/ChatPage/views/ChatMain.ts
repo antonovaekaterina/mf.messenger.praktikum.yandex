@@ -10,11 +10,6 @@ import SettingsModal from '../modals/SettingsModal';
 import './ChatMain.scss';
 
 export default class ChatMain extends Block<IChatMain> {
-
-    constructor(props: IChatMain) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             activeChatInfo: createNestedComponent(User, () => ({
@@ -26,14 +21,14 @@ export default class ChatMain extends Block<IChatMain> {
             chatForm: createNestedComponent(Form, () => ({
                 name: 'ChatForm',
                 FormInner: MessengerInnerForm
-            })),
-        }
+            }))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             activeChat: state.chat.activeChat
-        }))
+        }));
 
         this.addSettingsHandle();
     }
@@ -53,9 +48,9 @@ export default class ChatMain extends Block<IChatMain> {
     }
 
     handleSettingsClick() {
-        store.dispatch(openModal('SettingsModal', SettingsModal))
+        store.dispatch(openModal('SettingsModal', SettingsModal));
     }
-    
+
     render() {
         const source:string = (
             `<main class='ChatMain'>
@@ -76,7 +71,7 @@ export default class ChatMain extends Block<IChatMain> {
             </main>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

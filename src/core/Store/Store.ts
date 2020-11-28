@@ -6,11 +6,11 @@ export default class Store {
     private static __instance: Store;
     protected state: StateType;
     private eventBus: EventBus;
-    private reducer: ReducerType
+    private reducer: ReducerType;
 
     static EVENTS = {
         STORE_UPDATE: 'Store-did-update'
-    }
+    };
 
     constructor(reducer: ReducerType, initialState: StateType = {}) {
         if (Store.__instance) {
@@ -39,9 +39,10 @@ export default class Store {
 
     subscribe<T extends Block<any>>(block: T, mapStateToProps: (state: StateType) => any) {
         const handler = (state: StateType) => {
-            const newProps = mapStateToProps(state)
+            const newProps = mapStateToProps(state);
             block.setProps(newProps);
-        }
+        };
+
         this.eventBus.on(Store.EVENTS.STORE_UPDATE, handler);
         handler(this.getState());
     }

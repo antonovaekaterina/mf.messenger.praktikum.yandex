@@ -4,18 +4,14 @@ import {IButtonProps} from './types';
 import {createNestedComponent, createRenderContent} from '../../utils/render';
 
 export default class Button extends Block<IButtonProps> {
-    constructor(props: IButtonProps) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             buttonView: createNestedComponent(ButtonView, () => ({...this.props}))
-        }
+        };
     }
 
     render() {
-        const source:string = `<span class='component' id='buttonView'></span>`;
+        const source:string = '<span class=\'component\' id=\'buttonView\'></span>';
 
         return createRenderContent(source, this.props);
     }

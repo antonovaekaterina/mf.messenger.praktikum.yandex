@@ -2,6 +2,7 @@
 
 .ErrorMessage {
   $root: &;
+
   display: flex;
 
   &.not-found {
@@ -9,9 +10,8 @@
       font-size: 36px;
     }
 
-
     #{$root}__img-icon {
-      &:after {
+      &::after {
         background-image: url('../../../public/images/question.svg');
       }
     }
@@ -23,10 +23,9 @@
     }
 
     #{$root}__img-icon {
-      &:after {
+      &::after {
         background-image: url('../../../public/images/warning.svg');
       }
-
     }
   }
 
@@ -48,8 +47,9 @@
     border-radius: 50%;
     color: $crimson;
     font-weight: 700;
-    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%),
-      linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+    background:
+      linear-gradient(180deg, #fef6f9 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
       $chat-layout;
   }
 
@@ -63,11 +63,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: linear-gradient(180deg, #FEF6F9 0%, rgba(255, 255, 255, 0) 100%),
-      linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+    background:
+      linear-gradient(180deg, #fef6f9 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
       $chat-layout;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       top: 0;
@@ -102,7 +103,8 @@
       margin-top: auto;
       display: block;
 
-      &, &:hover {
+      &,
+      &:hover {
         text-decoration: none;
       }
     }

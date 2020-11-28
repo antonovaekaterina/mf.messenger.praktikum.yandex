@@ -46,4 +46,3 @@ export interface IAvatarInnerForm extends IForm {
     avatar?: string
 }
 
-

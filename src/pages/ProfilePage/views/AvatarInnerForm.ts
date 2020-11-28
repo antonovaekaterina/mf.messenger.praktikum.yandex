@@ -6,20 +6,16 @@ import {IProfileInnerForm} from '../type';
 import './AvatarInnerForm.scss';
 
 export default class AvatarInnerForm extends Block<IProfileInnerForm> {
-    constructor(props: IProfileInnerForm) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
-            button: createNestedComponent(Button, () =>({label: 'Сохранить'})),
-        }
+            button: createNestedComponent(Button, () => ({label: 'Сохранить'}))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             user: state.user
-        }))
+        }));
     }
 
     render() {

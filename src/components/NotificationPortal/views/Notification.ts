@@ -3,16 +3,12 @@ import {createRenderContent} from '../../../utils/render';
 import {INotificationProps} from '../types';
 
 export default class Notification extends Block<INotificationProps> {
-    constructor(props: INotificationProps) {
-        super(props);
-    }
-
     componentDidMount() {
         const root = this.getFragment();
 
         const closeElem = root.querySelector('.Notification__close');
         if (closeElem) {
-            closeElem.addEventListener('click', this.props.onClose)
+            closeElem.addEventListener('click', this.props.onClose);
         }
     }
 

@@ -9,4 +9,4 @@ export default (state: StateType, action?: IAction):StateType => ({
     chat: chats(state.chat, action),
     modals: modal(state.modals, action),
     notifications: notification(state.notifications, action)
-})
+});

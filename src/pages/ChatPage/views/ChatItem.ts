@@ -8,10 +8,6 @@ import {setActiveChat} from '../../../core/Store/actions/chat';
 import './ChatItem.scss';
 
 export default class ChatItem extends Block<IChatItem> {
-    constructor(props: IChatItem) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             user: createNestedComponent(User, () => ({
@@ -20,14 +16,14 @@ export default class ChatItem extends Block<IChatItem> {
                     avatar: this.props.item?.avatar
                 }
             }))
-        }
+        };
     }
 
     componentDidMount() {
         const root = this.getFragment();
         const chatItemElem = root.querySelector('.ChatItem');
         if (chatItemElem) {
-            chatItemElem.addEventListener('click', () => this.handleChatItemClick())
+            chatItemElem.addEventListener('click', () => this.handleChatItemClick());
         }
     }
 
@@ -46,7 +42,7 @@ export default class ChatItem extends Block<IChatItem> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

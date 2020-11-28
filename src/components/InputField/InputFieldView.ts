@@ -4,18 +4,16 @@ import {createRenderContent} from '../../utils/render';
 import './InputFieldView.scss';
 
 export default class InputFieldView extends Block<IInputField> {
-    constructor(props: IInputField) {
-        super(props);
-    }
-
     componentDidMount(): void {
         if (this.props.onBlur) {
             const input:HTMLInputElement | null = this.getFragment().querySelector('input');
-            input && input.addEventListener('blur', () => {
-                if (typeof this.props.onBlur === 'function') {
-                    this.props.onBlur(input)
-                }
-            })
+            if (input) {
+                input.addEventListener('blur', () => {
+                    if (typeof this.props.onBlur === 'function') {
+                        this.props.onBlur(input);
+                    }
+                });
+            }
         }
     }
 

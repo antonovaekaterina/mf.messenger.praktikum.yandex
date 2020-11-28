@@ -5,5 +5,5 @@ export interface IAction {
 
 export type StateType = Record<string, any>;
 
-export type ReducerType = (state:StateType, action?: IAction) => StateType
+export type ReducerType = (state:StateType, action?: IAction) => StateType;
 

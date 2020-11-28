@@ -6,10 +6,6 @@ import {IErrorPage} from './type';
 import './ErrorPage.scss';
 
 export default class ErrorPage extends Block<IErrorPage> {
-    constructor(props: IErrorPage) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             header: createNestedComponent(Header, () => ({
@@ -21,7 +17,7 @@ export default class ErrorPage extends Block<IErrorPage> {
                 title: 'Кажется, что-то пошло не так',
                 subtitle: 'Мы уже работаем над этим'
             }))
-        }
+        };
     }
 
     render() {
@@ -36,6 +32,6 @@ export default class ErrorPage extends Block<IErrorPage> {
             </section>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

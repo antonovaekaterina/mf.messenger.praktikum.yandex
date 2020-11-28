@@ -11,10 +11,6 @@ import {userServiceInstance} from '../../services/userService';
 import './ProfilePage.scss';
 
 export default class ProfilePage extends Block<IProfilePageProps> {
-    constructor(props: IProfilePageProps) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             header: createNestedComponent(Header, () => ({isProfilePage: true})),
@@ -27,7 +23,7 @@ export default class ProfilePage extends Block<IProfilePageProps> {
                         type: 'file',
                         label: '',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onAvatarFormFormSubmit
             })),
@@ -70,7 +66,7 @@ export default class ProfilePage extends Block<IProfilePageProps> {
                         type: 'text',
                         label: 'Логин',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onProfileFormSubmit
             })),
@@ -89,11 +85,11 @@ export default class ProfilePage extends Block<IProfilePageProps> {
                         type: 'password',
                         label: 'Новый пароль',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onPasswordFormSubmit
             }))
-        }
+        };
     }
 
     onProfileFormSubmit(formValues: IProfileData) {

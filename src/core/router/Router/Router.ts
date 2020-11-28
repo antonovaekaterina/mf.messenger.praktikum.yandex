@@ -36,7 +36,7 @@ export default class Router {
         window.onpopstate = ((event: Event) => {
             // @ts-ignore
             this._onRoute(event.currentTarget.location.pathname);
-        }).bind(this);
+        });
 
         this._onRoute(window.location.pathname);
     }
@@ -61,7 +61,7 @@ export default class Router {
     }
 
     back() {
-        this.history.back()
+        this.history.back();
     }
 
     forward() {

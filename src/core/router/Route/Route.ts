@@ -15,7 +15,7 @@ export default class Route<T extends Block<any>> {
         view: new (...args: any[]) => T,
         props: Record<string, any>,
         rootSelector: string,
-        className?: string,
+        className?: string
     ) {
         this._pathname = pathname;
         this._blockConstructor = view;
@@ -48,7 +48,7 @@ export default class Route<T extends Block<any>> {
                 innerComponent: this._blockConstructor,
                 innerComponentProps: this._props,
                 innerComponentClassName: this._className
-            })
+            });
         }
 
         renderDOM(this._rootSelector, this._block.getFragment());

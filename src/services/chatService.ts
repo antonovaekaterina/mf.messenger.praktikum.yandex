@@ -14,13 +14,14 @@ class ChatService extends Service {
                 if (this.hasError(result.status)) {
                     throw this.makeErrorDescription(result);
                 }
-                store.dispatch(openNotification('CreateChatSuccessNotification', {text: 'Чат успешно создан'}))
+
+                store.dispatch(openNotification('CreateChatSuccessNotification', {text: 'Чат успешно создан'}));
                 return this.getChats();
             })
             .catch(err => {
-                store.dispatch(openNotification('CreateChatErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('CreateChatErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     getChats() {
@@ -36,9 +37,9 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('GetChatErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('GetChatErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     addUsers(data: IAddUsersData) {
@@ -47,14 +48,15 @@ class ChatService extends Service {
                 if (this.hasError(result.status)) {
                     throw this.makeErrorDescription(result);
                 }
-                store.dispatch(openNotification('AddUsersSuccessNotification', {text: 'Пользователи добавлены успешно'}))
+
+                store.dispatch(openNotification('AddUsersSuccessNotification', {text: 'Пользователи добавлены успешно'}));
 
                 return this.getUsers(data.chatId);
             })
             .catch(err => {
-                store.dispatch(openNotification('AddUserErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('AddUserErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     deleteUsers(data: IAddUsersData, isOwner?: boolean) {
@@ -63,21 +65,21 @@ class ChatService extends Service {
                 if (this.hasError(result.status)) {
                     throw this.makeErrorDescription(result);
                 }
-                store.dispatch(openNotification('DeleteUsersSuccessNotification', {text: 'Пользователь удален из беседы'}))
+
+                store.dispatch(openNotification('DeleteUsersSuccessNotification', {text: 'Пользователь удален из беседы'}));
 
                 if (isOwner) {
                     store.dispatch(closeModal('RemoveUserModal'));
                     store.dispatch(setActiveChat(null));
                     this.getChats();
-
                 } else {
                     return this.getUsers(data.chatId);
                 }
             })
             .catch(err => {
-                store.dispatch(openNotification('DeleteUserErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('DeleteUserErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     getUsers(id: number) {
@@ -93,9 +95,9 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('GetUsersErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('GetUsersErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     refreshAvatar(form: any) {
@@ -109,7 +111,7 @@ class ChatService extends Service {
                     throw this.makeErrorDescription(result);
                 }
 
-                store.dispatch(openNotification('RefreshChatAvatarNotification', {text: 'Аватар успешно изменен'}))
+                store.dispatch(openNotification('RefreshChatAvatarNotification', {text: 'Аватар успешно изменен'}));
 
                 this.getChats().then(() => {
                     const activeChat = store.getState().chat.chatList.find((item:any) => item.id === activeChatId);
@@ -119,9 +121,9 @@ class ChatService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshChatAvatarErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('RefreshChatAvatarErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 }
 

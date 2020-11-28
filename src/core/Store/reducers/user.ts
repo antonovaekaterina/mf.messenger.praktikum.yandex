@@ -8,9 +8,9 @@ export default (state: UserType | null = null, action?: IAction):UserType | null
     }
 
     switch (action.type) {
-        case TYPE_SET_USER:
-            return action.value
-        default:
-            return state;
+    case TYPE_SET_USER:
+        return action.value;
+    default:
+        return state;
     }
-}
+};

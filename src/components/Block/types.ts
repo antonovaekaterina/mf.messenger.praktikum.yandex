@@ -1,6 +1,6 @@
 import Block from './Block';
 
-export type IAttribute = Record<string, string>
+export type IAttribute = Record<string, string>;
 
 export interface IVirtualNode {
     nodeTypeCode: 'node' | 'text',

@@ -4,10 +4,6 @@ import {createRenderContent} from '../../utils/render';
 import './User.scss';
 
 export default class User extends Block<IUser> {
-    constructor(props: IUser) {
-        super(props);
-    }
-
     render() {
         const source:string = (
             `<div class='User'>

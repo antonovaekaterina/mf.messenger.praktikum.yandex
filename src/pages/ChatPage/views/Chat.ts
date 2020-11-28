@@ -6,15 +6,11 @@ import ChatMain from './ChatMain';
 import './Chat.scss';
 
 export default class Chat extends Block<IChat> {
-    constructor(props: IChat) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             chatsListAside: createNestedComponent(ChatsList, () => ({})),
-            chatMain: createNestedComponent(ChatMain, () => ({})),
-        }
+            chatMain: createNestedComponent(ChatMain, () => ({}))
+        };
     }
 
     render() {
@@ -29,7 +25,7 @@ export default class Chat extends Block<IChat> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

@@ -5,7 +5,6 @@ import {openNotification} from '../core/Store/actions/notification';
 import Service from './Service';
 
 class UserService extends Service {
-
     refreshProfile(data: IProfileData) {
         return userAPIInstance.profile(data)
             .then((result: any) => {
@@ -14,13 +13,13 @@ class UserService extends Service {
                 }
 
                 this.setUser(result);
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Информация успешно обновлена'}))
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Информация успешно обновлена'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     refreshPassword(data: IPasswordData) {
@@ -29,13 +28,14 @@ class UserService extends Service {
                 if (this.hasError(result.status)) {
                     throw this.makeErrorDescription(result);
                 }
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Пароль успешно изменен'}))
+
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Пароль успешно изменен'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshPasswordErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('RefreshPasswordErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     refreshAvatar(form: any) {
@@ -46,13 +46,13 @@ class UserService extends Service {
                 }
 
                 this.setUser(result);
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Аватар успешно изменен'}))
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: 'Аватар успешно изменен'}));
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshAvatarErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('RefreshAvatarErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     searchUser(data: ISearchData) {
@@ -65,9 +65,9 @@ class UserService extends Service {
                 return JSON.parse(result.response);
             })
             .catch(err => {
-                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('RefreshProfileErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     setUser(result: any) {

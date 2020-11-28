@@ -7,10 +7,6 @@ import {ROUTE_LOGIN, router} from '../../../index';
 import './RegistrationFormInner.scss';
 
 export default class RegistrationFormInner extends Block<IForm> {
-    constructor(props?: any) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             button: createNestedComponent(Button, () => ({
@@ -18,16 +14,16 @@ export default class RegistrationFormInner extends Block<IForm> {
             })),
             inputList: (this.props.fields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-            }))),
-        }
+                errors: this.props.formErrors && this.props.formErrors[field.attribute]
+            })))
+        };
     }
 
     componentDidMount() {
         const root = this.getFragment();
         const elemLogIn = root.querySelector('.RegistrationFormInner__login');
         if (elemLogIn) {
-            elemLogIn.addEventListener('click', this.handleLogInClick)
+            elemLogIn.addEventListener('click', this.handleLogInClick);
         }
     }
 
@@ -36,11 +32,12 @@ export default class RegistrationFormInner extends Block<IForm> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()));
     }
 
     handleLogInClick(e: Event) {

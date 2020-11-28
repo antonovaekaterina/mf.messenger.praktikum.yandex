@@ -1,5 +1,5 @@
 import Block from '../../components/Block/Block';
-import {IHeader} from './type'
+import {IHeader} from './type';
 import User from '../User/User';
 import {createNestedComponent, createRenderContent} from '../../utils/render';
 import {ROOT, ROUTE_PROFILE, router, store} from '../../index';
@@ -7,38 +7,34 @@ import {authServiceInstance} from '../../services/authService';
 import './Header.scss';
 
 export default class Header extends Block<IHeader> {
-    constructor(props: IHeader) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             user: createNestedComponent(User, () => ({
                 user: this.props.user
             }))
-        }
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             user: state.user
-        }))
+        }));
 
         const root = this.getFragment();
 
         const elemProfileLink = root.querySelector('.Header__settings');
         if (elemProfileLink) {
-            elemProfileLink.addEventListener('click', this.handleProfileClick)
+            elemProfileLink.addEventListener('click', this.handleProfileClick);
         }
 
         const elemBackBtn = root.querySelector('.Header__back-btn');
         if (elemBackBtn) {
-            elemBackBtn.addEventListener('click', this.handleBackBtnClick)
+            elemBackBtn.addEventListener('click', this.handleBackBtnClick);
         }
 
         const elemLogoutBtn = root.querySelector('.Header__logout');
         if (elemLogoutBtn) {
-            elemLogoutBtn.addEventListener('click', this.handleLogoutBtn)
+            elemLogoutBtn.addEventListener('click', this.handleLogoutBtn);
         }
     }
 

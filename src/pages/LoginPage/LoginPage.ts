@@ -5,14 +5,10 @@ import {LoginPageType} from './type';
 import './LoginPage.scss';
 
 export default class LoginPage extends Block<LoginPageType> {
-    constructor(props: LoginPageType) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             loginForm: createNestedComponent(LoginForm, () => ({}), 'LoginPage__wrap')
-        }
+        };
     }
 
     render() {
@@ -24,6 +20,6 @@ export default class LoginPage extends Block<LoginPageType> {
             </section>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

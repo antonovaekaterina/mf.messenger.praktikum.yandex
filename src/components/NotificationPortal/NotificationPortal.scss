@@ -1,7 +1,6 @@
 @import '../../styles/variables';
 @import './views/Notification.scss';
 
-
 .NotificationPortal {
   position: fixed;
   right: 20px;
@@ -10,7 +9,6 @@
   display: flex;
   flex-direction: column;
   z-index: $zindex-popover;
-
 
   .Block {
     flex: 0 0 auto;

@@ -8,6 +8,7 @@ import {authServiceInstance} from '../../../services/authService';
 import './RegistrationForm.scss';
 
 export default class RegistrationForm extends Block<IRegistrationForm> {
+    /* eslint no-useless-constructor: "off" */
     constructor(props: IRegistrationForm, className: string) {
         super(props, className);
     }
@@ -53,11 +54,11 @@ export default class RegistrationForm extends Block<IRegistrationForm> {
                         type: 'password',
                         label: 'Пароль',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onSubmit
             }))
-        }
+        };
     }
 
     onSubmit(formValues: ISignUpData) {
@@ -75,7 +76,7 @@ export default class RegistrationForm extends Block<IRegistrationForm> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

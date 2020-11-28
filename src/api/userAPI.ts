@@ -36,12 +36,11 @@ class UserAPI extends BasicAPI {
         });
     }
 
-
     avatar(form: any) {
         const formData = new FormData(form);
 
         return userHTTPInstance.put('/profile/avatar', {
-            data: formData,
+            data: formData
         });
     }
 

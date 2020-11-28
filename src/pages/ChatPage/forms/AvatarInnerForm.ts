@@ -6,20 +6,16 @@ import {IAvatarInnerForm} from '../type';
 import './AvatarInnerForm.scss';
 
 export default class AvatarInnerForm extends Block<IAvatarInnerForm> {
-    constructor(props: IAvatarInnerForm) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
-            button: createNestedComponent(Button, () =>({label: 'Сохранить'})),
-        }
+            button: createNestedComponent(Button, () => ({label: 'Сохранить'}))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             avatar: state.chat.activeChat?.avatar
-        }))
+        }));
     }
 
     render() {

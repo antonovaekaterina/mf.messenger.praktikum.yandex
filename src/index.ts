@@ -29,5 +29,5 @@ router
     .use(ROUTE_ERROR, ErrorPage)
     .start();
 
-//authServiceInstance.logout();
+// AuthServiceInstance.logout();
 authServiceInstance.init();

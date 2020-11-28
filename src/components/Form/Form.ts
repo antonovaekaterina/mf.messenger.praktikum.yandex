@@ -5,17 +5,13 @@ import {createRenderContent, createNestedComponent} from '../../utils/render';
 import {validate} from '../../utils/validate';
 
 export default class Form extends Block<IForm> {
-    constructor(props: IForm) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             formView: createNestedComponent(FormView, () => ({
                 ...this.props,
                 onSubmit: (e: Event) => this.onSubmit(e)
             }))
-        }
+        };
     }
 
     onSubmit(e: Event) {
@@ -51,7 +47,7 @@ export default class Form extends Block<IForm> {
     }
 
     getFormValues(formElements: HTMLFormElement[]):Record<string, any> {
-       return Array.from(formElements).reduce((obj: any, element: HTMLFormElement) => {
+        return Array.from(formElements).reduce((obj: any, element: HTMLFormElement) => {
             if (element.name) {
                 obj[element.name] = element.value;
             }
@@ -61,7 +57,7 @@ export default class Form extends Block<IForm> {
     }
 
     render() {
-        const source:string = `<span class='component' id='formView'></span>`;
+        const source:string = '<span class=\'component\' id=\'formView\'></span>';
 
         return createRenderContent(source, this.props);
     }

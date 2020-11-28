@@ -8,10 +8,6 @@ import {closeNotification} from '../../core/Store/actions/notification';
 import './NotificationPortal.scss';
 
 export default class NotificationPortal extends Block<INotificationPortal> {
-    constructor(props: INotificationPortal) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             notificationsList: (this.props.notifications || []).map((_notification:INotification, index: number) => createNestedComponent(Notification, () => {
@@ -20,15 +16,15 @@ export default class NotificationPortal extends Block<INotificationPortal> {
                 return {
                     notification: notificationItem,
                     onClose: () => store.dispatch(closeNotification(notificationItem.id))
-                }
-            })),
-        }
+                };
+            }))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this,state => ({
+        store.subscribe(this, state => ({
             notifications: state.notifications
-        }))
+        }));
     }
 
     componentDidUpdate(oldProps: any, newProps: any): boolean {
@@ -37,11 +33,14 @@ export default class NotificationPortal extends Block<INotificationPortal> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        if (!this.props.notifications) return;
+        if (!this.props.notifications) {
+            return;
+        }
 
         if (this.props.notifications.length !== this.nestedComponents.notificationsList.length) {
             const propsNotificationsLength = this.props.notifications.length;
@@ -62,7 +61,7 @@ export default class NotificationPortal extends Block<INotificationPortal> {
                         return {
                             notification: notificationItem,
                             onClose: () => store.dispatch(closeNotification(notificationItem.id))
-                        }
+                        };
                     }));
                     ++counter;
                 }

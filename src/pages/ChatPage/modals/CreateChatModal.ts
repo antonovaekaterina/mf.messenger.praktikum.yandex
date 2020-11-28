@@ -8,10 +8,6 @@ import {ICreateChatData} from '../../../api/chatAPI';
 import './CreateChatModal.scss';
 
 export default class CreateChatModal extends Block<IModalProps> {
-    constructor(props: IModalProps) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             createChatForm: createNestedComponent(Form, () => ({
@@ -23,16 +19,16 @@ export default class CreateChatModal extends Block<IModalProps> {
                         type: 'text',
                         label: 'Название чата',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onSubmit.bind(this)
             }))
-        }
+        };
     }
 
     onSubmit(formValues: ICreateChatData) {
         chatServiceInstance.createChat(formValues).then(() => {
-            this.props.onClose()
+            this.props.onClose();
         });
     }
 
@@ -44,6 +40,6 @@ export default class CreateChatModal extends Block<IModalProps> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

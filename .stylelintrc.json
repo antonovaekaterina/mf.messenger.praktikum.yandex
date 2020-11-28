@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "/node_modules",
+    "/dist"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "color-hex-length": "long",
+    "indentation": 2,
+    "at-rule-no-unknown": null,
+    "block-no-empty": null
+  }
+}

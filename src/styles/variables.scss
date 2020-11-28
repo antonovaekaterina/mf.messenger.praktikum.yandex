@@ -24,7 +24,7 @@ $zindex-popover: 1020;
 
 //mixins
 @mixin placeholder {
-  &::-webkit-input-placeholder {@content}
-  &:-ms-input-placeholder {@content}
-  &::placeholder {@content}
+  &::-webkit-input-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::placeholder { @content; }
 }

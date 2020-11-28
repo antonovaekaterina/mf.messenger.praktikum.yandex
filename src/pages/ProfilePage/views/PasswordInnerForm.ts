@@ -6,18 +6,14 @@ import InputField from '../../../components/InputField/InputField';
 import './PasswordInnerForm.scss';
 
 export default class PasswordInnerForm extends Block<IForm> {
-    constructor(props: IForm) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
-            button: createNestedComponent(Button, () =>({label: 'Сохранить'})),
+            button: createNestedComponent(Button, () => ({label: 'Сохранить'})),
             inputList: (this.props.fields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-            }))),
-        }
+                errors: this.props.formErrors && this.props.formErrors[field.attribute]
+            })))
+        };
     }
 
     componentDidUpdate(oldProps: IForm, newProps: IForm): boolean {
@@ -26,11 +22,12 @@ export default class PasswordInnerForm extends Block<IForm> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()));
     }
 
     render() {

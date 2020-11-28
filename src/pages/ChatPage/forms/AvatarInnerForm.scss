@@ -1,11 +1,11 @@
 @import '../../../styles/variables';
 
 .AvatarChatInnerForm {
-   &__inner {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-   }
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &__submit-btn-wrap {
     width: auto;

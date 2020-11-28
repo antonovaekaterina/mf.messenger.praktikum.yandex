@@ -14,18 +14,18 @@ export default (state: IModal[] = [], action?: IAction):IModal[] => {
     }
 
     switch (action.type) {
-        case TYPE_CLOSE_MODAL:
-            return state.filter((modal: any) => modal.id !== action.id)
-        case TYPE_OPEN_MODAL:
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    props: action.props || null,
-                    component: action.component
-                }
-            ]
-        default:
-            return state;
+    case TYPE_CLOSE_MODAL:
+        return state.filter((modal: any) => modal.id !== action.id);
+    case TYPE_OPEN_MODAL:
+        return [
+            ...state,
+            {
+                id: action.id,
+                props: action.props || null,
+                component: action.component
+            }
+        ];
+    default:
+        return state;
     }
-}
+};

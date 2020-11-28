@@ -8,10 +8,6 @@ import {closeModal} from '../../core/Store/actions/modal';
 import './ModalPortal.scss';
 
 export default class ModalPortal extends Block<IModalPortal> {
-    constructor(props: IModalPortal) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             modalsList: (this.props.modals || []).map((_modal:IModal, index: number) => createNestedComponent(Modal, () => {
@@ -20,18 +16,18 @@ export default class ModalPortal extends Block<IModalPortal> {
                     modal: modalItem,
                     onClose: () => {
                         if (modalItem) {
-                            store.dispatch(closeModal(modalItem.id))
+                            store.dispatch(closeModal(modalItem.id));
                         }
                     }
-                }
-            })),
-        }
+                };
+            }))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this,state => ({
+        store.subscribe(this, state => ({
             modals: state.modals
-        }))
+        }));
 
         this.toggleBodyOverflow();
     }
@@ -47,11 +43,14 @@ export default class ModalPortal extends Block<IModalPortal> {
             this.updateNestedComponents();
             this.toggleBodyOverflow();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        if (!this.props.modals) return;
+        if (!this.props.modals) {
+            return;
+        }
 
         if (this.props.modals.length !== this.nestedComponents.modalsList.length) {
             const propsModalsLength = this.props.modals.length;
@@ -72,7 +71,7 @@ export default class ModalPortal extends Block<IModalPortal> {
                         return {
                             modal: modalItem,
                             onClose: () => store.dispatch(closeModal(modalItem.id))
-                        }
+                        };
                     }));
                     ++counter;
                 }

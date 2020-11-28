@@ -8,6 +8,7 @@ import {ISignUpData} from '../../../api/authAPI';
 import './LoginForm.scss';
 
 export default class LoginForm extends Block<LoginFormType> {
+    /* eslint no-useless-constructor: "off" */
     constructor(props: LoginFormType, className: string) {
         super(props, className);
     }
@@ -29,11 +30,11 @@ export default class LoginForm extends Block<LoginFormType> {
                         type: 'password',
                         label: 'Пароль',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onSubmit
             }))
-        }
+        };
     }
 
     onSubmit(formValues: ISignUpData) {
@@ -51,7 +52,7 @@ export default class LoginForm extends Block<LoginFormType> {
           </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

@@ -6,10 +6,6 @@ import {IForm} from '../../../components/Form/types';
 import './CreateChatInnerForm.scss';
 
 export default class CreateChatInnerForm extends Block<IForm> {
-    constructor(props: IForm) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             button: createNestedComponent(Button, () => ({
@@ -17,9 +13,9 @@ export default class CreateChatInnerForm extends Block<IForm> {
             })),
             inputList: (this.props.fields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
-                errors: this.props.formErrors && this.props.formErrors[field.attribute],
-            }))),
-        }
+                errors: this.props.formErrors && this.props.formErrors[field.attribute]
+            })))
+        };
     }
 
     componentDidUpdate(oldProps: any, newProps: any): boolean {
@@ -28,11 +24,12 @@ export default class CreateChatInnerForm extends Block<IForm> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()));
     }
 
     render() {

@@ -1,10 +1,10 @@
 function isObject(value: any): boolean {
-    return !!(value && (typeof value === 'object'))
+    return Boolean(value && (typeof value === 'object'));
 }
 
 export default function isEqual(a: Record<string, any>, b: Record<string, any>): boolean {
     const aArr = Object.entries(a);
-    const bArr = Object.entries(b)
+    const bArr = Object.entries(b);
 
     if (aArr.length !== bArr.length) {
         return false;
@@ -13,7 +13,7 @@ export default function isEqual(a: Record<string, any>, b: Record<string, any>):
     const uniqKeys = new Set();
     aArr.concat(bArr).forEach(([key]) => {
         uniqKeys.add(key);
-    })
+    });
     if (uniqKeys.size > aArr.length) {
         return false;
     }
@@ -34,16 +34,17 @@ export default function isEqual(a: Record<string, any>, b: Record<string, any>):
                 }
 
                 return aValue.every((aValueItem: any, index: number) => {
-                    return aValueItem === bValue[index]
-                })
-            } else if (!aValueIsArray && !bValueIsArray) {
-                return isEqual(aValue, bValue);
-            } else {
-                return false;
+                    return aValueItem === bValue[index];
+                });
             }
-        } else {
-            return aValue === bValue;
-        }
-    })
 
+            if (!aValueIsArray && !bValueIsArray) {
+                return isEqual(aValue, bValue);
+            }
+
+            return false;
+        }
+
+        return aValue === bValue;
+    });
 }

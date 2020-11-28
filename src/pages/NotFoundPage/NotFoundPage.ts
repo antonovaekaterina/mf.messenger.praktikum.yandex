@@ -6,11 +6,6 @@ import {INotFoundPage} from './type';
 import './NotFoundPage.scss';
 
 export default class NotFoundPage extends Block<INotFoundPage> {
-    constructor(props: INotFoundPage) {
-        super(props);
-
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             header: createNestedComponent(Header, () => ({
@@ -22,7 +17,7 @@ export default class NotFoundPage extends Block<INotFoundPage> {
                 title: 'Кажется, вы не туда попали',
                 subtitle: 'Попробуйте начать сначала'
             }))
-        }
+        };
     }
 
     render() {
@@ -37,6 +32,6 @@ export default class NotFoundPage extends Block<INotFoundPage> {
             </section>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

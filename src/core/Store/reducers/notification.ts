@@ -12,17 +12,17 @@ export default (state: INotification[] = [], action?: IAction):INotification[] =
     }
 
     switch (action.type) {
-        case TYPE_CLOSE_NOTIFICATION:
-            return state.filter((notification: any) => notification.id !== action.id)
-        case TYPE_OPEN_NOTIFICATION:
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    props: action.props || null,
-                }
-            ]
-        default:
-            return state;
+    case TYPE_CLOSE_NOTIFICATION:
+        return state.filter((notification: any) => notification.id !== action.id);
+    case TYPE_OPEN_NOTIFICATION:
+        return [
+            ...state,
+            {
+                id: action.id,
+                props: action.props || null
+            }
+        ];
+    default:
+        return state;
     }
-}
+};

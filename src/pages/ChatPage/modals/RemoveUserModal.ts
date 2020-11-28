@@ -7,11 +7,6 @@ import {chatServiceInstance} from '../../../services/chatService';
 import './RemoveUserModal.scss';
 
 export default class RemoveUserModal extends Block<IRemoveUsersModal> {
-
-    constructor(props: IRemoveUsersModal) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             users: (this.props.activeChat?.users || []).map((_user, index: number) => createNestedComponent(User, () => {
@@ -19,20 +14,20 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
 
                 return {
                     user: {...user}
-                }
-            })),
-        }
+                };
+            }))
+        };
     }
 
     componentDidMount() {
         store.subscribe(this, (state => ({
             activeChat: state.chat.activeChat
-        })))
+        })));
 
         const root = this.getFragment();
         const removingButtons = root.querySelectorAll('.RemoveUserModal__removing-btn');
         if (removingButtons) {
-            Array.from(removingButtons).forEach(btn => btn.addEventListener('click', (e:Event) => this.handleRemoveBtnClick(e)))
+            Array.from(removingButtons).forEach(btn => btn.addEventListener('click', (e:Event) => this.handleRemoveBtnClick(e)));
         }
     }
 
@@ -44,7 +39,7 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
             chatServiceInstance.deleteUsers({
                 users: [userId],
                 chatId: this.props.activeChat?.id
-            }, userId === this.props.activeChat?.created_by)
+            }, userId === this.props.activeChat?.created_by);
         }
     }
 
@@ -54,11 +49,14 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        if (!this.props.activeChat?.users) return;
+        if (!this.props.activeChat?.users) {
+            return;
+        }
 
         const {users} = this.props.activeChat;
 
@@ -80,7 +78,7 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
 
                         return {
                             user: {...user}
-                        }
+                        };
                     }));
                     ++counter;
                 }
@@ -109,6 +107,6 @@ export default class RemoveUserModal extends Block<IRemoveUsersModal> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

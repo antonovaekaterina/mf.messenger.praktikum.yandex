@@ -4,13 +4,9 @@ import {createRenderContent} from '../../utils/render';
 import './ButtonView.scss';
 
 export default class ButtonView extends Block<IButtonProps> {
-    constructor(props: IButtonProps) {
-        super(props);
-    }
-
     render() {
         const source:string = (
-            `<input class='ButtonView' type='submit' value='{{label}}'>`
+            '<input class=\'ButtonView\' type=\'submit\' value=\'{{label}}\'>'
         );
 
         return createRenderContent(source, this.props);

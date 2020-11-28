@@ -5,14 +5,10 @@ import {IRegistrationPage} from './type';
 import './RegistrationPage.scss';
 
 export default class RegistrationPage extends Block<IRegistrationPage> {
-    constructor(props?: any) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             registrationForm: createNestedComponent(RegistrationForm, () => ({}), 'RegistrationPage__wrap')
-        }
+        };
     }
 
     render() {
@@ -24,6 +20,6 @@ export default class RegistrationPage extends Block<IRegistrationPage> {
             </section>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

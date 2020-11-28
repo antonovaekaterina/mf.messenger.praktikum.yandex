@@ -7,27 +7,22 @@ import {IProfileInnerForm} from '../type';
 import './ProfileInnerForm.scss';
 
 export default class ProfileInnerForm extends Block<IProfileInnerForm> {
-    constructor(props: IProfileInnerForm) {
-        super(props);
-    }
-
     createNestedComponents() {
-
         this.nestedComponents = {
-            button: createNestedComponent(Button, () =>({label: 'Сохранить'})),
+            button: createNestedComponent(Button, () => ({label: 'Сохранить'})),
             inputList: (this.props.fields || []).map((field:any) => createNestedComponent(InputField, () => ({
                 ...field,
                 errors: this.props.formErrors && this.props.formErrors[field.attribute],
                 // @ts-ignore
                 value: this.props.user?.[field.attribute]
-            }))),
-        }
+            })))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             user: state.user
-        }))
+        }));
     }
 
     componentDidUpdate(oldProps: IProfileInnerForm, newProps: IProfileInnerForm): boolean {
@@ -36,11 +31,12 @@ export default class ProfileInnerForm extends Block<IProfileInnerForm> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()))
+        this.nestedComponents.inputList.forEach((nestedItem: ICreateNestedComponent) => nestedItem.component.setProps(nestedItem.getProps()));
     }
 
     render() {

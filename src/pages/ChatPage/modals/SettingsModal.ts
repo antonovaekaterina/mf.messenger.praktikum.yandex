@@ -9,15 +9,11 @@ import ChangeAvatarModal from './ChangeAvatarModal';
 import './SettingsModal.scss';
 
 export default class SettingsModal extends Block<IModalProps> {
-    constructor(props: IModalProps) {
-        super(props);
-    }
-
     componentDidMount() {
         const root = this.getFragment();
-        this.addHandleClick(root, '.SettingsModal__add-users a', (e: Event) => this.handleAddUserClick(e))
-        this.addHandleClick(root, '.SettingsModal__remove-users a', (e: Event) => this.handleRemoveUserClick(e))
-        this.addHandleClick(root, '.SettingsModal__change-avatar a', (e: Event) => this.handleChangeAvatarClick(e))
+        this.addHandleClick(root, '.SettingsModal__add-users a', (e: Event) => this.handleAddUserClick(e));
+        this.addHandleClick(root, '.SettingsModal__remove-users a', (e: Event) => this.handleRemoveUserClick(e));
+        this.addHandleClick(root, '.SettingsModal__change-avatar a', (e: Event) => this.handleChangeAvatarClick(e));
     }
 
     addHandleClick(root: HTMLElement, selector: string, handle: (e: Event) => void) {
@@ -31,19 +27,19 @@ export default class SettingsModal extends Block<IModalProps> {
     handleAddUserClick(e: Event) {
         e.preventDefault();
         this.props.onClose();
-        store.dispatch(openModal('AddUserModal', AddUserModal))
+        store.dispatch(openModal('AddUserModal', AddUserModal));
     }
 
     handleRemoveUserClick(e: Event) {
         e.preventDefault();
         this.props.onClose();
-        store.dispatch(openModal('RemoveUserModal', RemoveUserModal))
+        store.dispatch(openModal('RemoveUserModal', RemoveUserModal));
     }
 
     handleChangeAvatarClick(e: Event) {
         e.preventDefault();
         this.props.onClose();
-        store.dispatch(openModal('AvatarModal', ChangeAvatarModal))
+        store.dispatch(openModal('AvatarModal', ChangeAvatarModal));
     }
 
     render() {
@@ -58,6 +54,6 @@ export default class SettingsModal extends Block<IModalProps> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

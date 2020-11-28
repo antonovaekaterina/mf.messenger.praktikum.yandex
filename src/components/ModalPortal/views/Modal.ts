@@ -3,14 +3,10 @@ import {createNestedComponent, createRenderContent} from '../../../utils/render'
 import {IModalProps} from '../types';
 
 export default class Modal extends Block<IModalProps> {
-    constructor(props: IModalProps) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             modalInner: createNestedComponent(this.props.modal.component, () => ({...this.props}))
-        }
+        };
     }
 
     componentDidMount() {
@@ -18,7 +14,7 @@ export default class Modal extends Block<IModalProps> {
 
         const closeElem = root.querySelector('.Modal__close');
         if (closeElem) {
-            closeElem.addEventListener('click', this.props.onClose)
+            closeElem.addEventListener('click', this.props.onClose);
         }
     }
 

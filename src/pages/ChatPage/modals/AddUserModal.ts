@@ -11,10 +11,6 @@ import {chatServiceInstance} from '../../../services/chatService';
 import './AddUserModal.scss';
 
 export default class AddUserModal extends Block<IAddUsersModal> {
-    constructor(props: IAddUsersModal) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             form: createNestedComponent(Form, () => ({
@@ -26,7 +22,7 @@ export default class AddUserModal extends Block<IAddUsersModal> {
                         type: 'text',
                         label: 'Логин',
                         validationParams: ['required']
-                    },
+                    }
                 ],
                 onSubmit: this.onSubmit.bind(this)
             })),
@@ -35,9 +31,9 @@ export default class AddUserModal extends Block<IAddUsersModal> {
 
                 return {
                     user: {...user}
-                }
-            })),
-        }
+                };
+            }))
+        };
     }
 
     onSubmit(formValues: ISearchData) {
@@ -47,7 +43,7 @@ export default class AddUserModal extends Block<IAddUsersModal> {
     componentDidMount() {
         store.subscribe(this, (state => ({
             activeChat: state.chat.activeChat
-        })))
+        })));
 
         const root = this.getFragment();
         const usersWrap:HTMLElement | null = root.querySelector('.AddUserModal__users-wrap');
@@ -62,6 +58,7 @@ export default class AddUserModal extends Block<IAddUsersModal> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
@@ -74,13 +71,15 @@ export default class AddUserModal extends Block<IAddUsersModal> {
                 chatServiceInstance.addUsers({
                     users: [userId],
                     chatId: this.props.activeChat?.id
-                })
+                });
             }
         }
     }
 
     updateNestedComponents() {
-        if (!this.props.foundUsers) return;
+        if (!this.props.foundUsers) {
+            return;
+        }
 
         const {foundUsers} = this.props;
 
@@ -102,7 +101,7 @@ export default class AddUserModal extends Block<IAddUsersModal> {
 
                         return {
                             user: {...user}
-                        }
+                        };
                     }));
                     ++counter;
                 }
@@ -135,6 +134,6 @@ export default class AddUserModal extends Block<IAddUsersModal> {
             </div>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }

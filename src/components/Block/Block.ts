@@ -1,5 +1,5 @@
 import EventBus from '../../core/EventBus/index';
-import {IRenderContent} from '../../utils/render'
+import {IRenderContent} from '../../utils/render';
 import {IAttribute, IVirtualNode} from './types';
 import isEqual from '../../utils/isEqual';
 
@@ -65,7 +65,7 @@ export default class Block<T extends Record<string, any>> {
     }
 
     createNestedComponents() {
-        this.nestedComponents = {}
+        this.nestedComponents = {};
     }
 
     private _componentDidMount(): void {
@@ -78,7 +78,7 @@ export default class Block<T extends Record<string, any>> {
     private _componentDidUpdate(oldProps: T, newProps: T): void {
         const componentShouldUpdate: boolean = this.componentDidUpdate(oldProps, newProps);
         if (componentShouldUpdate) {
-            //перерендеринг вложенных компонентов
+            // Перерендеринг вложенных компонентов
             Object.keys(this.nestedComponents).forEach((id: string) => {
                 const nestedComponentConfig = this.getNestedComponent(id);
 
@@ -115,14 +115,13 @@ export default class Block<T extends Record<string, any>> {
                 if (dataIndex !== undefined) {
                     nestedComponent = this.getNestedComponent(nestedElement.id)[dataIndex].component;
                 } else {
-                    nestedComponent = this.getNestedComponent(nestedElement.id).component
+                    nestedComponent = this.getNestedComponent(nestedElement.id).component;
                 }
 
                 let componentNodes = nestedComponent.getFragment();
 
                 nestedElement.replaceWith(componentNodes);
             });
-
         } else {
             const startDocumentFragmentNode = this.fragment;
             this.domApplyChanges(this.currentDomTree, newDomTree, startDocumentFragmentNode);
@@ -137,17 +136,17 @@ export default class Block<T extends Record<string, any>> {
             const newEl = newDomTree[k];
             if (curEl) {
                 switch (curEl.nodeTypeCode) {
-                    case 'node':
-                        this.applyChangesForElement(curEl,newEl,documentFragmentNode.childNodes[k]);
-                        break;
-                    case 'text':
-                        this.applyChangesForTextNode(curEl,newEl,documentFragmentNode.childNodes[k]);
-                        break;
-                    default:
-                        throw new Error('Нет обработчика для данного типа узла');
+                case 'node':
+                    this.applyChangesForElement(curEl, newEl, documentFragmentNode.childNodes[k]);
+                    break;
+                case 'text':
+                    this.applyChangesForTextNode(curEl, newEl, documentFragmentNode.childNodes[k]);
+                    break;
+                default:
+                    throw new Error('Нет обработчика для данного типа узла');
                 }
             } else {
-                this.appendNode(newEl,documentFragmentNode);
+                this.appendNode(newEl, documentFragmentNode);
             }
 
             if (newEl.nodeTypeCode === 'node' && newEl.childNodes) {
@@ -156,6 +155,7 @@ export default class Block<T extends Record<string, any>> {
                 if (curEl && 'childNodes' in curEl) {
                     oldChildNodes = curEl.childNodes;
                 }
+
                 this.domApplyChanges(oldChildNodes, newEl.childNodes, curDocumentFragmentNode);
             }
         }
@@ -163,37 +163,32 @@ export default class Block<T extends Record<string, any>> {
         this.removeOldNodes(oldDomTree, newDomTree, documentFragmentNode);
     }
 
-    private removeOldNodes(oldDomTree: IVirtualNode[], newDomTree: IVirtualNode[], documentFragmentNode: any){
+    private removeOldNodes(oldDomTree: IVirtualNode[], newDomTree: IVirtualNode[], documentFragmentNode: any) {
         for (let k = oldDomTree.length - 1; k >= newDomTree.length; k--) {
             documentFragmentNode.childNodes[k].remove();
         }
     }
 
-    private appendNode(newNode: IVirtualNode,  documentFragmentNodeChildren: any, needReplace: boolean = false){
+    private appendNode(newNode: IVirtualNode, documentFragmentNodeChildren: any, needReplace: boolean = false) {
         let newDocumentNode;
         if (newNode.nodeTypeCode === 'text') {
             newDocumentNode = document.createTextNode(newNode.textContent ? newNode.textContent : '');
-        } else {
+        } else if (newNode.attributes && newNode.attributes.class === 'component') {
+            let nestedComponent;
+            const dataIndex = newNode.attributes['data-index'];
+            const id = newNode.attributes.id;
 
-            if (newNode.attributes && newNode.attributes.class === 'component'){
-                let nestedComponent;
-                const dataIndex = newNode.attributes['data-index'];
-                const id = newNode.attributes.id;
-
-
-                if (dataIndex !== undefined) {
-                    nestedComponent = this.getNestedComponent(id)[dataIndex].component;
-                } else {
-                    nestedComponent = this.getNestedComponent(id).component
-                }
-
-                newDocumentNode = nestedComponent.getFragment();
-
+            if (dataIndex !== undefined) {
+                nestedComponent = this.getNestedComponent(id)[dataIndex].component;
             } else {
-                newDocumentNode = document.createElement(newNode.tagName);
-                for (const attrKey in newNode.attributes) {
-                    newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
-                }
+                nestedComponent = this.getNestedComponent(id).component;
+            }
+
+            newDocumentNode = nestedComponent.getFragment();
+        } else {
+            newDocumentNode = document.createElement(newNode.tagName);
+            for (const attrKey in newNode.attributes) {
+                newDocumentNode.setAttribute(attrKey, newNode.attributes[attrKey]);
             }
         }
 
@@ -208,25 +203,26 @@ export default class Block<T extends Record<string, any>> {
         if (oldNode.nodeTypeCode === 'text' && newTextNode.nodeTypeCode === 'text' && oldNode.textContent !== newTextNode.textContent) {
             documentFragmentNodeChildren.textContent = newTextNode.textContent;
         } else {
-            this.appendNode(newTextNode,documentFragmentNodeChildren,true);
+            this.appendNode(newTextNode, documentFragmentNodeChildren, true);
             oldNode.childNodes = [];
         }
     }
 
     private applyChangesForElement(oldNode: IVirtualNode, newNode: IVirtualNode, documentFragmentNodeChildren: any): void {
         if (oldNode.nodeTypeCode === 'node' && newNode.nodeTypeCode === 'node' && oldNode.tagName === newNode.tagName) {
-            this.applyChangesForElementAttributes(oldNode,newNode,documentFragmentNodeChildren);
+            this.applyChangesForElementAttributes(oldNode, newNode, documentFragmentNodeChildren);
         } else {
-            this.appendNode(newNode,documentFragmentNodeChildren,true);
+            this.appendNode(newNode, documentFragmentNodeChildren, true);
             oldNode.childNodes = [];
         }
     }
 
-    private applyChangesForElementAttributes(oldNode: IVirtualNode, newNode: IVirtualNode, documentFragmentNodeChildren: any){
+    private applyChangesForElementAttributes(oldNode: IVirtualNode, newNode: IVirtualNode, documentFragmentNodeChildren: any) {
         for (const attrKey in newNode.attributes) {
             if (oldNode.attributes && oldNode.attributes[attrKey] !== newNode.attributes[attrKey]) {
                 documentFragmentNodeChildren.setAttribute(attrKey, newNode.attributes[attrKey]);
             }
+
             if (oldNode.attributes && attrKey in oldNode.attributes) {
                 delete oldNode.attributes[attrKey];
             }
@@ -257,14 +253,15 @@ export default class Block<T extends Record<string, any>> {
             let newElemInfo: any = {};
             const el:any = elementNodes[k];
 
-            if (el.nodeType == 3) {
+            if (el.nodeType === 3) {
                 newElemInfo.nodeTypeCode = 'text';
                 newElemInfo.textContent = el.textContent;
                 newElemInfo.childNodes = [];
             } else {
                 newElemInfo = this.createDOMTreeFromDOM(el);
             }
-            DOMTree.childNodes.push(newElemInfo)
+
+            DOMTree.childNodes.push(newElemInfo);
         }
 
         return DOMTree;
@@ -287,7 +284,7 @@ export default class Block<T extends Record<string, any>> {
         }
 
         Object.assign(this.props, nextProps);
-    };
+    }
 
     show():void {
         this.fragment.style.display = '';

@@ -10,32 +10,28 @@ import CreateChatModal from '../modals/CreateChatModal';
 import './ChatsList.scss';
 
 export default class ChatsList extends Block<IChatList> {
-    constructor(props: IChatList) {
-        super(props);
-    }
-
     createNestedComponents() {
         this.nestedComponents = {
             chats: (this.props.chatList || []).map((_chatItem, index: number) => createNestedComponent(ChatItem, () => {
-                const item = this.props.chatList?.[index]
+                const item = this.props.chatList?.[index];
 
                 return {
                     item,
                     isActive: this.props.activeChat?.id === item?.id
-                }
+                };
             })),
             searchForm: createNestedComponent(Form, () => ({
                 name: 'SearchForm',
                 FormInner: SearchInnerForm
-            })),
-        }
+            }))
+        };
     }
 
     componentDidMount() {
-        store.subscribe(this, (state) => ({
+        store.subscribe(this, state => ({
             chatList: state.chat.chatList,
             activeChat: state.chat.activeChat
-        }))
+        }));
 
         const root = this.getFragment();
         const addChatBtn = root.querySelector('.ChatsList__add-dialog-btn');
@@ -45,7 +41,7 @@ export default class ChatsList extends Block<IChatList> {
     }
 
     handleAddChatBtnClick() {
-        store.dispatch(openModal('CreateChatModal', CreateChatModal))
+        store.dispatch(openModal('CreateChatModal', CreateChatModal));
     }
 
     componentDidUpdate(oldProps: any, newProps: any): boolean {
@@ -54,11 +50,14 @@ export default class ChatsList extends Block<IChatList> {
         if (shouldUpdate) {
             this.updateNestedComponents();
         }
+
         return shouldUpdate;
     }
 
     updateNestedComponents() {
-        if (!this.props.chatList) return;
+        if (!this.props.chatList) {
+            return;
+        }
 
         const {chatList} = this.props;
 
@@ -76,12 +75,12 @@ export default class ChatsList extends Block<IChatList> {
                 while (counter < propsChatsLength) {
                     const index = counter;
                     this.nestedComponents.chats.push(createNestedComponent(ChatItem, () => {
-                        const item = this.props.chatList?.[index]
+                        const item = this.props.chatList?.[index];
 
                         return {
                             item,
                             isActive: this.props.activeChat?.id === item?.id
-                        }
+                        };
                     }));
                     ++counter;
                 }
@@ -110,7 +109,7 @@ export default class ChatsList extends Block<IChatList> {
             </aside>`
         );
 
-        return createRenderContent(source, this.props)
+        return createRenderContent(source, this.props);
     }
 }
 

@@ -7,7 +7,6 @@ import {setActiveChat, setChats} from '../core/Store/actions/chat';
 import Service from './Service';
 
 class AuthService extends Service {
-
     signUp(data: ISignUpData) {
         return authAPIInstance.signUp(data)
             .then((result: any) => {
@@ -30,9 +29,9 @@ class AuthService extends Service {
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('SignUpErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('SignUpErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     signIn(data: ISignInData) {
@@ -57,8 +56,8 @@ class AuthService extends Service {
             })
             .catch(err => {
                 console.error(err);
-                store.dispatch(openNotification('SignInErrorNotification', {text: err}))
-            })
+                store.dispatch(openNotification('SignInErrorNotification', {text: err}));
+            });
     }
 
     logout() {
@@ -69,15 +68,15 @@ class AuthService extends Service {
                 }
 
                 store.dispatch(setUser(null));
-                store.dispatch(setChats([]))
-                store.dispatch(setActiveChat(null))
+                store.dispatch(setChats([]));
+                store.dispatch(setActiveChat(null));
                 router.go(ROUTE_LOGIN);
                 return result;
             })
             .catch(err => {
-                store.dispatch(openNotification('LogoutErrorNotification', {text: err}))
-                console.error(err)
-            })
+                store.dispatch(openNotification('LogoutErrorNotification', {text: err}));
+                console.error(err);
+            });
     }
 
     init() {
@@ -93,11 +92,11 @@ class AuthService extends Service {
             })
             .catch(err => {
                 console.error(err);
-                store.dispatch(openNotification('InitErrorNotification', {text: err}))
+                store.dispatch(openNotification('InitErrorNotification', {text: err}));
                 if (!this.isAuthPage()) {
-                    router.go(ROUTE_LOGIN)
+                    router.go(ROUTE_LOGIN);
                 }
-            })
+            });
     }
 
     setUser(result: any) {
